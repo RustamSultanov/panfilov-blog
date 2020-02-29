@@ -1,0 +1,6 @@
+
+@import "@material/top-app-bar/mdc-top-app-bar";
+.mdc-top-app-bar.mdc-top-app-bar--raised {
+  @include mdc-top-app-bar-fill-color-accessible(#FFFFFF);
+  @include mdc-top-app-bar-icon-ink-color(#C4C4C4);
+}

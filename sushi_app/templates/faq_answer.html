@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Список вопросов{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">{{question.date_created}} {{question.name}}</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+ {% block content %}
+        <div class="card my-4">
+        <div class="card-body">
+            <form action="{% url 'faq_answer' question.id %}" method="post">
+                {% csrf_token %}
+                <h6>{{question.body}}</h6>
+                {% comment %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Email</label>
+                        {% render_field form.email placeholder="Email" class+="form-control" %}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Телефон</label>
+                        {% render_field form.phone_number placeholder="Телефон" class+="form-control" %}
+                    </div>
+                </div>
+                {% endcomment %}
+
+                <div class="form-group">
+                    <label class="form-label">Ответ</label>
+                    {% render_field form.answer placeholder="Ответ" class+="form-control" %}
+                    </div>
+<div class="form-group">
+                <label class="custom-control custom-checkbox m-0">
+                {{ form.hide }}
+                <span class="custom-control-label">Скрыть ответ</span>
+              </label>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary btn-round">Отправить</button>
+                </div>
+            </form>
+            {{status}}
+            {% for message in form.errors.values %}
+                                    {{ message }}
+                                  {% endfor %}
+
+        </div>
+    </div>
+ {% endblock %}
+

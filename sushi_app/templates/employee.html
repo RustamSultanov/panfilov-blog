@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block content %}
+                <!-- Page content -->
+                    <div class="media align-items-center py-3 mb-3">
+                       {% if employee.wagtail_userprofile.avatar %} <img src="{{ employee.wagtail_userprofile.avatar.url }}" alt="" class="d-block ui-w-100 rounded-circle">
+                       {% else %}{% endif %}
+                        <div class="media-body ml-4">
+                            <h4 class="font-weight-bold mb-0">{{ employee.first_name }} {{ employee.last_name }}
+                            </h4>
+                            {% if employee.user_profile.is_partner %}
+                                <div class="text-muted mb-2"></div>
+                                 {% else %}
+                            <div class="text-muted mb-2">{{ employee.user_profile.position }}</div>
+                          {% endif %}
+                            <a href="mailto:{{ employee.email }}" class="btn btn-default btn-sm">
+                                <i class="fas fa-envelope"></i>&nbsp;Написать письмо
+                            </a>
+ {% if user.user_profile.is_partner %}
+     <a href="{% url 'form_request' %}" class="btn btn-round btn-outline-primary btn-sm">Поставить задачу менеджеру</a>
+                        {% else %}
+                       <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'form_task' employee.user_profile.id %}">Добавить задачу</a>
+                        <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'edit_partner' employee.id %}">Редактировать франчайзи</a>
+                        <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'form_review' %}">Добавить отзыв</a>
+                        {% endif %}
+                        </div>
+                    </div>
+     {% if employee.user_profile.is_partner %}
+         <div class="my-4 row">
+{% for shop in employee.user_profile.shop_partner.all %}
+                  <div class="col-md-6 mb-4">
+                                                <div class="card hoverable h-100">
+                                                    <div class="card-header d-flex justify-content-between  align-items-start">
+                                                        <div>
+                                                            <div class="h5 mb-0 font-weight-semibold"><a href="{% url 'shop' shop.id %}" class="text-primary">{{ shop.address }}</a></div>
+                                                        </div>
+
+
+                                                        <div class="btn-group project-actions">
+                                                            <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                                <i class="ion ion-ios-more"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{% url 'shop' shop.id %}">Просмотр</a>
+{#                                                                <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
+{#                                                                <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+         </div>
+                        {% else %}{% endif %}
+                    <div class="card my-4">
+                        <div class="card-body">
+                        {% if employee.user_profile.key_responsibilities %}
+                            <h6 class="mb-3">Ключевые обязанности</h6>
+                       {% else %}{% endif %}
+                            {{ employee.user_profile.key_responsibilities | richtext }}
+
+                            <h6 class="mt-4 mb-3">Социальные сети</h6>
+                            <table class="table user-view-table m-0">
+                                <tbody>
+                                <tr>
+                                    <td>Twitter:</td>
+                                    <td>{% if employee.user_profile.twitter %}
+                                        <a href="{{ employee.user_profile.twitter }}">{{ employee.user_profile.twitter }}</a>
+                                         {% else %}{% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Facebook:</td>
+                                    <td>
+                                       {% if employee.user_profile.facebook %} <a href="{{ employee.user_profile.facebook }}">{{ employee.user_profile.facebook }}</a>
+                                         {% else %}{% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Instagram:</td>
+                                    <td>
+                                        {% if employee.user_profile.instagram %}
+                                        <a href="{{ employee.user_profile.instagram }}">{{ employee.user_profile.instagram }}</a>
+                                         {% else %}{% endif %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <h6 class="mt-4 mb-3">Контакты</h6>
+                            <table class="table user-view-table m-0">
+                                <tbody>
+                                <tr>
+                                    <td>Телефон:</td>
+                                    <td>{% if employee.user_profile.phone_number %}{{ employee.user_profile.phone_number }}
+                                     {% else %}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>Watsapp:</td>
+                                    <td>{% if employee.user_profile.whatsapp %}{{ employee.user_profile.whatsapp }}
+                                     {% else %}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>{{ employee.email }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                <!-- / Page content -->
+{% endblock %}

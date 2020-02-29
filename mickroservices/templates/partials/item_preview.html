@@ -1,0 +1,27 @@
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="col-sm-6 col-lg-4">
+                    <div class="card mb-4">
+        {% if post.image %}
+            {% image post.image fill-283x188 class="card-img-top d-block ui-rect-60 ui-bg-cover" %}
+        {% endif %}
+        <div class="card-body">
+            <a href="{{post.url}}" class="card-title">{{post.title}}</a>
+            {% if post.type != None %}
+                {{post.type_str }}
+            {% else %}
+                <div class="small text-muted mb-3">{{post.first_published_at}}</div>
+            {% endif %}
+            <div class="card-text">
+                {%if post.preview%}
+                    {{post.preview}}
+                {% else %}
+                    {{post.announcement | richtext }}
+                {% endif %}
+            </div>
+        <div class="card-price">2 500 ₽</div>
+{#            <a href="{{post.url}}" class="btn btn-sm btn-primary btn-round">Читать далее</a>#}
+        </div>
+    </div>
+</div>

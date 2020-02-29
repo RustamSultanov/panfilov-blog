@@ -1,0 +1,39 @@
+{% for task in task_list %}
+    <div class="col-md-6 mb-4">
+        <div class="card hoverable h-100">
+            <div class="card-header d-flex justify-content-between  align-items-start">
+                <div>
+                    <div>
+                        <span class="font-weight-semibold">{{ task.title }}</span>
+                        {% if task.status == 0 %}
+                        <span class="badge badge-outline-success badge-pill">решен</span>
+                        {% elif task.status == 1 %}
+                        <span class="badge badge-outline-warning badge-pill">обрабатывается</span>
+                        {% elif task.status == 2 %}
+                        <span class="badge badge-outline-danger badge-pill">отклонен</span>
+                        {% endif %}
+                    </div>
+                    <div class="small">
+                        <a href="{% url 'employee_info' task.responsible.id %}" class="text-dark">{{ task.responsible.get_full_name }}</a>
+                        <span class="text-muted">{{ task.date_create.date }}</span>
+                    </div>
+                <div class="small">
+                    <a href="{% url 'task' task.id user.id %}" class="text-primary">Подробнее</a>
+                </div>
+                </div>
+                <div class="btn-group project-actions">
+                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                        <i class="ion ion-ios-more"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{% url 'task' task.id user.id %}">Просмотр</a>
+                        {#<a class="dropdown-item" href="javascript:void(0)">Удаление</a>#}
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>{{ task.description|truncatewords:8 }}</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

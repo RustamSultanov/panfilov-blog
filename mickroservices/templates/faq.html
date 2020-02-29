@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}FAQ{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">FAQ</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+ {% block content %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="card my-4">
+        <div class="card-body">
+            <form action="{% url 'mickroservices:faq' %}" method="post">
+                {% csrf_token %}
+                <h4>Задать вопрос</h4>
+                {% comment %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Email</label>
+                        {% render_field form.email placeholder="Email" class+="form-control" %}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Телефон</label>
+                        {% render_field form.phone_number placeholder="Телефон" class+="form-control" %}
+                    </div>
+                </div>
+                {% endcomment %}
+                <div class="form-group">
+                    <label class="form-label">Заголовок</label>
+                    {% render_field form.theme placeholder="Заголовок" class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Вопрос</label>
+                    {% render_field form.body placeholder="Вопрос" class+="form-control" %}
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary btn-round">Отправить</button>
+                </div>
+            </form>
+            {{status}}
+            {{errors}}
+        </div>
+    </div>
+    {% if questions_ok %}
+        <div class="my-4">
+            <h4>Ответы на часто задаваемые вопросы</h4>
+            {% for question in questions_ok %}
+                <div class="bg-white ui-bordered mb-2">
+                    <a href="#company-faq-{{ forloop.counter }}" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse">
+                        {{question.body}}
+                        <span class="collapse-icon"></span>
+                    </a>
+                    <div id="company-faq-{{ forloop.counter }}" class="collapse text-muted">
+                        <div class="px-4 pb-3">{{question.answer}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if is_paginated %}
+                {% include 'partials/pagination.html' with posts=questions_ok %}
+            {% endif %}
+        </div>
+    {% endif %}
+ {% endblock %}
+
+ {% block extrascripts %}
+    <script src="{% static "js/jquery.mask.min.js" %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#id_phone_number").mask("0 (000) 000-00-00")
+        });
+    </script>
+ {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Оповещения{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Оповещения</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+ {% block content %}
+
+            {% for notification in notifications %}
+                <div class="card my-4">
+                <div class="card-body">
+                {% if notification.task %}<a class="h5 text-dark" href="{% url 'task' notification.task.id notification.sender.id %}">По задаче</a>
+                {% elif notification.feedback %}<a class="h5 text-dark" href="{% url 'feedback' notification.feedback.id notification.sender.id %}">По отзыву</a>
+                {% elif notification.requests %}<a class="h5 text-dark" href="{% url 'request' notification.requests.id notification.sender.id %} ">По запросу</a>
+                    {% elif notification.question %}<a class="h5 text-dark" href="{% url 'faq_list' %} ">По вопросу</a>
+
+
+                {% endif %}
+
+                            <div class="small text-muted">{{ notification.created_at }} | {{ notification.sender.get_full_name }}</div>
+                            <div class="text-muted">{{ notification.body }}</div>
+                        </div>
+                    </div>
+            {% endfor %}
+     {% if is_paginated %}
+                {% include 'partials/pagination.html' with posts=notifications %}
+            {% endif %}
+
+ {% endblock %}
+

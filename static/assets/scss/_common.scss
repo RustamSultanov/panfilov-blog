@@ -1,0 +1,142 @@
+@import "./variables";
+@import "material-components-web/material-components-web";
+
+.mdc-typography{
+  &-text{
+    &--center{
+      text-align: center;
+    }
+    &--muted{
+      color: $mdc-theme-on-background-muted;
+    }
+    &--accent{
+      color: $mdc-theme-secondary;
+    }
+  }
+  &--headline5{
+    margin: 10px 0;
+  }
+  &--headline6{
+    margin: 18px 0;
+  }
+  &--section{
+    margin-bottom: 32px;
+    margin-top: 32px;
+  }
+}
+.form-stars{
+  .ui-star{
+    float: right;
+  }
+  &:not(:checked) > .ui-star:hover> *:first-child, &:not(:checked) > .ui-star:hover ~ .ui-star> *:first-child, &> input:checked ~ .ui-star> *:first-child{
+    display: block;
+  }
+}
+
+.mh-100vh{
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.d-flex{
+  display: flex!important;
+}
+
+.input-hidden{
+  display: inline;
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+/*ui stars */
+
+.ui-stars {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  &.large{
+    font-size: 45px;
+  }
+}
+
+.ui-star {
+  position: relative;
+  display: block;
+  float: left;
+  width: $ui-star-size;
+  height: $ui-star-size;
+  text-decoration: none !important;
+  font-size: $ui-star-size;
+  line-height: 1;
+  user-select: none;
+
+  [dir=rtl] & {
+    float: right;
+  }
+
+  & + & {
+    margin-left: $ui-stars-spacer;
+
+    [dir=rtl] & {
+      margin-right: $ui-stars-spacer;
+      margin-left: 0;
+    }
+  }
+
+  > *,
+  > *::before,
+  > *::after {
+    position: absolute;
+    left: $ui-star-size / 2;
+    height: 100%;
+    font-size: 1em;
+    line-height: 1;
+    transform: translateX(-50%);
+
+    [dir=rtl] & {
+      right: $ui-star-size / 2;
+      left: auto;
+      transform: translateX(50%);
+    }
+  }
+
+  > * {
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  > *:first-child {
+    z-index: 10;
+    display: none;
+    overflow: hidden;
+    color: $ui-star-filled-color;
+  }
+
+  // Default icon
+  > *:last-child {
+    z-index: 5;
+    display: block;
+    color: $ui-star-color;
+  }
+
+  &.half-filled > *:first-child {
+    width: 50%;
+    transform: translateX(-100%);
+
+    [dir=rtl] & {
+      transform: translateX(100%);
+    }
+  }
+
+  &.filled > *:first-child,
+  &.half-filled > *:first-child {
+    display: block;
+  }
+
+  &.filled > *:last-child {
+    display: none;
+  }
+}

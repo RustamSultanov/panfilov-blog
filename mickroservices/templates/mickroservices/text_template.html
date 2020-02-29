@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% load wagtailcore_tags %} 
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}{{ page.title }}{% endblock %}
+{% block body_class %} template-homepage {% endblock %} 
+
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">{{page.title}}</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+        {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+{% block content %}
+    {% if page.type != None %}
+        {{page.type_str }}
+    {% endif %}
+    <p>{{ page.body | richtext }} </p>
+{% endblock %}
+

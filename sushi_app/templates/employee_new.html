@@ -1,0 +1,19 @@
+{% extends 'user_new.html' %}
+
+
+{% block title %}Добавить сотрудника{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Добавить сотрудника </h2>
+{% endblock %}
+
+
+{% block employee %}
+                        <div class="form-group">
+                            <label class="form-label">Должность</label>
+                            {{ form_user_profile.position }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Перечень должностных обязанностей</label>
+                           {{ form_user_profile.key_responsibilities }}
+                        </div>
+                        {% endblock %}

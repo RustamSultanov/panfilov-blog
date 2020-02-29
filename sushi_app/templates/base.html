@@ -1,0 +1,77 @@
+{% load static %}
+{% load tz_detect %}
+<!DOCTYPE html>
+<html lang="ru" class="material-style">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+    <title>{% block title %}Школа Панфилова{% endblock %}</title>
+
+    <!-- Main font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800" rel="stylesheet">
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="{% static "fonts/ionicons.css" %}">
+ <link rel="stylesheet" href="{% static "fonts/linearicons.css" %}">
+     <link rel="stylesheet" href="{% static "fonts/fontawesome.css" %}">
+
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="{% static "css/bootstrap-material.css" %}" class="theme-settings-bootstrap-css">
+    <link rel="stylesheet" href="{% static "css/appwork-material.css" %}" class="theme-settings-appwork-css">
+    <link rel="stylesheet" href="{% static "css/rtl/theme-panfilov-material.css" %}" class="theme-settings-theme-css">
+    <link rel="stylesheet" href="{% static "css/colors.css" %}" class="theme-settings-colors-css">
+    <link rel="stylesheet" href="{% static "css/uikit.css" %}">
+
+
+<!-- Layout helpers -->
+<script src="{% static "js/material-ripple.js" %}"></script>
+    <script src="{% static "js/layout-helpers.js" %}"></script>
+
+
+<script src="{% static "js/pace.js" %}"></script>
+    <!-- Libs -->
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+    <link rel="stylesheet" href="{% static "libs/swiper/swiper.css" %}">
+
+
+
+    {% block css %}{% endblock %}
+    {% block extracss %}{% endblock %}
+</head>
+    <body>
+
+        {% block layout %}{% endblock %}
+
+
+        <!-- Core scripts -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{% static "libs/popper/popper.js" %}"></script>
+         <script src="{% static "js/layout-helpers.js" %}"></script>
+        <script src="{% static "js/bootstrap.js" %}"></script>
+
+        <!-- Libs -->
+        <script src="{% static "libs/swiper/swiper.js" %}"></script>
+
+
+        <script src="{% static "js/landing.js" %}"></script>
+{#<script type="text/javascript">#}
+{#    $(function() {#}
+{#        $('#notifications_dropdown_link').click(function (e) {#}
+{#            $(this).parent().toggleClass('show');#}
+{#            $(this).next('.dropdown-menu').toggleClass('show');#}
+{#        });#}
+{#    });#}
+{#</script>#}
+        {% block extrascripts %}{% endblock %}
+
+    </body>
+
+</html>

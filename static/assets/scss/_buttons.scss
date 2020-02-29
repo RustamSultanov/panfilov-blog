@@ -1,0 +1,22 @@
+@import "@material/button/mdc-button";
+.gray-button {
+  @include mdc-button-ink-color(#757575);
+  @include mdc-states(#757575);
+}
+.mdc-button-shaped{
+  border-radius: 18px;
+  &.mdc-button--dense{
+    border-radius: 16px;
+  }
+}
+.mdc-button{
+  &--ui-width-200{
+    width: 200px;
+  }
+}
+.button-wrap{
+  margin: 16px 0;
+}
+.mdc-icon-button--raised{
+  color: #C4C4C4;
+}

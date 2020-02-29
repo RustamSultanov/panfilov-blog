@@ -1,0 +1,2276 @@
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 2px;
+  /* font-size: 1.25em; */
+  font-size: 11px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #00CC66;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #00CC66;  } 
+
+/* **************************************************** */
+
+
+
+
+
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating { 
+  border: none;
+  float: left;
+}
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > input { display: none; } 
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > label:before { 
+  margin: 2px;
+  /* font-size: 1.25em; */
+  font-size: 11px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > label { 
+  color: #fff; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > input:checked ~ label, /* show gold star when clicked */
+.offers_company .offers_company_cards .card .img_block .rating_block .rating:not(:checked) > label:hover, /* hover current star */
+.offers_company .offers_company_cards .card .img_block .rating:not(:checked) > label:hover ~ label { color: #00CC66;  } /* hover previous stars in list */
+
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > input:checked + label:hover, /* hover current star when changing rating */
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > input:checked ~ label:hover,
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.offers_company .offers_company_cards .card .img_block .rating_block .rating > input:checked ~ label:hover ~ label { color: #00CC66;  } 
+
+
+/* ************************************************ */
+
+
+
+
+
+
+
+
+
+.zavershennie_projects .projects .rating_block .rating { 
+  border: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.zavershennie_projects .projects .rating_block .rating > input { display: none; } 
+.zavershennie_projects .projects .rating_block .rating > label:before { 
+  margin: 3px;
+  /* font-size: 1.25em; */
+  font-size: 17px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.zavershennie_projects .projects .rating_block .rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.zavershennie_projects .projects .rating_block .rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.zavershennie_projects .projects .rating_block .rating > input:checked ~ label, /* show gold star when clicked */
+.zavershennie_projects .projects .rating_block .rating:not(:checked) > label:hover, /* hover current star */
+.zavershennie_projects .projects .rating_block .rating:not(:checked) > label:hover ~ label { color: #00CC66;  } /* hover previous stars in list */
+
+.zavershennie_projects .projects .rating_block .rating > input:checked + label:hover, /* hover current star when changing rating */
+.zavershennie_projects .projects .rating_block .rating > input:checked ~ label:hover,
+.zavershennie_projects .projects .rating_block .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.zavershennie_projects .projects .rating_block .rating > input:checked ~ label:hover ~ label { color: #00CC66;  } 
+
+
+
+
+
+
+
+/* ************************************************ */
+
+
+
+
+
+
+
+.wrap_card_company .card_for_mobile .rating_block .rating { 
+  border: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.wrap_card_company .card_for_mobile .rating_block .rating > input { display: none; } 
+.wrap_card_company .card_for_mobile .rating_block .rating > label:before { 
+  margin-right: 3px;
+  /* font-size: 1.25em; */
+  font-size: 12px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.wrap_card_company .card_for_mobile .rating_block .rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.wrap_card_company .card_for_mobile .rating_block .rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.wrap_card_company .card_for_mobile .rating_block .rating > input:checked ~ label, /* show gold star when clicked */
+.wrap_card_company .card_for_mobile .rating_block .rating:not(:checked) > label:hover, /* hover current star */
+.wrap_card_company .card_for_mobile .rating_block .rating:not(:checked) > label:hover ~ label { color: #00CC66;  } /* hover previous stars in list */
+
+.wrap_card_company .card_for_mobile .rating_block .rating > input:checked + label:hover, /* hover current star when changing rating */
+.wrap_card_company .card_for_mobile .rating_block .rating > input:checked ~ label:hover,
+.wrap_card_company .card_for_mobile .rating_block .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.wrap_card_company .card_for_mobile .rating_block .rating > input:checked ~ label:hover ~ label { color: #00CC66;  } 
+
+
+
+
+
+
+/* ************************************************ */
+
+
+
+
+
+/* ************************************************ */
+
+
+
+
+
+
+
+.offers_company .for_mobile .rating_block .rating { 
+  border: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.offers_company .for_mobile .rating_block .rating > input { display: none; } 
+.offers_company .for_mobile .rating_block .rating > label:before { 
+  margin-right: 3px;
+  /* font-size: 1.25em; */
+  font-size: 10px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.offers_company .for_mobile .rating_block .rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.offers_company .for_mobile .rating_block .rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.offers_company .for_mobile .rating_block .rating > input:checked ~ label, /* show gold star when clicked */
+.offers_company .for_mobile .rating_block .rating:not(:checked) > label:hover, /* hover current star */
+.offers_company .for_mobile .rating_block .rating:not(:checked) > label:hover ~ label { color: #00CC66;  } /* hover previous stars in list */
+
+.offers_company .for_mobile .rating_block .rating > input:checked + label:hover, /* hover current star when changing rating */
+.offers_company .for_mobile .rating_block .rating > input:checked ~ label:hover,
+.offers_company .for_mobile .rating_block .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.offers_company .for_mobile .rating_block .rating > input:checked ~ label:hover ~ label { color: #00CC66;  } 
+
+
+
+
+
+
+/* ************************************************ */
+
+
+
+
+
+
+.content_wrap{
+	padding: 30px 50px 50px 50px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.content_wrap  a{
+	padding: 0;
+	margin: 0;
+}
+
+.content_wrap  h4{
+	padding: 0;
+	margin: 0;
+}
+
+.nav_block{
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ************* */
+
+.wrap_for_mobile_block2{
+	display: none;
+}
+
+.wrap_for_mobile_block2 .wrap_mobile_block2{
+	box-sizing: border-box;
+	height: 70px;
+	padding-left: 16px;
+	/* padding-right: 16px; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* background: #F8F8F8; */
+	background: #fff;
+	box-shadow: 0px 0px 4px r
+}
+
+.wrap_for_mobile_block2 .wrap_mobile_block2 a.nav_block_2{
+	width: 70%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+}
+
+
+.wrap_for_mobile_block2 .wrap_mobile_block2 a.nav_block_2 img{
+	width: 16px;
+	height: 16px;
+	margin-right: 12px;
+}
+
+.wrap_for_mobile_block2 .wrap_mobile_block2 a.nav_block_2 h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 18px;
+	color: #757575;
+	margin: 0;
+}
+
+.wrap_for_mobile_block2 .wrap_mobile_block2 a{
+	width: 15%;
+	background-color: rgba(#fff, 0);
+	text-align: center;
+}
+
+
+.wrap_for_mobile_block2 .wrap_mobile_block2 a i{
+	color:  #00CC66;
+	background-color: rgba(#fff, 0);
+}
+
+
+
+/* ***************** */
+
+
+
+
+
+
+ .wrap_mobile_block{
+	display: none;
+}
+
+
+ a.nav_block_mobile {
+
+	box-sizing: border-box;
+	height: 70px;
+	padding-left: 16px;
+	padding-right: 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* background: #F8F8F8; */
+	background: #fff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
+}
+
+a.nav_block_mobile .navi_mobile_wrap{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+a.nav_block_mobile img{
+	width: 16px;
+	height: 16px;
+	margin-right: 12px;
+}
+
+
+
+a.nav_block_mobile h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 18px;
+	color: #757575;
+	margin: 0;
+}
+
+
+
+
+
+/* ******************* */
+
+
+
+
+
+
+
+
+.content_wrap .nav_block h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 34px;
+	font-size: 24px;
+	color: #ADADAD;
+}
+
+.content_wrap .nav_block ul{
+	margin: 0;
+}
+
+.content_wrap .nav_block ul li{
+	/* outline: 1px solid red; */
+	margin-right: 2px;
+	padding-right: 7px;
+	display: inline-block;
+	/* display: block; */
+	position: relative;
+}
+
+.content_wrap .nav_block ul li::after{
+	content: '';
+	position: absolute;
+	display: block;
+	top: 4px;
+	right: 1px;
+	width: 1px;
+	height: 8px;
+	background-color: #ADADAD;	
+	transform: skewX(-10deg); 
+}
+
+
+
+
+.content_wrap .nav_block ul li a{	
+	display: inline-block;
+	float: left;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 15px;
+	font-size: 11px;
+	color: #ADADAD;
+}
+
+
+/* ************** */
+
+
+
+
+.content_wrap .search_on{
+	width: 100%;
+	height: 50px;
+	margin-bottom: 33px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	outline: 1px solid red;
+	margin-right: 50px;
+	position: relative;
+}
+
+.content_wrap .search_on:before{
+	content: '';
+	display: block;
+	width: 1px;
+	height: 33px;
+
+	background-color: #ccc;
+
+	position: absolute;
+	top: 1px;
+	right: 30px;
+
+}
+
+
+
+
+
+.content_wrap .search_on li > span{
+	font-family: Roboto;
+	font-size: 14px;
+	line-height: 14px;
+    color: #777 !important;
+    padding: 0 0;
+}
+
+
+/* ************************** */
+
+
+
+
+.search_catalog3{
+	text-align: right;
+	margin-top: 70px;
+	margin-bottom: 33px;
+	margin-right: 17%;
+}
+
+.search_catalog3 form{
+	display: inline-block;
+
+	width: 300px;
+	max-width: 90%;
+	height: 35px;
+	/* outline: 1px solid red; */
+}
+
+
+
+.search_catalog3 .form_select .select-wrapper input.select-dropdown{
+	border-bottom: 1px solid #A3A3A3;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 10px;
+	font-size: 13px;
+	color:  #A3A3A3;
+}
+
+
+
+/* *********************** */
+
+
+
+/* ************************** */
+
+
+
+
+.search_catalog2{
+	text-align: right;
+	
+	margin-top: 70px;
+	margin-bottom: 33px;
+	margin-right: 18%;
+}
+
+.search_catalog2 form{
+	display: inline-block;
+
+	width: 300px;
+	max-width: 90%;
+	height: 35px;
+	/* outline: 1px solid red; */
+}
+
+
+
+.search_catalog2 .form_select .select-wrapper input.select-dropdown{
+	border-bottom: 1px solid #A3A3A3;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 10px;
+	font-size: 13px;
+	color:  #A3A3A3;
+}
+
+
+
+/* *********************** */
+
+
+
+.search_catalog{
+	text-align: right;
+	
+	margin-top: 70px;
+	margin-bottom: 33px;
+	margin-right: 18%;
+}
+
+.search_catalog form{
+	display: inline-block;
+
+	width: 300px;
+	max-width: 90%;
+	height: 35px;
+	/* outline: 1px solid red; */
+}
+
+
+
+.search_catalog .form_select .select-wrapper input.select-dropdown{
+	border-bottom: 1px solid #A3A3A3;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 10px;
+	font-size: 13px;
+	color:  #A3A3A3;
+}
+
+
+
+/* *********************** */
+
+
+.content_wrap .wrap_card{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
+.content_wrap .wrap_card .card{
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* max-width: 300px; */
+	width: 300px;
+	height: 240px;
+	margin-bottom: 35px;
+	margin-right: 30px;
+	/* margin: 13px; */
+	transition:  ease .4s;
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.25)
+}
+
+
+
+.content_wrap .wrap_card .card{
+	padding: 11px 12px;
+}
+
+
+
+.content_wrap .wrap_card .card .rating_block{
+	width: 100%;
+	height: 20px;
+	/* outline: 1px solid red; */
+	display: inline-block;
+}
+
+.content_wrap .wrap_card .card .rating_block fieldset{
+	/* outline: 1px solid blue; */
+	padding: 0;
+}
+
+
+
+
+
+
+.content_wrap .wrap_card .card h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 25px;
+	font-size: 18px;
+	color: #555555;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+.content_wrap .wrap_card .card h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 15px;
+	font-size: 11px;
+	color: #ADADAD;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.content_wrap .wrap_card .card ul{
+	margin: 0;
+}
+
+.content_wrap .wrap_card .card ul li{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 17px;
+	font-size: 12px;
+	color: #ADADAD;
+}
+
+
+
+
+
+
+
+.content_wrap .wrap_card .card:hover{
+		box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.05)
+}
+
+
+.content_wrap .wrap_card .card .block_center{
+	text-align: center;
+	/* outline: 1px solid red; */
+	height: 70px;
+	/* width: 100%; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content_wrap .wrap_card .card .block_center img{
+	/* margin-bottom: 33px; */
+	display: inline-block;
+}
+
+
+
+.content_wrap .wrap_load_more{
+	width: 100%;
+	height: 70px;
+	/* outline: 1px solid red; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 74px;
+}
+
+.content_wrap .wrap_load_more a.load_more{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 14px;
+	text-align: center;
+	color: #CACACA;
+	border:  1px solid #CACACA;
+	border-radius: 5px;
+	padding: 14px 100px;
+	transition:  ease .4s;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.content_wrap .wrap_load_more a.load_more:hover{
+	background-color: rgba(255, 255, 255, 1);
+	color:  #777777;
+}
+
+
+
+
+
+
+
+
+/* styles customer1 */
+
+.wrap_card_company{
+	/* outline: 1px solid blue; */
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 958px;
+	max-width: 90%;
+}
+
+
+
+
+
+
+
+
+
+.wrap_card_company .about_company h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 34px;
+	font-size: 22px;
+	color: #757575;
+}
+
+
+.wrap_card_company .about_company{
+	/* width: 611px;
+	max-width: 90%; */
+	/* float: left; */
+	margin-right: 50px;
+	/* outline: 1px solid red; */
+	width: auto;
+}
+
+.wrap_card_company .about_company table{
+	font-size: 10px;
+	color: #777;
+}
+
+.wrap_card_company .about_company table tr{
+	border: none;
+}
+
+.wrap_card_company .about_company table td{
+	padding: 0;
+}
+
+.wrap_card_company .about_company table td.for_left{
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: 200;
+	line-height: 20px;
+	font-size: 13px;
+	color: #212121;
+	width: 100px;
+}
+
+
+.wrap_card_company .about_company table td.for_right{
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	font-size: 13px;
+	color: #212121;
+	width: 200px;
+}
+
+.wrap_card_company .about_company p{
+	margin-top: 16px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 200;
+	line-height: 20px;
+	font-size: 13px;
+	color: #212121;
+}
+
+
+
+
+
+
+
+
+
+
+.wrap_card_for_mobile{
+	display: none;
+	width: 100%;
+}
+
+.wrap_card_company .card_for_mobile{
+
+	background: #FFFFFF;
+	border: 1px solid #F8F8F8;
+	width: 100%;
+	margin-top: 25px;
+	padding: 22px 10px 20px 10px;
+	display: flex;
+	align-items: flex-start;
+}
+
+
+.wrap_card_company .card_for_mobile .for_img{
+	width: 80px;
+	height: 80px;
+	flex-basis: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #F1F1F1;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+
+.wrap_card_company .card_for_mobile img{
+	max-width: 80%;
+
+}
+
+
+
+
+.wrap_card_company .card_for_mobile .txt h3{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 23px;
+	font-size: 18px;
+	color: #757575;
+	margin-bottom: 3px;
+}
+
+.wrap_card_company .card_for_mobile .txt h4{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 13px;
+	font-size: 10px;
+	color: #ADADAD;
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.wrap_card_company .card{
+	box-sizing: border-box;
+	padding: 11px 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	max-width: 100%;
+	/* width: 300px; */
+	flex-basis: 300px;
+	flex-grow: 0;     /* флекс элемент увеличивается */
+	flex-shrink: 0; 
+	/* max-width: 300px; */
+	height: 240px;
+	/* margin-bottom: 35px; */
+	/* margin-left: 30px; */
+	/* margin: 13px; */
+	transition:  ease .4s;
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.25)
+}
+
+.wrap_card_company .card:hover{
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.1)
+
+}
+
+
+.wrap_card_company .card .rating_block{
+	width: 100%;
+	height: 20px;
+	/* outline: 1px solid red; */
+	display: inline-block;
+}
+
+.wrap_card_company .card .rating_block fieldset{
+	/* outline: 1px solid blue; */
+	padding: 0;
+}
+
+
+.wrap_card_company .card .block_center{
+	text-align: center;
+}
+
+
+
+
+.wrap_card_company .card h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 25px;
+	font-size: 18px;
+	color: #555555;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+.wrap_card_company .card h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 15px;
+	font-size: 11px;
+	color: #ADADAD;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.wrap_card_company .card ul{
+	margin: 0;
+}
+
+.wrap_card_company .card ul li{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 17px;
+	font-size: 12px;
+	color: #ADADAD;
+}
+
+
+
+
+
+
+
+.content_wrap .wrap_card .card .block_center{
+	text-align: center;
+	/* outline: 1px solid red; */
+	height: 70px;
+	/* width: 100%; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content_wrap .wrap_card .card .block_center img{
+	/* margin-bottom: 33px; */
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.offers_company{
+	margin-top: 100px;
+}
+
+.offers_company h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 34px;
+	font-size: 22px;
+
+	color: #757575;
+	margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+.offers_company a.for_mobile{
+	display: none;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+
+.offers_company a.for_mobile .card_mobile{
+	box-sizing: border-box;
+	/* height: auto; */
+	background: #FFFFFF;
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.25);
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+
+.offers_company a.for_mobile .card_mobile img{
+	width: 90px;
+	/* height: 100px; */
+	/* display: inline-block; */
+	margin-right: 10px;
+}
+
+
+.offers_company  a.for_mobile .card_mobile .text{
+	box-sizing: border-box;	
+}
+
+.offers_company a.for_mobile .card_mobile .text h3{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	font-size: 14px;
+	color: #555555;
+}
+
+.offers_company a.for_mobile .card_mobile .text h4{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 13px;
+	font-size: 9px;
+	color: #ADADAD;
+}
+
+.offers_company a.for_mobile .card_mobile .text .rating_block{
+	height: 15px;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+.offers_company a.for_mobile .card_mobile .text p.price{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px;
+	font-size: 13px;
+	letter-spacing: -0.02em;
+	color: #555555;
+	display: block;
+}
+
+
+
+
+
+
+.offers_company .wrap_more{
+	display: none;
+	width: 100%;
+	
+}
+
+.offers_company .wrap_more .more{
+	width: 100%;
+	margin-top: 54px;
+	display: flex;
+	justify-content: center;
+}
+
+
+.offers_company .wrap_more .more a.show_more{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 15px;
+	text-align: center;
+	color: #FFFFFF;
+	display: inline-block;
+	padding: 15px 40px;
+
+
+	background-color: #00CC66;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+	border-radius: 2px;
+}
+
+
+
+
+
+
+
+.offers_company .offers_company_cards{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
+.offers_company .offers_company_cards a .card{
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* max-width: 300px; */
+	width: 300px;
+	/* height: 300px; */
+	margin-bottom: 35px;
+	margin-right: 30px;
+	/* padding: 11px 12px; */
+	/* margin: 13px; */
+	transition:  ease .4s;
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.25)
+}
+
+
+.offers_company .offers_company_cards a:hover .card{
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.1)
+}
+
+.offers_company .offers_company_cards .card .img_block{
+	position: relative;
+}
+
+
+.offers_company .offers_company_cards .card .img_block .rating_block{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 2;
+}
+
+.offers_company .offers_company_cards .card .img_block img{
+	z-index: 1;
+	max-width: 100%;
+}
+
+.offers_company .offers_company_cards .card .img_block img.snow{
+	z-index: 2;
+	position: absolute;
+	top: 9px;
+	right: 9px;
+	width: 40px;
+	height: 40px;
+}
+
+
+.offers_company .offers_company_cards .card .text_block{
+	padding: 14px 20px 20px 20px;
+}
+
+
+
+
+.offers_company .offers_company_cards .card .text_block h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 25px;
+	font-size: 18px;
+	color: #555555;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+
+.offers_company .offers_company_cards .card .text_block h5{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 15px;
+	font-size: 11px;
+	color: #ADADAD;
+	margin: 0;
+}
+
+
+.offers_company .offers_company_cards .card .text_block .info{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 100%;
+	margin-top: 15px;
+}
+
+
+.offers_company .offers_company_cards .card .text_block .info ul{
+	margin: 0;
+}
+
+.offers_company .offers_company_cards .card .text_block .info ul li{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 15px;
+	font-size: 11px;
+	color: #ADADAD;
+}
+
+
+
+.offers_company .offers_company_cards .card .text_block .info .price h6{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 23px;
+	font-size: 16px;
+	text-align: right;
+	letter-spacing: -0.02em;
+	color: #555555;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.zavershennie_projects{
+	margin-top: 85px;
+}
+
+.zavershennie_projects h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 34px;
+	font-size: 22px;
+	color: #757575;
+	margin-bottom: 36px;
+}
+
+
+.zavershennie_projects .projects{
+	margin-bottom: 70px;
+}
+
+.zavershennie_projects .projects h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 27px;
+	font-size: 18px;
+	color: #212121;
+}
+
+.zavershennie_projects .projects .rating_block{
+	margin-top: 10px;
+}
+
+
+.zavershennie_projects .gallery_block {
+	margin-top: 10px;
+}
+
+.zavershennie_projects .gallery_block a{
+	float: left;
+	margin-right: 15px;
+}
+
+.zavershennie_projects .gallery_block a img{
+	width: 130px;
+	height: 90px;
+	overflow: hidden;
+}
+
+.zavershennie_projects .gallery_block a.more_photos{
+	background-color: #CECECE;
+	box-sizing: border-box;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+
+}
+
+.zavershennie_projects .gallery_block a.more_photos p{
+	color: #fff;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 11px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.zavershennie_projects .projects .text{
+	width: 630px;
+	max-width: 90%;
+
+}
+
+.zavershennie_projects .projects .text p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 20px;
+	font-size: 13px;
+	color: #212121;
+	margin-bottom: 24px;
+}
+
+
+.zavershennie_projects .projects .author{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 33px;
+}
+
+
+.zavershennie_projects .projects .author img{
+	margin-right: 10px;
+}
+
+.zavershennie_projects .projects .author p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 12px;
+	color: #A4A4A4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrap_ispolniteli_for_mobile{
+	display: none;
+	width: 100%;
+
+}
+
+.wrap_ispolniteli_for_mobile .card_for_mobile{
+
+	background: #FFFFFF;
+	border: 1px solid #F8F8F8;
+	width: 100%;
+	margin-top: 45px;
+	padding: 22px 10px 20px 10px;
+	display: flex;
+	align-items: flex-start;
+}
+
+
+.wrap_ispolniteli_for_mobile .card_for_mobile .for_img{
+	width: 80px;
+	height: 80px;
+	flex-basis: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #F1F1F1;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+
+.wrap_ispolniteli_for_mobile .card_for_mobile img{
+	max-width: 80%;
+
+}
+
+
+
+
+.wrap_ispolniteli_for_mobile .card_for_mobile .txt h3{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 23px;
+	font-size: 18px;
+	color: #757575;
+	margin-bottom: 3px;
+}
+
+.wrap_ispolniteli_for_mobile .card_for_mobile .txt h4{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 13px;
+	font-size: 10px;
+	color: #ADADAD;
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+/* ************* */
+p.top_descr{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 21px;
+	font-size: 14px;
+	color: #757575;
+	width: 958px;
+    max-width: 90%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+
+.choise_wrap {
+	box-shadow: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+
+.choise_wrap a{
+	box-shadow: none;	
+	text-decoration: none;
+}
+
+
+.choise_wrap a .card{
+	box-sizing: border-box;
+	width: 210px;
+	height: auto;
+	background-color: #FFFFFF;
+	transition: .4s;
+	margin-right: 40px;
+	/* border:  3px solid #00CC66; */
+	border:  3px solid transparent;
+	box-shadow: none;
+}
+
+.choise_wrap a .card:hover{
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
+	border:  3px solid #00CC66;
+}
+
+.choise_wrap a .card img{
+	max-width: 100%;
+}
+
+.choise_wrap a .card .forp{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 71px;
+}
+
+.choise_wrap a .card .forp p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 21px;
+	font-size: 16px;
+	text-align: center;
+	color: #555555;
+}
+
+.choise_wrap a .card:hover .forp p{
+	color: #00CC66;
+}
+
+
+
+.wrap_two_buttons{
+	display: none;
+}
+
+.wrap_two_buttons .wrap_buttons{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+.wrap_two_buttons .wrap_buttons a.norm{
+	width: 220px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 17px;
+	font-size: 13px;
+	text-align: center;
+	color: #555555;
+	background: #FFFFFF;
+	border: 1px solid #E1E1E1;
+	padding: 15px 0;
+}
+
+
+.wrap_two_buttons .wrap_buttons a.inv{
+	width: 220px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 17px;
+	font-size: 13px;
+	text-align: center;
+	color: #555555;
+	background: #00CC66;
+	border: 1px solid #00CC66;
+	color: #fff;
+	padding: 15px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ********************** */
+.wrap_card_company .detail_company{
+	margin-right: 50px;
+	width: auto;
+}
+
+.wrap_card_company .detail_company fieldset{
+	padding: 0 !important;
+	margin-top: 4px;
+}
+
+
+.wrap_card_company .detail_company h6{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 17px;
+	font-size: 11px;
+	color: #212121;
+}
+
+
+.wrap_card_company .detail_company p{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 23px;
+	font-size: 14px;
+	letter-spacing: 0.01em;
+	color: #212121;
+}
+
+
+
+
+
+
+
+.wrap_card_for_mobile2{
+	/* display: none; */
+	width: 352px;
+	margin-bottom: 15px;
+}
+
+.wrap_card_for_mobile2 .card_for_mobile2{
+
+	/* background: #FFFFFF; */
+	border: 1px solid #F8F8F8;
+	width: 100%;
+	margin-top: 25px;
+	padding: 12px 10px 10px 10px;
+	display: flex;
+	align-items: flex-start;
+}
+
+
+.wrap_card_for_mobile2 .card_for_mobile2 .for_img{
+	width: 80px;
+	height: 80px;
+	flex-basis: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #F1F1F1;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+
+.wrap_card_for_mobile2 .card_for_mobile2 img{
+	max-width: 80%;
+
+}
+
+
+
+
+.wrap_card_for_mobile2 .card_for_mobile2 .txt h3{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 23px;
+	font-size: 18px;
+	color: #757575;
+	margin-bottom: 1px;
+}
+
+.wrap_card_for_mobile2 .card_for_mobile2 .txt h4{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 13px;
+	font-size: 10px;
+	color: #ADADAD;
+	margin-bottom: 1px;
+}
+
+
+
+
+.wrap_card_company .card_price{
+	box-sizing: border-box;
+	background-color: #fff;
+	padding: 20px;
+/* 	display: flex;
+	flex-direction: column;
+	justify-content: space-between; */
+	max-width: 100%;
+	/* width: 300px; */
+	flex-basis: 300px;
+	flex-grow: 0;     /* флекс элемент увеличивается */
+	flex-shrink: 0; 
+	/* max-width: 300px; */
+	/* height: 240px; */
+	transition:  ease .4s;
+	box-shadow: 0px 0px 20px rgba(144, 144, 144, 0.25)
+}
+
+
+
+
+.wrap_card_company .card_price h6{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 11px;
+	color: #757575;
+	margin: 0;
+}
+
+.wrap_card_company .card_price h6.second{
+	margin-top: 15px;
+}
+
+.wrap_card_company .card_price h4.total{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 30px;
+	letter-spacing: -0.02em;
+	color: #212121;
+	margin: 0;
+}
+
+.wrap_card_company .card_price a.why{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 11px;
+	text-decoration-line: underline;
+	color: #00CC66;
+}
+
+.wrap_card_company .card_price h5{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 18px;
+	color: #555555;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.wrap_card_company .card_price form#price{
+
+}
+
+
+.wrap_card_company .card_price form#price input.metri{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 24px;
+	font-size: 14px;
+	padding-bottom: 0;
+	color: rgba(117, 117, 117, 0.7);
+	border-bottom: 1px solid rgba(117, 117, 117, 0.5);
+}
+
+.wrap_card_company .card_price form#price button.go{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	background: #00CC66;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+	border-radius: 2px;
+	width: 100%;
+	padding: 8px 0;
+	margin-top: 15px;
+}
+
+
+
+.tabs .tab a{
+	font-family: Roboto !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	line-height: 48px !important;
+	font-size: 14px !important;
+	text-align: center !important;
+	letter-spacing: -0.02em !important;
+	color: #C6C6C6 !important;
+	position: relative;
+}
+
+.tabs .tab a span{
+	position: absolute;
+	top: -11px;
+	right: 6px;
+	font-size: 10px;
+}
+
+
+.tabs .indicator{
+	    background-color: #00CC66 !important;
+}
+
+
+
+
+
+.tabs .tab a:hover, .tabs .tab a.active{
+	color: #00CC66 !important;
+	background-color: #fff !important;
+}
+
+
+
+
+
+
+.item_tab{
+	background-color: #F8F8F8;
+	padding: 25px;
+	/* outline: 1px solid red; */
+/* 	width: 930px;
+	max-width: 95%; */
+	padding-right: 39%;
+}
+
+.item_tab h3{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 37px;
+	font-size: 24px;
+	color: #212121;
+}
+
+.item_tab p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 20px;
+	font-size: 13px;
+	color: #212121;
+	margin-bottom: 25px;
+}
+
+
+.item_tab .wrap_dostavka{
+	margin-top: 28px;
+}
+
+.item_tab .wrap_dostavka h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 21px;
+	font-size: 14px;
+	color: #757575;
+	margin-top: 10px;
+}
+
+.item_tab .wrap_dostavka p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 17px;
+	font-size: 11px;
+	color: #757575;
+}
+
+
+.item_tab .wrap_p{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.item_tab .wrap_p p{
+	width: 280px;
+	margin-right: 30px;
+}
+
+.item_tab .wrap_p p span{
+	font-size: 15px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.your_order{
+	margin-top: 60px;
+	width: 890px;
+	max-width: 100%;
+	background-color: #fff;
+	box-shadow: 0px 0px 30px rgba(109, 109, 109, 0.25);
+	padding: 25px;
+}
+
+
+
+.your_order h4{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 34px;
+	font-size: 22px;
+	text-align: center;
+	color: #212121;
+	margin-bottom: 25px;
+}
+
+.your_order .wrap_order form#order{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+
+.your_order .wrap_order form#order .one{
+	position: relative;
+}
+
+.your_order .wrap_order form#order .one::before{
+	content: '';
+	position: absolute;
+	top: 30px;
+	right: -48px;
+	width: 10px;
+	height: 11px;
+	background-image: url(../images/plus.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+
+}
+
+
+.your_order .wrap_order form#order .two{
+	position: relative;
+}
+
+.your_order .wrap_order form#order .two::before{
+	content: '';
+	position: absolute;
+	top: 30px;
+	right: -48px;
+	width: 10px;
+	height: 11px;
+	background-image: url(../images/ravno.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+
+}
+
+
+
+
+.your_order .wrap_order form#order h5{
+	border-bottom: none;
+	/* outline: 1px solid red; */
+	height: auto;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	color: #212121;
+	margin-top: 5px;
+}
+
+.your_order .wrap_order form#order h6{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	font-size: 11px;
+	text-align: center;
+	color: #757575;
+	margin: 0;
+	text-align: center;
+}
+
+
+
+
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form h5{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	color: #212121;
+}
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form h5 span{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	color: #212121;
+}
+
+.your_order .wrap_order form#order button.zakazat{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 18px;
+	text-align: center;
+	color: #FFFFFF;
+	background-color: #00CC66;
+	padding: 10px 45px;
+	margin-left: 15px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+	border-radius: 2px;
+}
+
+
+.your_order .for_center{
+	text-align: center;
+}
+
+.your_order a.why{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 11px;
+	text-decoration-line: underline;
+	color: #00CC66;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+.item_tab .choise_dostavka{
+	/* outline: 1px solid red; */
+}
+
+
+.item_tab .choise_dostavka form#dostavka{
+	/* outline: 1px solid red; */
+}
+
+.item_tab .choise_dostavka form#dostavka input.lesskm{
+	padding-top: 50px;
+}
+
+
+.item_tab .choise_dostavka form#dostavka span{
+		font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 17px;
+	font-size: 11px;
+	color: #757575;
+
+}
+
+.item_tab .choise_dostavka form#dostavka span b{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 21px;
+	font-size: 14px;
+	color: #212121;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2{
+	/* outline: 1px solid blue; */
+	/* background-color: #fff; */
+    margin-top: 60px;
+    width: 890px;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 30px rgba(109, 109, 109, 0.25);
+    padding: 25px;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 h4{
+	font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 34px;
+    font-size: 22px;
+    text-align: center;
+    color: #212121;
+    margin-bottom: 25px;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form .one{
+	position: relative;
+}
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form .one::before{
+	content: '';
+	position: absolute;
+	top: 30px;
+	right: -48px;
+	width: 10px;
+	height: 11px;
+	background-image: url(../images/plus.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form .two{
+	position: relative;
+}
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form .two::before{
+	content: '';
+	position: absolute;
+	top: 30px;
+	right: -48px;
+	width: 10px;
+	height: 11px;
+	background-image: url(../images/ravno.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form h6{
+	font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 11px;
+    color: #757575;
+    margin: 0;
+    text-align: center;
+}
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form h5{
+	margin: 0;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-size: 30px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	color: #212121;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .wrap_form button.zakazat{
+	font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #00CC66;
+    padding: 10px 45px;
+    margin-left: 15px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .for_center{
+	text-align: center;
+}
+
+
+.item_tab .choise_dostavka form#dostavka .wrap_order2 .for_center .why{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-size: 11px;
+    text-decoration-line: underline;
+    color: #00CC66;
+    text-align: center;
+}
+
+
+
+
+

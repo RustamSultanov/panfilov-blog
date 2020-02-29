@@ -1,0 +1,226 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+
+{% block title %}Запрос #{{ requests.id }}{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Запрос #{{ requests.id }}</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+                    <div class="row my-4">
+                        <div class="col">
+
+                            <div class="media align-items-center mb-3">
+                                {% if requests.responsible.wagtail_userprofile.avatar %}
+                                <img src="{{ requests.responsible.wagtail_userprofile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                                  {% else %}
+                                    {% endif %}
+                                <div class="small ml-3">
+                                    <div class="text-dark">{{ requests.responsible.get_full_name }}</div>
+                                    <div class="text-muted">{{ requests.date_create }}
+                                    </div>
+                                    <!--   Вариант для партнера   -->
+                                    {% if user == requests.responsible %}
+                                    <span class="badge badge-pill badge-warning">{{ requests.get_status_display }}</span>
+                                        {% else %}
+                                    <!--   Вариант для менеджера   -->
+                                    <div class="btn-group">
+                                    <form action="" method="post">    {% csrf_token %}
+                                        {{ form_status.status }}
+                                        <button class="btn btn-warning btn-xs btn-round" type="submit">Сохранить</button>
+{#                                        <button class="btn btn-warning btn-xs btn-round dropdown-toggle" type="button" data-toggle="dropdown">Не решена</button>#}
+{#                                        <div class="dropdown-menu">#}
+{#                                            <a class="dropdown-item" href="javascript:void(0)">Решена</a>#}
+{#                                            <a class="dropdown-item" href="javascript:void(0)">Провалена</a>#}
+{#                                        </div>#}
+                                    </form>
+                                    </div>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <h5>{{ requests.title }}</h5>
+
+                            <p>{{ requests.description }}</p>
+                        {% if requests.file %}
+                <strong class="project-attachment-filename">{{requests.file}}</strong>
+                <div class="text-muted small"  >{{requests.file.size|filesizeformat}}</div>
+                <div>
+                    <a href="{{ requests.file.url }}" download="">Загрузить</a>
+                </div>
+
+                                       {% endif %}
+                            <div class="nav-tabs-top mb-4">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" data-toggle="tab" href="#coments">Комментарии</a>
+                                    </li>
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>#}
+{#                                    </li>#}
+                                </ul>
+                            </div>
+                            <div class="tab-content no-shadow">
+                                <div class="tab-pane fade active show" id="coments">
+                                    {% for messege in messeges %}
+                                    <div class="media mb-3">
+                                        <div>{% if messege.from_user.wagtail_userprofile.avatar %}
+                                <img src="{{ messege.from_user.wagtail_userprofile.avatar.url }}" alt="" class="ui-w-40 rounded-circle">
+                                  {% else %}
+                                    {% endif %}
+                                            <div class="text-muted small text-nowrap mt-2">
+                                                {{ messege.date_create }}
+
+                                            </div>
+                                        </div>
+                                    {% if messege.from_user == user %}
+                                        <div class="media-body bg-lighter rounded py-2 px-3 ml-3">
+                                            <div class="font-weight-semibold mb-1">{{ messege.from_user.get_full_name }}</div>
+                                            {{ messege.text }}
+                                       {% if messege.file %}
+                <strong class="project-attachment-filename">{{messege.file}}</strong>
+                <div class="text-muted small"  >{{messege.file.size|filesizeformat}}</div>
+                <div>
+                    <a href="{{ messege.file.url }}" download="">Загрузить</a>
+                </div>
+
+                                       {% endif %}
+                                        </div>
+                                    {% else %}
+
+                                    <div class="media-body alert-primary rounded py-2 px-3 ml-md-3">
+                                            <div class="font-weight-semibold mb-1">{{ messege.from_user.get_full_name }}</div>
+                                            {{ messege.text }}
+                                        {% if messege.file %}
+                <strong class="project-attachment-filename">{{messege.file}}</strong>
+                <div class="text-muted small"  >{{messege.file.size|filesizeformat}}</div>
+                <div>
+                    <a href="{{ messege.file.url }}" download="">Загрузить</a>
+                </div>
+
+                                       {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                {% endfor %} <form action="" method="post" enctype="multipart/form-data">    {% csrf_token %}
+                                    <div class="input-group">
+                                        {{ form.text }}
+                                        <div class="input-group-append">
+                                            <label style="margin-bottom: 0;">
+                                                {{ form.file }}
+                                                <span class="btn btn-default icon-btn borderless btn-round md-btn-flat">
+                                                    <i class="ion ion-md-attach"></i>
+                                                </span>
+                                            </label>
+                                            <button type="submit" class="btn btn-primary">Отправить</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+{#                                <div class="tab-pane fade" id="files">#}
+{#                                    <div class="my-4">#}
+{#                                        <form action="/upload" class="dropzone needsclick" id="dropzone-files">#}
+{#                                            <div class="dz-message needsclick">#}
+{#                                                Перетащите файлы сюда или нажмите, чтобы загрузить#}
+{#                                                <span class="note needsclick">(Это демонстрационная версия. Файлы не будут загружены на сервер.)</span>#}
+{#                                            </div>#}
+{#                                            <div class="fallback">#}
+{#                                                <input name="file" type="file" multiple>#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                    </div>#}
+{#                                    <div class="my-4 small text-right">#}
+{#                                        <span class="text-muted">Сортировать: </span>#}
+{#                                        <a href="#" class="text-muted active">По порядку</a>#}
+{#                                        <a href="#" class="text-muted">По дате</a>#}
+{#                                        <a href="#" class="text-muted">По размеру</a>#}
+{#                                    </div>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-md-6 col-lg-4 p-1">#}
+{#                                            <div class="project-attachment ui-bordered p-2">#}
+{#                                                <div class="project-attachment-img" style="background-image: url(img/5.jpg)"></div>#}
+{#                                                <div class="media-body ml-3">#}
+{#                                                    <strong class="project-attachment-filename">image_1.jpg</strong>#}
+{#                                                    <div class="text-muted small">527KB</div>#}
+{#                                                    <div>#}
+{#                                                        <a href="javascript:void(0)">Просмотреть</a> &nbsp;#}
+{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="btn-group project-actions align-self-start">#}
+{#                                                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">#}
+{#                                                        <i class="ion ion-ios-more"></i>#}
+{#                                                    </button>#}
+{#                                                    <div class="dropdown-menu dropdown-menu-right">#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="col-md-6 col-lg-4 p-1">#}
+{#                                            <div class="project-attachment ui-bordered p-2">#}
+{#                                                <div class="project-attachment-file display-4">#}
+{#                                                    <i class="far fa-file-pdf"></i>#}
+{#                                                </div>#}
+{#                                                <div class="media-body ml-3">#}
+{#                                                    <strong class="project-attachment-filename">assignment_letter.pdf</strong>#}
+{#                                                    <div class="text-muted small">156KB</div>#}
+{#                                                    <div>#}
+{#                                                        <a href="javascript:void(0)">Просмотреть</a> &nbsp;#}
+{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="btn-group project-actions align-self-start">#}
+{#                                                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">#}
+{#                                                        <i class="ion ion-ios-more"></i>#}
+{#                                                    </button>#}
+{#                                                    <div class="dropdown-menu dropdown-menu-right">#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-md-6 col-lg-4 p-1">#}
+{#                                            <div class="project-attachment ui-bordered p-2">#}
+{#                                                <div class="project-attachment-file display-4">#}
+{#                                                    <i class="far fa-file-archive"></i>#}
+{#                                                </div>#}
+{#                                                <div class="media-body ml-3">#}
+{#                                                    <strong class="project-attachment-filename">app_update.zip</strong>#}
+{#                                                    <div class="text-muted small">1.35MB</div>#}
+{#                                                    <div>#}
+{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="btn-group project-actions align-self-start">#}
+{#                                                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">#}
+{#                                                        <i class="ion ion-ios-more"></i>#}
+{#                                                    </button>#}
+{#                                                    <div class="dropdown-menu dropdown-menu-right">#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+                           {% block extrascripts %}
+                <script src="{% static "libs/dropzone/dropzone.js" %}"></script>
+                <script src="{% static "js/dashboard.js" %}"></script>
+                {% endblock %}
+{% endblock %}

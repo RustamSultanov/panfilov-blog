@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Сотрудники{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Сотрудники</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+ {% block content %}
+<div class="row">
+            {% for employee in employee_list %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card hoverable">
+                    <div class="card-body">
+                        <div class="media align-items-center mb-3">
+                            {% if employee.wagtail_profile.avatar %}
+                          <img src="{{ employee.wagtail_profile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                        {% else %}
+                        {% endif %}
+                            <div class="small ml-3">
+                                <a href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>
+                                <div class="small text-muted">{{ employee.position }}</div>
+                            </div>
+                        {% if user.user_profile.is_partner %}
+                {% else %}
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                <i class="ion ion-ios-more"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left">
+                                <a class="dropdown-item" href="{% url 'form_task' employee.id %}">Добавить задачу</a>
+                                <a class="dropdown-item" href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        </div>
+                        <div class="small text-muted mb-3">
+                        {% if employee.phone_number %}    {{ employee.phone_number }}
+                        {% else %}
+                        {% endif %}
+                            {% if employee.whatsapp %}<br>Whatsapp {{ employee.whatsapp }}
+                            {% else %}
+                        {% endif %}
+                            <br>{{ employee.user.email }}
+                        </div>
+{#                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+ {% endblock %}

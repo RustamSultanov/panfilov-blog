@@ -1,0 +1,29 @@
+{% load static %}
+{% load wagtailcore_tags %}
+{% for document in documents %}
+    <div class="col-md-6 col-lg-4 p-1">
+        <div class="project-attachment ui-bordered p-2">
+
+            <div class="project-attachment-img" style="background-image: url({{ document.url }})"></div>
+            <div class="media-body ml-3">
+                <strong class="project-attachment-filename">{{document.title}}</strong>
+                <div class="text-muted small"  >{{document.file_size|filesizeformat}}</div>
+                <div>
+                    <a href="{{ document.url }}" download="">Загрузить</a>
+                </div>
+            </div>
+            {% if user.user_profile.is_partner %}
+                {% else %}
+            <div class="btn-group project-actions align-self-start">
+                <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                    <i class="ion ion-ios-more"></i>
+                </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/cms/documents/edit/{{ document.id }}/" target="_blank">Редактировать</a>
+                                <a class="dropdown-item" href="/cms/documents/delete/{{ document.id }}/" target="_blank">Удалить</a>
+                    </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

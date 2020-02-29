@@ -1,0 +1,166 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Личный кабинет
+    <a href="{% url 'create_partner' %}" class="btn btn-round btn-outline-primary btn-sm">Добавить франчайзи</a>
+    <a href="{% url 'shop_form' %}" class="btn btn-round btn-outline-primary btn-sm">Добавить магазин</a>
+    {% if user.user_profile.is_head %}
+    <a href="{% url 'create_employee' %}" class="btn btn-round btn-outline-primary btn-sm">Добавить сотрудника</a>
+    {% else %}
+    {% endif %}
+    </h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="nav-tabs-top mb-4">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" data-toggle="tab" href="#partners">Партнеры</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#requests">Делаю задачи<span class="badge badge-pill badge-primary indicator">{{ requests_not_solved }}</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#ideas">Идеи<span class="badge badge-pill badge-primary indicator">{{ ideas_not_solved }}</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#tasks">Поручил задачи<span class="badge badge-pill badge-primary indicator">{{ task_not_solved }}</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#reviews">Отзывы<span class="badge badge-pill badge-primary indicator">{{ feedback_not_solved }}</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content no-shadow">
+                                    <div class="tab-pane fade active show" id="partners">
+                                        <div class="row my-4">
+                                            {% for partner in partner_list %}
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div href="{% url 'employee_info' partner.id %}" class="card hoverable">
+                                                    <div class="card-body">
+                                                        <div class="media align-items-center mb-3">
+                                                          {% if partner.wagtail_profile.avatar %}
+                                                              <img src="{{ partner.wagtail_profile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                                                            {% else %}
+                                                            {% endif %}
+                                                            <div class="small ml-3">
+                                                                <a href="{% url 'employee_info' partner.user.id %}" class="text-primary">{{ partner.user.first_name }} {{ partner.user.last_name }}</a>
+                                                                <div class="small text-muted">{{ partner.position }}</div>
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                                        <i class="ion ion-ios-more"></i>
+                                                                    </button>
+                                                                    <div class="dropdown-menu dropdown-menu-left">
+                                                                        <a class="dropdown-item" href="{% url 'form_task' partner.id %}">Добавить задачу</a>
+                                                                        <a class="dropdown-item" href="{% url 'edit_partner' partner.user.id %}">Редактировать франчайзи</a>
+                                                                        <a class="dropdown-item" href="{% url 'form_review' %}">Добавить отзыв</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="small text-muted mb-3">
+                                                            {% if partner.phone_number %}
+                                                            {{ partner.phone_number }}
+                                                            {% else %}
+                                                            {% endif %}
+                                                            <br>{% if partner.phone_number %}
+                                                            Whatsapp {{ partner.whatsapp }}
+                                                            {% else %}
+                                                            {% endif %}
+                                                            <br>{{ partner.user.email }}
+                                                        </div>
+{#                                                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="requests">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Фильтровать:</span>
+                                            <a href="{%url 'load_filtered_request' %}" class="text-muted active" onclick="load_request($(this))">Все</a>
+                                            <a href="{%url 'load_filtered_request' %}?filter_request=0" class="text-muted" onclick="load_request($(this))">Решен</a>
+                                            <a href="{%url 'load_filtered_request' %}?filter_request=1" class="text-muted" onclick="load_request($(this))">Обрабатывается</a>
+                                            <a href="{%url 'load_filtered_request' %}?filter_request=2" class="text-muted" onclick="load_request($(this))">Отклонен</a>
+                                        </div>
+                                          <div id="request_manager" class="my-4 row">
+                                            {% include 'partials/request_manager.html'%}
+                                        </div>
+                                    </div>
+                                <div class="tab-pane fade" id="ideas">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Фильтровать: </span>
+                                            <a href="{%url 'load_filtered_ideas' %}" class="text-muted active" onclick="load_ideas($(this))">Все</a>
+                                            <a href="{%url 'load_filtered_ideas' %}?filter_idea=0" class="text-muted" onclick="load_ideas($(this))">На рассмотрении</a>
+                                            <a href="{%url 'load_filtered_ideas' %}?filter_idea=1" class="text-muted" onclick="load_ideas($(this))">Одобрено</a>
+                                            <a href="{%url 'load_filtered_ideas' %}?filter_idea=2" class="text-muted" onclick="load_ideas($(this))">Отклонено</a>
+                                        </div>
+
+                                        <form method="post">
+                                            <div id="ideas_manager" class="my-4 row">
+
+
+                                                {% include 'partials/ideas_manager.html'%}
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="tasks">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Фильтровать:</span>
+                                            <a href="{%url 'load_filtered_tasks' %}" class="text-muted active" onclick="load_tasks($(this))">Все</a>
+                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=0" class="text-muted" onclick="load_tasks($(this))">Решен</a>
+                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=1" class="text-muted" onclick="load_tasks($(this))">Обрабатывается</a>
+                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=2" class="text-muted" onclick="load_tasks($(this))">Отклонен</a>
+                                        </div>
+                                        <div id="tasks_manager" class="my-4 row">
+                                            {% include 'partials/tasks_manager.html'%}
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="reviews">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Фильтровать:</span>
+                                            <a href="{%url 'load_filtered_feedback' %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
+                                            <a href="{%url 'load_filtered_feedback' %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
+                                            <a href="{%url 'load_filtered_feedback' %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
+                                        </div>
+                                       <div id="feedback_manager" class="my-4 row">
+                                            {% include 'partials/feedback_manager.html'%}
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="files">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Сортировать: </span>
+                                            <a href="?ordering=title" class="text-muted active">По порядку</a>
+                                            <a href="?ordering=-created_at" class="text-muted">По дате</a>
+                                            <a href="?ordering=file_size" class="text-muted">По размеру</a>
+                                        </div>
+                                        <div class="row"  id="documents_wraper">
+                                            {% include 'partials/documents.html' with documents=documents %}
+                                        </div>
+                                        <div id="pagination">
+                                            {% include 'partials/pagination.html' with posts=page_obj %}
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{% static "libs/dropzone/dropzone.js" %}"></script>
+    <script src="{% static "js/dashboard.js" %}"></script>
+{% endblock %}

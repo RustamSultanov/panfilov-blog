@@ -1,0 +1,28 @@
+@import "glide_theme";
+@import "variables";
+
+.item{
+  &-preview{
+    position: relative;
+  }
+  &-actions{
+    background-color: $mdc-theme-surface2;
+    color: $mdc-theme-on-surface2;
+  }
+  &-rating{
+    font-size: 29px;
+    color: #4FED55;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border: 1px solid #4FED55;
+    border-radius: 60px;
+    position: absolute;
+    top: 0;
+    .material-icons{
+      font-size: 11px;
+      width: 11px!important;
+    }
+  }
+}

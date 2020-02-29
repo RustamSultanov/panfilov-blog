@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% load static %}
+
+  
+  {% block title %} Вход в приложение Sushi{% endblock %}
+
+
+ {% block script %}
+<!-- Libs -->
+  <link rel="stylesheet" href="{% static "assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" %}">
+  <!-- Page -->
+  <link rel="stylesheet" href="{% static "assets/vendor/css/pages/authentication.css" %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        {% endblock %}
+{% block header %} 
+{% endblock %}
+{% block body %} 
+<body>
+  <div class="page-loader">
+    <div class="bg-primary"></div>
+  </div>{% endblock %}
+{% block content %}
+  
+
+
+
+  <!-- Content -->
+
+  <div class="authentication-wrapper authentication-2 ui-bg-cover ui-bg-overlay-container px-4">
+    <div class="ui-bg-overlay bg-dark opacity-25"></div>
+
+    <div class="authentication-inner py-5">
+
+      <div class="card">
+        <div class="p-4 p-sm-5">
+          <!-- Logo -->
+          <div class="d-flex justify-content-center align-items-center pb-2 mb-4">
+            <div class="ui-w-60">
+              <div class="w-100 position-relative" style="">
+                <img src="{% static "assets/img/logo.png" %}" alt="logo" style="width: 80px;">
+              </div>
+            </div>
+          </div>
+          <!-- / Logo -->
+
+          <h5 class="text-center text-muted font-weight-normal mb-4">Авторизация</h5>
+
+          <!-- Form -->
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="form-label">Логин</label>
+              {{ form.username }}
+              <span class="helper-text" data-error="Неправильный формат почты"></span>
+            </div>
+            <div class="form-group">
+              {% for message in form.errors.values %}
+                                    {{ message }}
+                                  {% endfor %}{# for message in form.errors.values #}
+              <label class="form-label d-flex justify-content-between align-items-end">
+                <div>Пароль</div>
+            
+              </label>
+              {{ form.password }}
+            </div>
+            <div class="d-flex justify-content-between align-items-center m-0">
+              <label class="custom-control custom-checkbox m-0">
+                <input type="checkbox" class="custom-control-input" >
+                <span class="custom-control-label">Запомнить меня</span>
+              </label>
+              <button type="submit" class="btn btn-success btn-my-color" style="">Войти</button>
+            </div>
+          </form>
+          <!-- / Form -->
+
+        </div>
+        <div class="card-footer py-3 px-4 px-sm-5">
+          <!-- <div class="text-center text-muted">
+            Нет аккаунта? Пройдите <a href="javascript:void(0)">регистрацию</a>
+          </div> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {% endblock %}
+{% block footer %}    
+{% endblock %}
+  
+{% block script2 %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

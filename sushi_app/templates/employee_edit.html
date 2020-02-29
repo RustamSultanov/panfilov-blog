@@ -1,0 +1,32 @@
+ {% extends 'user_new.html' %}
+{% load static %}
+
+
+{% block title %}Редактировать сотрудника{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Редактировать сотрудника </h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+          {% block img %}
+                        <div class="form-group">
+                            <label class="form-label w-100">Фото</label>
+                           {{ form_wagtail.avatar }}
+                        </div>
+                {% endblock %}
+
+
+{% block employee %}
+                        <div class="form-group">
+                            <label class="form-label">Должность</label>
+                            {{ form_user_profile.position }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Перечень должностных обязанностей</label>
+                           {{ form_user_profile.key_responsibilities }}
+                        </div>
+                        {% endblock %}
+{% block create %}
+{% endblock %}

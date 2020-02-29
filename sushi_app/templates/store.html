@@ -1,0 +1,250 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Личный кабинет</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+
+                    <dl class="row">
+                        <dt class="col-md-3">Франчайзи</dt>
+                        <dd class="col-md-9">
+
+                            <div class="media align-items-center mb-3">
+                                {% if shop.partner.wagtail_profile.avatar %}
+                                <img src="{{ shop.partner.wagtail_profile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                                  {% else %}
+                                    {% endif %}
+                                <div class="small ml-3">
+                                    <div class="text-primary">{{ shop.partner }}</div>
+{#                                    <a href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
+                                </div>
+                            </div>
+                        </dd>
+                        <dt class="col-md-3">Юридическое лицо</dt>
+                        <dd class="col-md-9">{{ shop.entity_name }}</dd>
+                        <dt class="col-md-3">Город</dt>
+                        <dd class="col-md-9">{{ shop.city }}</dd>
+                        <dt class="col-md-3">Адрес</dt>
+                        <dd class="col-md-9">{{ shop.address }}</dd>
+                    <dt class="col-md-3">Реквизиты</dt>
+                        <dd class="col-md-9">{{ shop.details }}</dd>
+                    <dt class="col-md-3">Файл</dt>
+                        <dd class="col-md-9">{{ shop.file }}</dd>
+                    </dl>
+{#                    <div class="py-1 mb-2">#}
+{#                        <div class="input-group">#}
+{#                            <input type="text" class="form-control" placeholder="Введите запрос">#}
+{#                            <div class="input-group-append">#}
+{#                                <button type="button" class="btn btn-primary">#}
+{#                                    <i class="ion ion-ios-search"></i>&nbsp; Поиск</button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="row">
+                        <div class="col">
+                            <div class="nav-tabs-top mb-4">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" data-toggle="tab" href="#employees">Ответственные лица</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#documents">Документы</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#invoices">Счета</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#reviews">Отзывы</a>
+                                    </li>
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>#}
+{#                                    </li>#}
+                                </ul>
+                                <div class="tab-content no-shadow">
+                                    <div class="tab-pane fade active show" id="employees">
+                                        <div class="my-4 row">
+
+                                           {% for partner in shop.responsibles.all %}
+                                            <div class="col-md-6 col-lg-4 mb-4">
+                                                <div href="{% url 'employee_info' partner.id %}" class="card hoverable">
+                                                    <div class="card-body">
+                                                        <div class="media align-items-center mb-3">
+                                                          {% if partner.wagtail_profile.avatar %}
+                                                              <img src="{{ partner.wagtail_profile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                                                            {% else %}
+                                                            {% endif %}
+                                                            <div class="small ml-3">
+                                                                <a href="{% url 'employee_info' partner.user.id %}" class="text-primary">{{ partner.user.first_name }} {{ partner.user.last_name }}</a>
+                                                                <div class="small text-muted">{{ partner.position }}</div>
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                                        <i class="ion ion-ios-more"></i>
+                                                                    </button>
+{#                                                                    <div class="dropdown-menu dropdown-menu-left">#}
+{#                                                                        <a class="dropdown-item" href="{% url 'form_task' partner.id %}">Добавить задачу</a>#}
+{#                                                                        <a class="dropdown-item" href="{% url 'edit_partner' partner.user.id %}">Редактировать франчайзи</a>#}
+{#                                                                        <a class="dropdown-item" href="{% url 'form_review' %}">Добавить отзыв</a>#}
+{#                                                                    </div>#}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="small text-muted mb-3">
+                                                            {{ partner.phone_number }}
+                                                            <br>Whatsapp {{ partner.whatsapp }}
+                                                            <br>{{ partner.user.email }}
+                                                        </div>
+{#                                                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                    <!-- Документы -->
+                                    <div class="tab-pane fade" id="documents">
+                                        <div class="my-4">
+                                            <form action="{{request.path}}" class="dropzone needsclick" id="dropzone-docs" method="POST">
+                                                {% csrf_token %}
+                                                <div class="dz-message needsclick">
+                                                    Перетащите файлы сюда или нажмите, чтобы загрузить
+                                                    <span class="note needsclick"></span>
+                                                </div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple>
+                                                </div>
+                                                <input type="hidden" name="type" value="doc">
+                                            </form>
+                                        </div>
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Сортировать: </span>
+                                            <a href="#" class="text-muted active">По порядку</a>
+                                            <a href="#" class="text-muted">По дате</a>
+                                            <a href="#" class="text-muted">По размеру</a>
+                                        </div>
+                                        <div class="row" id="documents_wraper">               
+                                            {% include 'partials/documents.html' with documents=documents %}
+                                        </div>
+                                        <div id="documents_pagination">
+                                            {% include 'partials/pagination.html' with posts=page_obj %}
+
+                                        </div>                                        
+                                    </div>
+                                    <!-- Счета -->
+                                    <div class="tab-pane fade" id="invoices">
+                                        <div class="my-4">
+                                            <form action="{{request.path}}" class="dropzone needsclick" id="dropzone-invoices" method="POST">
+                                                {% csrf_token %}
+                                                <div class="dz-message needsclick">
+                                                    Перетащите файлы сюда или нажмите, чтобы загрузить
+                                                    <span class="note needsclick"></span>
+                                                </div>
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple>
+                                                </div>
+                                                <input type="hidden" name="type" value="invoice">
+                                            </form>
+                                        </div>
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Сортировать: </span>
+                                            <a href="#" class="text-muted active">По порядку</a>
+                                            <a href="#" class="text-muted">По дате</a>
+                                            <a href="#" class="text-muted">По размеру</a>
+                                        </div>
+                                        <div class="row" id="invoices_wraper"> 
+                                            {% include 'partials/documents.html' with documents=invoices %}
+                                        </div>
+                                        <div id="documents_invoices">
+                                            {% include 'partials/pagination.html' with posts=page_obj %}
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="reviews">
+                                        <div class="my-4 small text-right">
+                                            <span class="text-muted">Фильтровать:</span>
+                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
+                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
+                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
+                                        </div>
+                                       <div id="feedback_manager" class="my-4 row">
+                                            {% include 'partials/feedback_manager.html'%}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+              
+
+{% endblock %}
+
+{% block extrascripts %}
+<script src='{% static "libs/dropzone/dropzone.js" %}'></script>
+<script type="text/javascript">
+    $(function() {
+        $('#dropzone-files').dropzone({  
+        });
+
+        // Mock the file upload progress (only for the demo)
+        //
+    Dropzone.options.myAwesomeDropzone = {
+        maxFilesize: 5,
+        addRemoveLinks: true,
+        dictResponseError: 'Server not Configured',
+      };
+    });
+
+    $(function() {
+        $('#dropzone-docs').dropzone({
+            parallelUploads: 10,
+            maxFilesize:     50000,
+            filesizeBase:    3000,
+            addRemoveLinks:  true,
+            success : function(file, response){
+                $('#documents_wraper').load("{% url 'load_docs' %}?doc_type={{doc_type}}");
+                $('#documents_pagination').load("{% url 'load_paginations_docs' %}?doc_type={{doc_type}}");
+                this.removeAllFiles();
+            }        
+        });
+
+    $(function() {
+        $('#dropzone-invoices').dropzone({
+            parallelUploads: 10,
+            maxFilesize:     50000,
+            filesizeBase:    3000,
+            addRemoveLinks:  true,
+            success : function(file, response){
+                $('#invoices_wraper').load("{% url 'load_docs' %}?doc_type={{type_invoice}}");
+                $('#invoices_pagination').load("{% url 'load_paginations_docs' %}?doc_type={{type_invoice}}");
+                this.removeAllFiles();
+            }        
+        });
+
+        // Mock the file upload progress (only for the demo)
+        //
+    Dropzone.options.myAwesomeDropzone = {
+        maxFilesize: 5,
+        addRemoveLinks: true,
+        dictResponseError: 'Server not Configured',
+      };
+    });
+
+        // Mock the file upload progress (only for the demo)
+        //
+    Dropzone.options.myAwesomeDropzone = {
+        maxFilesize: 5,
+        addRemoveLinks: true,
+        dictResponseError: 'Server not Configured',
+      };
+    });
+</script>
+    <script src="{% static "js/dashboard.js" %}"></script>
+{% endblock %}

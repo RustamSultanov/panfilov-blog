@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+
+{% block title %}{{title}}{% endblock %}
+
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">{{title}}</h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+        {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+{% block content %} 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="nav">
+                        {% for item in subjects %}
+                            <li class="nav-item">
+                                <a data-id={{ item.pk }} class="nav-mm nav-link {% if subjects.0.pk == item.pk %}text-dark{% endif %} pl-0" href="javascript:void(0)" onclick="load_tech_cards_docs($(this))">{{item.name}}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+ {% if user.user_profile.is_manager %}
+                    <div class="my-4">
+                        <form action="{{ request.path }}" class="dropzone needsclick" id="dropzone-files" method='post'>
+                            {% csrf_token %}
+                            
+                            <div class="dz-message needsclick">
+                                Перетащите файлы сюда или нажмите, чтобы загрузить
+                            </div>
+                            <div class="fallback">
+                                <input name="file" type="file" multiple>
+                            </div>
+                            <input type="hidden" name="type" value="{{doc_type}}">   
+                            <input type="hidden" name="sub_type" value="{{subjects.all.0.pk}}">
+                        </form>
+                    </div>
+        {% elif user.user_profile.is_partner %}
+                {% else %}
+                {% endif %}
+                    <div class="my-5">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <form class="input-group search-form" action="{{ request.path }}" method="get" novalidate="">
+                                    <div class="input-group-prepend">
+                                        <i class="input-group-text ion-ios-search"></i>
+                                    </div>
+                                    
+                                        <input type="search" name="q" class="form-control" placeholder="Поиск...">
+                                        <input type="submit" value="Search" class="button" style="display:none">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-5">
+                        <div class="my-4 small text-right">
+                            <span class="text-muted">Сортировать: </span>
+                            <a href="?ordering=title" class="text-muted active">По порядку</a>
+                            <a href="?ordering=-created_at" class="text-muted">По дате</a>
+                            <a href="?ordering=file_size" class="text-muted">По размеру</a>
+                        </div>
+                        <div class="row" id="documents_wraper">
+                            {% include 'partials/documents.html' with documents=documents %}
+                        </div>
+                        <div id="pagination">
+                        {% if is_paginated %}
+                            {% include 'partials/pagination.html' with posts=page_obj %}
+                        {% endif %}
+                        </div>
+                    </div>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href='{% static "libs/dropzone/dropzone.css" %}'>
+{% endblock %}
+
+{% block extrascripts %}
+    <script src='{% static "libs/dropzone/dropzone.js" %}'></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#dropzone-files').dropzone({
+                parallelUploads: 10,
+                maxFilesize:     50000,
+                filesizeBase:    3000,
+                addRemoveLinks:  true,
+                success : function(file, response){
+                    console.log(response.documents.length)
+                    $('#documents_wraper').load("{% url 'load_docs' %}?doc_type={{doc_type}}&sub_type=" + $('.text-dark').data("id"));
+                    $('#pagination').load("{% url 'load_paginations_docs' %}?doc_type={{doc_type}}&sub_type=" + $('.text-dark').data("id"));
+                    this.removeAllFiles();
+                }        
+            });
+
+            // Mock the file upload progress (only for the demo)
+            //
+        Dropzone.options.myAwesomeDropzone = {
+            maxFilesize: 5,
+            addRemoveLinks: true,
+            dictResponseError: 'Server not Configured',
+          };
+        });
+        function load_tech_cards_docs(element){           
+            event.preventDefault();
+            $('.nav-mm').removeClass('text-dark');
+            element.addClass('text-dark');
+            $('input[name="sub_type"').val(element.data("id"));
+            $('#documents_wraper').load("{% url 'load_docs' %}?doc_type={{doc_type}}&sub_type=" + element.data("id"))
+            $('#pagination').load("{% url 'load_paginations_docs' %}?doc_type={{doc_type}}&sub_type="+ element.data("id"));
+            return false;
+        }
+    </script>
+{% endblock %}

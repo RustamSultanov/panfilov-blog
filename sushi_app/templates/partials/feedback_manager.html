@@ -1,0 +1,44 @@
+ {% for review in feedback_list %}
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card hoverable h-100">
+                                                    <div class="card-header d-flex justify-content-between  align-items-start">
+                                                        <div>
+                                                            <div>
+                                                                <span class="font-weight-semibold">{{ review.responsible.user.get_full_name }}</span>
+
+                                                                {% if review.responsible.phone_number %}
+                                                                <span class="text-muted">{{ review.responsible.phone_number }}</span>
+                                                                {% endif %}
+
+                                                                {% if review.status == 0 %}
+                                                                <span class="badge badge-outline-success badge-pill">отработан</span>
+                                                                {% elif review.status == 1 %}
+                                                                <span class="badge badge-outline-danger badge-pill">не отработан</span>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="small">
+                                                                <span class="text-muted">{{ review.date_create }}</span>
+                                                                <br>
+                                                                <span class="text-muted">Магазин: {{ review.shop.address }}</span>
+                                                            </div>
+                                                        <div class="small">
+                    <a href="{% url 'feedback' review.id user.id %}" class="text-primary">Подробнее</a>
+                </div>
+                                                        </div>
+
+                                                        <div class="btn-group project-actions">
+                                                            <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                                <i class="ion ion-ios-more"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{% url 'feedback' review.id user.id %}">Просмотр</a>
+{#                                                                <a class="dropdown-item" href="javascript:void(0)">Удаление</a>#}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>{{ review.description|truncatewords:8 }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}

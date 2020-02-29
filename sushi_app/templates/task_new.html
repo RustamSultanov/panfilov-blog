@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Добавить задачу </h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+                    <form action="" method="post">
+                     {% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-label">Ответственный за задачу</label>
+                            <div class="media align-items-center mb-3">
+                                {% if partner.wagtail_profile.avatar %}
+                                <img src="{{ partner.wagtail_profile.avatar.url }}" alt="" class="ui-w-60 rounded-circle">
+                                {% else %}
+                                {% endif %}
+                                <div class="small ml-3">
+                                    <div class="text-primary">{{ partner.user.get_full_name }}</div>
+                                    <div class="text-muted">{{ partner.position }}</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Название задачи</label>
+                           {{ form.title }}
+                            <div class="small form-text text-muted">Введите название задачи, кратко описывающее ее суть</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Описание задачи</label>
+                            {{ form.description }}
+                            <div class="small form-text text-muted">Введите наиболее полное описание задачи, чтоб облегчить ее выполнение.</div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-round">Сохранить</button>
+                        </div>
+
+                    </form>
+
+
+
+             {% block extrascripts %}
+                <script src="{% static "js/form.js" %}"></script>
+                {% endblock %}
+{% endblock %}

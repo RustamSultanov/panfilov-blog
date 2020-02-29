@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.css" %}">
+    <link rel="stylesheet" href="{% static "libs/select2/select2.css" %}">
+{% endblock %}
+
+{% block title %}Добавить магазин{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Добавить магазин </h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+
+                    <form action="" method="post">
+                     {% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-label">Франчайзи</label>
+                            {{ form.partner }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Юридическое лицо</label>
+                           {{ form.entity_name }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Город</label>
+                            {{ form.city }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Адрес</label>
+                            {{ form.address }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ответственные лица</label>
+                            {{ form.responsibles }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Реквизиты</label>
+                            {{ form.details }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label w-100">Файлы реквизитов</label>
+                            {{ form.file }}
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-round">Сохранить</button>
+                        </div>
+
+                    </form>
+
+             {% block extrascripts %}
+                 <script src="{% static "libs/moment/moment.js" %}"></script>
+                <script src="{% static "libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js" %}"></script>
+                <script src="{% static "libs/select2/select2.js" %}"></script>
+                 <script src="{% static "js/form.js" %}"></script>
+                {% endblock %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+<!-- Slider -->
+
+    <div class="swiper-container hero-slider" id="swiper-with-pagination">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12">
+                            <div class="hero-slider__title">Школа плавания Александра Панфилова</div>
+                            <div class="hero-slider__description">Добро пожаловать в первую специализированную онлайн школу плавания
+                                для взрослых, детей и людей с ограниченными возможностями здоровья.</div>
+                            <a href="#" class="btn btn-round btn-primary">ЗАПИСЬ на тренировку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12">
+                            <div class="hero-slider__title">Школа плавания Александра Панфилова</div>
+                            <div class="hero-slider__description">Добро пожаловать в первую специализированную онлайн школу плавания
+                                для взрослых, детей и людей с ограниченными возможностями здоровья.</div>
+                            <a href="#" class="btn btn-round btn-primary">ЗАПИСЬ на тренировку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12">
+                            <div class="hero-slider__title">Школа плавания Александра Панфилова</div>
+                            <div class="hero-slider__description">Добро пожаловать в первую специализированную онлайн школу плавания
+                                для взрослых, детей и людей с ограниченными возможностями здоровья.</div>
+                            <a href="#" class="btn btn-round btn-primary">ЗАПИСЬ на тренировку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- / Slider -->
+{#<div class="swiper-container hero-slider" id="swiper-with-pagination">#}
+{#    <div class="swiper-wrapper">#}
+{#        <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9">#}
+{#                        <div class="hero-slider__title">Доступны новинки  меню для всех регионов франшизы</div>#}
+{#                        <div class="hero-slider__description">С 1 июня 2019 года будут доступны новинки роллов в меню для всех регионов франшизы. Ввести новинки необходимо до 1 июля.</div>#}
+{#                        <a href="#" class="btn btn-round btn-outline-white">Подробнее</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9">#}
+{#                        <div class="hero-slider__title">Доступны новинки  меню для всех регионов франшизы</div>#}
+{#                        <div class="hero-slider__description">С 1 июня 2019 года будут доступны новинки роллов в меню для всех регионов франшизы. Ввести новинки необходимо до 1 июля.</div>#}
+{#                        <a href="#" class="btn btn-round btn-outline-white">Подробнее</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% for new in news reversed %}#}
+{#            {% if new.image %}#}
+{#                 <div class="swiper-slide" style="background-image: url({{ new.image.file.url }})">#}
+{#                {% else %}#}
+{#        <div class="swiper-slide" style="background-image: url('{% static 'img/slider.jpg' %}')">#}
+{#        {% endif %}#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6 col-md-9">#}
+{#                        <div class="hero-slider__title">{{ new.title }}</div>#}
+{#                        <div class="hero-slider__description">{{new.announcement | richtext }}</div>#}
+{#                        <a href="{{new.url}}" class="btn btn-round btn-outline-white">Подробнее</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#    <div class="swiper-pagination"></div>#}
+{#</div>#}
+<!-- / Slider -->

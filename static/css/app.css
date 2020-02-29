@@ -1,0 +1,708 @@
+.navbar {
+  padding: 22.5px 15px; }
+
+.navbar-brand {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  line-height: 100%;
+  padding-top: 0;
+  padding-bottom: 0; }
+  @media screen and (max-width: 767px) {
+    .navbar-brand {
+      font-size: 18px; } }
+
+.navbar-brand-text {
+  display: inline-block;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 8px;
+  color: #E8E8E8;
+  opacity: 0.8;
+  margin-left: 10px;
+  text-transform: none; }
+  @media screen and (max-width: 767px) {
+    .navbar-brand-text {
+      display: none; } }
+
+.navbar-toggler {
+  padding: 0;
+  font-size: 34px; }
+
+#main_menu .navbar-nav {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase; }
+
+[class*='btn-outline'] {
+  border-width: 1px; }
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding: 22.5px 50px; } }
+
+@media screen and (min-width: 992px) {
+  #main_menu .navbar-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem; }
+    #main_menu .navbar-nav .nav-item {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem; } }
+
+.layout-navbar-fixed {
+  padding-top: 80px; }
+
+.hero-slider .swiper-slide {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  background-color: #fff;
+  background-position: center;
+  background-size: cover; }
+  @media screen and (max-width: 991px) {
+    .hero-slider .swiper-slide {
+      background-image: none !important; } }
+  @media screen and (max-width: 575px) {
+    .hero-slider .swiper-slide {
+      padding-top: 80px;
+      padding-bottom: 80px; } }
+
+.hero-slider__title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: -0.5px;
+  color: #212121;
+  padding-bottom: 40px; }
+  @media screen and (max-width: 575px) {
+    .hero-slider__title {
+      font-size: 45px; } }
+
+.hero-slider__description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 140%;
+  color: #212121;
+  padding-bottom: 40px; }
+
+.hero-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #0051ED; }
+
+.bg-light-blue {
+  background-color: #EBF4F7; }
+
+.bg-dark-blue {
+  background: #343B4A;
+  color: #fff; }
+  .bg-dark-blue .section-header {
+    color: #fff; }
+  .bg-dark-blue .card {
+    color: #212121; }
+
+.section {
+  padding-top: 72px;
+  padding-bottom: 90px; }
+  .section p {
+    margin-bottom: 27px; }
+  .section-header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.5px;
+    color: #212121;
+    margin-bottom: 82px; }
+
+.trener-image-wrap {
+  text-align: right;
+  margin-top: -85px; }
+  .trener-image-wrap img {
+    max-width: 100%; }
+  @media screen and (max-width: 991px) {
+    .trener-image-wrap {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 50px; } }
+
+.card {
+  border-radius: 8px; }
+  .card .small {
+    font-size: 11px; }
+  .card .card-img-top {
+    border-radius: 8px 8px 0 0; }
+  .card-body {
+    padding: 20px; }
+  .card-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 130%;
+    color: #212121;
+    margin-top: 22px; }
+  .card-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    color: #212121;
+    margin-top: 19px;
+    margin-bottom: 15px; }
+  .card-price {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #212121;
+    margin-top: 28px; }
+  .card-badge {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 30px;
+    border-radius: 22px;
+    display: inline-block;
+    padding-left: 16px;
+    padding-right: 16px; }
+    .card-badge-blue {
+      background: -webkit-gradient(linear, left top, right top, from(#002874), to(#0051ED));
+      background: linear-gradient(90deg, #002874 0%, #0051ED 100%);
+      color: #fff; }
+    .card-badge-red {
+      background: #FF3440;
+      color: #fff; }
+
+#programs .card {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25); }
+
+#programs .ui-rect-content {
+  padding: 10px; }
+
+#programs .card-text {
+  font-size: 12px; }
+
+#personal .price {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100px;
+  line-height: 130%;
+  letter-spacing: -0.25px; }
+
+#personal .price-description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 130%;
+  color: #757575;
+  margin-bottom: 25px;
+  max-width: 350px; }
+
+@media screen and (min-width: 1200px) {
+  #personal {
+    background-image: url("../img/image_77.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto 100%; } }
+
+#blog .card {
+  -webkit-box-shadow: 0px 0px 20px rgba(157, 157, 157, 0.25);
+          box-shadow: 0px 0px 20px rgba(157, 157, 157, 0.25);
+  min-height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#blog .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+#blog .category {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 140%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0051ED; }
+
+#blog .title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 130%;
+  color: #212121;
+  margin-top: auto; }
+
+#blog .date {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 140%;
+  color: #757575; }
+
+#contacts {
+  background: #32353A;
+  color: #fff;
+  padding-bottom: 110px;
+  position: relative; }
+  #contacts a:hover {
+    text-decoration: underline; }
+  #contacts .header {
+    margin-top: 72px;
+    margin-bottom: 72px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.5px;
+    color: #FFFFFF; }
+  #contacts .contact-label {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 140%;
+    color: #9C9C9C; }
+  #contacts .contact-phone {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 140%; }
+  #contacts .contact-phone-info {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 130%;
+    color: #9C9C9C; }
+  #contacts .contact-address, #contacts .contact-social a {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 130%;
+    color: #FFFFFF; }
+  #contacts .contact-social a {
+    display: inline-block;
+    margin-right: 10px; }
+  #contacts .contact-copyright, #contacts .contact-copyright a {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 130%;
+    color: #757575; }
+  #contacts #contacts-map {
+    width: 100%;
+    height: 300px; }
+    @media screen and (min-width: 992px) {
+      #contacts #contacts-map {
+        position: absolute;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 42%; } }
+
+@media screen and (max-width: 575px) {
+  #personal .price {
+    font-size: 75px; }
+  #personal .price-description {
+    max-width: 320px; }
+  #contacts .contact-phone {
+    font-size: 35px; }
+  #contacts .contact-address, #contacts .contact-social a {
+    font-size: 21px; } }
+
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 56px; }
+
+.custom-control-label:before {
+  top: 0.25rem; }
+
+#book .form-label, #book .custom-control-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+  color: #757575; }
+
+#book .result-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  color: #757575; }
+  #book .result-text #date, #book .result-text #time, #book .result-text #price {
+    color: #212121;
+    font-weight: 500; }
+
+#book .book-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+#calendar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  #calendar .month {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 140%;
+    color: #CBCBCB;
+    text-decoration: underline;
+    display: inline-block;
+    cursor: pointer; }
+    #calendar .month.active, #calendar .month:hover {
+      color: #0051ED;
+      text-decoration: none; }
+  #calendar .month-grid {
+    width: 100%; }
+  #calendar .days-grid {
+    margin-top: 21px;
+    width: 100%; }
+  #calendar .days-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: -4px;
+    margin-left: -4px; }
+  #calendar .day-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 140%;
+    color: #C2C2C2;
+    margin-bottom: 3px; }
+  #calendar .day-name, #calendar .day-col {
+    width: 14.2857143%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    text-align: center; }
+  #calendar .day-col {
+    margin: 0 4px 4px; }
+  #calendar .day {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+    border: 1px solid #EFEFEF; }
+    #calendar .day:not(.disabled) {
+      cursor: pointer; }
+      #calendar .day:not(.disabled):hover {
+        background: #0051ED;
+        border: 1px solid #0051ED;
+        border-radius: 4px; }
+        #calendar .day:not(.disabled):hover .day-status, #calendar .day:not(.disabled):hover .day-date {
+          color: #fff; }
+    #calendar .day-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+    #calendar .day-status {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 140%;
+      color: #757575;
+      display: none; }
+    #calendar .day-date {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 140%;
+      color: #757575;
+      padding-top: 5px; }
+    #calendar .day-month {
+      display: none;
+      color: #BBBBBB; }
+    #calendar .day.disabled {
+      background: #EFEFEF;
+      border: 1px solid #EFEFEF; }
+    #calendar .day.active {
+      background: #0051ED;
+      border: 1px solid #0051ED;
+      border-radius: 4px; }
+      #calendar .day.active .day-status, #calendar .day.active .day-date {
+        color: #fff; }
+  #calendar .time-grid .form-label {
+    line-height: 28px; }
+  #calendar .time-wrapper {
+    width: 100%;
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px; }
+  #calendar .time {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.25px;
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+    border: 1px solid #EFEFEF;
+    border-radius: 16px;
+    width: 160px;
+    margin: 9px 15px;
+    height: 32px;
+    padding: 6px 16px;
+    display: inline-block;
+    position: relative; }
+    #calendar .time .cancel {
+      display: none; }
+    #calendar .time.disabled {
+      background: #EFEFEF;
+      border: 1px solid #EFEFEF; }
+    #calendar .time.active {
+      background: #0051ED;
+      border: 1px solid #0051ED;
+      color: #fff; }
+      #calendar .time.active .cancel {
+        display: block;
+        position: absolute;
+        top: 7px;
+        right: 8px;
+        width: 16px;
+        height: 16px;
+        line-height: 0; }
+    #calendar .time:not(.disabled) {
+      cursor: pointer; }
+      #calendar .time:not(.disabled):hover {
+        background: #0051ED;
+        border: 1px solid #0051ED;
+        color: #fff; }
+
+@media screen and (min-width: 576px) {
+  #calendar .day-col {
+    margin: 0 8px 8px; }
+  #calendar .days-row {
+    margin-right: -8px;
+    margin-left: -8px; }
+  #calendar .day-status {
+    font-size: 10px;
+    display: block; }
+  #calendar .day-date {
+    font-size: 16px; }
+  #calendar .day-month {
+    display: inline; } }
+
+@media screen and (min-width: 768px) {
+  #calendar .day-col {
+    margin: 0 15px 15px; }
+  #calendar .days-row {
+    margin-right: -15px;
+    margin-left: -15px; }
+  #book .result-text {
+    margin-left: 30px; }
+  #book .book-result {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; } }
+
+@media screen and (min-width: 992px) {
+  #calendar .month-grid {
+    width: 635px;
+    margin-right: 30px; }
+  #calendar .time-grid {
+    width: 231px; }
+  #calendar .time-wrapper {
+    width: 100%;
+    padding-top: 17px; } }
+
+@media screen and (min-width: 1200px) {
+  #calendar .month-grid {
+    width: 635px;
+    margin-right: 30px; }
+  #calendar .day-name {
+    margin-left: 15px;
+    margin-right: 15px; }
+  #calendar .days-row {
+    margin-right: -15px;
+    margin-left: -15px; }
+  #calendar .day-content {
+    padding: 10px 5px; }
+  #calendar .time-grid {
+    width: 431px; } }
+
+.radio-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.25px;
+  display: inline-block;
+  border: 1px solid #EFEFEF;
+  border-radius: 16px;
+  padding: 3px 16px;
+  cursor: pointer; }
+  .radio-button:hover {
+    background: #0051ED;
+    border: 1px solid #0051ED;
+    color: #fff; }
+  .radio-button.active {
+    background: #0051ED;
+    border: 1px solid #0051ED;
+    color: #fff; }
+  .radio-button.disabled {
+    background: #EFEFEF;
+    border: 1px solid #EFEFEF;
+    color: #757575; }
+  .radio-button-wrapper input:checked + .radio-button {
+    background: #0051ED;
+    border: 1px solid #0051ED;
+    color: #fff; }
+  .radio-button-wrapper input:disabled + .radio-button {
+    background: #EFEFEF;
+    border: 1px solid #EFEFEF;
+    color: #757575; }
+
+input[type="radio"].hidden, input[type="checkbox"].hidden {
+  display: inline;
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1; }
+
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+  background: #FFFFFF;
+  height: 56px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .bottom-actions-item {
+    display: block;
+    margin-left: 12px;
+    margin-right: 12px; }
+
+@media screen and (min-width: 768px) {
+  .bottom-actions {
+    display: none; } }
+
+h1 {
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: -0.5px;
+  color: #212121; }
+
+@media screen and (max-width: 575px) {
+  h1 {
+    font-size: 30px; } }
+
+.breadcrumb {
+  font-size: 14px; }
+
+.program-hero {
+  width: 100%;
+  min-height: 260px;
+  background-size: cover;
+  background-position: center;
+  padding: 130px 16px 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .program-hero .breadcrumb-item, .program-hero .breadcrumb-item a, .program-hero h1 {
+    color: #fff; }
+  .program-hero .price {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%; }
+  .program-hero .program-info {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 16px; }
+
+.trener-name {
+  font-size: 11px;
+  color: #757575;
+  line-height: 13px;
+  margin-left: 8px; }

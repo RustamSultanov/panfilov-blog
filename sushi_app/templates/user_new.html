@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block title %}Добавить франчайзи{% endblock %}
+{% block page_title %}
+    <h2 class="text-light font-weight-normal mt-4 mb-1">Добавить франчайзи </h2>
+{% endblock %}
+
+{% block  breadcrumb%}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+    {% block content %}
+                    <form enctype="multipart/form-data" action="" method="post">
+                     {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label class="form-label">Фамилия</label>
+                            {{ form_user.last_name }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="form-label">Имя</label>
+                               {{ form_user.first_name }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="form-label">Отчество</label>
+                              {{ form_user_profile.middle_name }}
+                            </div>
+                        </div>
+                    {% for message in form_user.errors.values %}
+                                    {{ message }}
+                                  {% endfor %}
+                    {% for message in form_user_profile.errors.values %}
+                                    {{ message }}
+                                  {% endfor %}
+
+                {% block img %}
+                        <div class="form-group">
+                            <label class="form-label w-100">Фото</label>
+                           {{ form_user_profile.avatar }}
+                        </div>
+                {% endblock %}
+                        <div class="form-group">
+                            <label class="form-label w-100">Скан паспорта</label>
+                            {{ form_user_profile.scan }}
+                        </div>
+                    {% block employee %}
+                        {% endblock %}
+                        <div class="form-group">
+                            <label class="form-label">Почта</label>
+                          {{ form_user.email }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Телефон</label>
+                           {{ form_user_profile.phone_number }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Whatsapp</label>
+                           {{ form_user_profile.whatsapp }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Twitter</label>
+                           {{ form_user_profile.twitter }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Facebook</label>
+                           {{ form_user_profile.facebook }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Instagram</label>
+                           {{ form_user_profile.instagram }}
+                        </div>
+        {% block create %}
+                        <div class="form-group">
+                            <label class="form-label">Логин</label>
+                            {{ form_user.username }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Пароль</label>
+                            {{ form_user.password }}
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Повторите пароль</label>
+                            {{ form_user.password_check }}
+                        </div>
+                     {% endblock %}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-round">Сохранить</button>
+                        </div>
+
+                    </form>
+
+             {% block extrascripts %}
+                <script src="{% static "js/form.js" %}"></script>
+                {% endblock %}
+{% endblock %}
