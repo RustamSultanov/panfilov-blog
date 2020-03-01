@@ -1,33 +1,41 @@
 {% extends 'layout.html' %}
 
 {% load wagtailcore_tags %}
-{% load wagtailcore_tags wagtailimages_tags %} 
+{% load wagtailcore_tags wagtailimages_tags %}
 {% load widget_tweaks %}
 {% load static %}
 
 {% block title %}{{ page.title }}{% endblock %}
 
-{% block body_class %} template-homepage{% endblock %} 
 
-{% block page_title %}<h2 class="text-light font-weight-normal mt-4 mb-1">{{ page.title }}
-                         {% if user.user_profile.is_manager %}
-    <a href="{% url 'mickroservices:news_edit' page.id %}" class="btn btn-round btn-outline-primary btn-sm">Редактировать новость</a>
-     <a href="/cms/pages/{{page.id}}/delete/"  target="_blank" class="btn btn-round btn-outline-primary btn-sm">Удалить новость</a>
-    {% endif %}
-                        </h2>{% endblock %}
+{% block page_title %}
+    <div class="section">
+    <div class="container">
+    <h1>{{ page.title }}
+        {% if user.user_profile.is_manager %}
+            <a href="{% url 'mickroservices:news_edit' page.id %}" class="btn btn-round btn-outline-primary btn-sm">Редактировать
+                новость</a>
+            <a href="/cms/pages/{{ page.id }}/delete/" target="_blank" class="btn btn-round btn-outline-primary btn-sm">Удалить
+                новость</a>
+        {% endif %}
+    </h1>{% endblock %}
 
 {% block  breadcrumb %}
     {% include 'partials/breadcrumb.html' %}
 {% endblock %}
 
-{% block content %} 
-        <div class="mb-4 text-muted small text-uppercase">
-            {{ page.owner }} - {{ page.first_published_at }}
-        </div>
-        {% image page.image max-896x597%}
+{% block content %}
+    <div class="mb-4 text-muted small text-uppercase">
+        {{ page.owner }} - {{ page.first_published_at }}
+    </div>
+    {% image page.image max-896x597 class="img-fluid" %}
+    <div class="article-content">
         <div class="ql-content">
             <p>{{ page.body | richtext }}</p>
         </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
 
 {% block extracss %}

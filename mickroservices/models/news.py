@@ -1,9 +1,8 @@
 from django.db import models
 from django.urls import reverse
-
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.fields import RichTextField
+from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
@@ -25,12 +24,12 @@ class NewsPage(Page):
     ]
 
     class Meta:
-        verbose_name = "Новости"
+        verbose_name = "Программы"
 
-    def get_context(self, request):
+    def get_context(self, request, **kwargs):
         context = super(NewsPage, self).get_context(request)
         context['breadcrumb'] = [
-            {'title': 'Новости',
+            {'title': 'Программы',
              'url': reverse('mickroservices:news')},
             {'title': self.title}
         ]
