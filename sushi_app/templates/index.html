@@ -163,6 +163,7 @@
             </div>
         </div>
     </div>
+{% block  additional_content %}
     <div id="blog" class="section bg-light-blue">
         <div class="container">
             <div class="section-header">Блог</div>
@@ -170,36 +171,22 @@
                 <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках. </p>
             </div>
             <div class="row">
+                {% for blog in blogs %}
                 <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
                         <div class="card-body">
                             <div class="category">История плавания</div>
-                            <div class="title">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
+                            <div class="title">{{blog.title}}</div>
+                            <div class="date">{{blog.first_published_at}}N</div>
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card ui-bg-cover mb-4" style="background-image: url('{% static 'img/blog_1.png' %}')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title text-white">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
-                        </div>
-                    </a>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>
+{% endblock %}
     <div id="book" class="section">
         <div class="container">
             <div class="section-header">Онлайн запись</div>

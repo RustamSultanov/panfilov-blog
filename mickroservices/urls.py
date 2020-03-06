@@ -21,7 +21,7 @@ urlpatterns = [
          login_required(views.CourseView.as_view()),
          name='lesson'),
 
-    path('news/',
+    path('programs/',
          views.NewsView.as_view(),
          name='news'),
     path('news/new/',

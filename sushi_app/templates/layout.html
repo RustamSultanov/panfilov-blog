@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load wagtailcore_tags %}
 {% block layout %}
 <div class="fixed-top">
         <nav class="navbar bg-navbar-theme">
-            <a href="#" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 Панфилов
                 <span class="navbar-brand-text">
                 Школа плавания
@@ -41,13 +42,13 @@
         </nav>
     <nav class="navbar bg-navbar-secondary collapse" id="main_menu">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="javascript:void(0)">тренер</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Школа</a>
+            <a class="nav-item nav-link active" href="{% slugurl 'trainer' %}">тренер</a>
+                <a class="nav-item nav-link" href="{% slugurl 'школа' %}">Школа</a>
                 <a class="nav-item nav-link" href="{% url 'mickroservices:news' %}">Программы</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">персональные Тренировки </a>
-                <a class="nav-item nav-link" href="javascript:void(0)">лицаМ с овз </a>
+                <a class="nav-item nav-link" href="{% slugurl 'лицам-с-овз' %}">лицаМ с овз </a>
                 <a class="nav-item nav-link" href="javascript:void(0)">Блог</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Контакты</a>
+                <a class="nav-item nav-link" href="{% slugurl 'contacts' %}">Контакты</a>
             </div>
         </nav>
     </div>
@@ -66,10 +67,10 @@
                     <!-- Page content -->
                         {% block page_title %}{% endblock %}
                         {% block  breadcrumb%}{% endblock %}
-                        {% block  content %}{% endblock %}
+                        {% block  content %}{% block  additional_content %}{% endblock %}{% endblock %}
                     <!-- / Page content -->
 
-                {% block  additional_content %}{% endblock %}
+
 
                     {% include 'partials/footer.html'%}
 

@@ -22,7 +22,7 @@ from django.forms import modelformset_factory
 
 from chat.models import Message as Chat_Message
 from mickroservices.models import DocumentSushi
-from mickroservices.models import NewsPage, QuestionModel, IdeaModel
+from mickroservices.models import NewsPage, QuestionModel, IdeaModel, Blog
 from mickroservices.forms import AnswerForm, IdeaStatusForm
 from .forms import *
 from .models import *
