@@ -12,13 +12,21 @@ class NewsPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        verbose_name='Фоновая картинка'
     )
-    preview = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    subscription = models.BooleanField(default=False, verbose_name='Абонимент')
+    places_limited = models.BooleanField(default=False, verbose_name='Ограничено мест')
+    preview = RichTextField(blank=True, verbose_name='Превью для карточки')
+    body = RichTextField(blank=True, verbose_name='Основная информация о программе')
     announcement = models.TextField(blank=True)
+    cost = models.IntegerField(blank=True, verbose_name='Стоимость')
 
     content_panels = Page.content_panels + [
+        FieldPanel('preview', classname="full"),
+        FieldPanel('cost'),
+        FieldPanel('subscription'),
+        FieldPanel('places_limited'),
         FieldPanel('body', classname="full"),
         ImageChooserPanel('image'),
     ]

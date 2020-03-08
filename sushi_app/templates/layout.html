@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load static %}
 {% block layout %}
 <div class="fixed-top">
         <nav class="navbar bg-navbar-theme">
@@ -67,7 +68,31 @@
                     <!-- Page content -->
                         {% block page_title %}{% endblock %}
                         {% block  breadcrumb%}{% endblock %}
-                        {% block  content %}{% block  additional_content %}{% endblock %}{% endblock %}
+                        {% block  content %}
+                            {% block  additional_content %}
+    <div id="blog" class="section bg-light-blue">
+        <div class="container">
+            <div class="section-header">Блог</div>
+            <div class="row col-lg-6 mb-5">
+                <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках. </p>
+            </div>
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-sm-6 col-lg-4">
+                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                        <div class="card-body">
+                            <div class="category">История плавания</div>
+                            <div class="title">{{blog.title}}</div>
+                            <div class="date">{{blog.first_published_at}}N</div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}{% endblock %}
                     <!-- / Page content -->
 
 

@@ -4,23 +4,39 @@
 <div class="col-sm-6 col-lg-4">
                     <div class="card mb-4">
         {% if post.image %}
-            {% image post.image fill-283x188 class="card-img-top d-block ui-rect-60 ui-bg-cover" %}
+        <div class="w-100">
+                        <a href="{{post.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{post.image.file.url}}');">
+                        <div class="ui-rect-content d-flex flex-column justify-content-between">
+                            {% if post.subscription %}
+                                    <div class="top-badges">
+                                        <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                                    </div>
+                                {% endif %}
+             {% if post.places_limited %}
+                                    <div class="bottom-badges">
+                                        <span class="card-badge card-badge-red">Количество мест ограничено</span>
+                                    </div>
+                        {% endif %}
+                                </div>
+                        </a>
+                    </div>
+{#            {% image post.image fill-283x188 class="card-img-top d-block ui-rect-60 ui-bg-cover" %}#}
         {% endif %}
         <div class="card-body">
             <a href="{{post.url}}" class="card-title">{{post.title}}</a>
-            {% if post.type != None %}
-                {{post.type_str }}
-            {% else %}
-                <div class="small text-muted mb-3">{{post.first_published_at}}</div>
-            {% endif %}
+{#            {% if post.type != None %}#}
+{#                {{post.type_str }}#}
+{#            {% else %}#}
+{#                <div class="small text-muted mb-3">{{post.first_published_at}}</div>#}
+{#            {% endif %}#}
             <div class="card-text">
                 {%if post.preview%}
-                    {{post.preview}}
+                    {{post.preview | richtext}}
                 {% else %}
                     {{post.announcement | richtext }}
                 {% endif %}
             </div>
-        <div class="card-price">2 500 ₽</div>
+        <div class="card-price">{{post.cost }} ₽</div>
 {#            <a href="{{post.url}}" class="btn btn-sm btn-primary btn-round">Читать далее</a>#}
         </div>
     </div>

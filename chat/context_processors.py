@@ -1,4 +1,4 @@
-from mickroservices.models import Blog
+from mickroservices.models import Blog, NewsPage
 from .models import Message
 
 
@@ -29,4 +29,10 @@ def messages_for_user(request):
         blogs = blogs_all
     else:
         blogs = blogs_all[len(blogs_all) - 3:]
-    return {"blogs": blogs}
+    programs_all = NewsPage.objects.all().order_by(
+        '-first_published_at')
+    if len(programs_all) == 0 or len(programs_all) == 1 or len(programs_all) == 2 or len(programs_all) == 3:
+        programs = programs_all
+    else:
+        programs = programs_all[len(programs_all) - 3:]
+    return {"blogs": blogs, "programs": programs}

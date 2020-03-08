@@ -80,72 +80,34 @@
                 </div>
             </div>
             <div class="row">
+                {% for program in programs %}
                 <div class="col-sm-6 col-lg-4">
                     <div class="card mb-4">
                         <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{% static 'img/image_73.png' %}');">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="card-price">2 500 ₽</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{% static 'img/image_80.png' %}');">
+                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
                                 <div class="ui-rect-content d-flex flex-column justify-content-between">
+                                    {% if program.subscription %}
                                     <div class="top-badges">
                                         <span class="card-badge card-badge-blue">Абонемент на месяц</span>
                                     </div>
+                                    {% endif %}
+                         {% if program.places_limited %}
                                     <div class="bottom-badges">
                                         <span class="card-badge card-badge-red">Количество мест ограничено</span>
                                     </div>
+                                 {% endif %}
                                 </div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="media align-items-center mb-2">
-                                <img src="{% static "img/image_78.png" %}" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Тип: <span class="text-primary">Индивидуальная тренировка</span></div>
-                                </div>
-                            </div>
-                            <div class="media align-items-center mb-2">
-                                <img src="{% static "img/image_81.png" %}" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Возраст: <span class="text-primary">Любой</span></div>
-                                </div>
-                            </div>
-                            <div class="media align-items-center mb-2">
-                                <img src="{% static "img/image_79.png" %}" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Уровень ОФП: <span class="text-primary">Любой</span></div>
-                                </div>
-                            </div>
-                            <div class="card-price">2 500 ₽</div>
+                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <div class="card-text">{{program.preview | richtext}}</div>
+
+                            <div class="card-price">{{program.cost}} ₽</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{% static 'img/image_93.png' %}');">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="card-text text-primary">Индивидуальная тренировка  -  6-12 лет  -  Любой уровень ОФП</div>
-                            <div class="card-price">2 500 ₽</div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

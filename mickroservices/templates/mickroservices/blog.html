@@ -26,5 +26,69 @@
     </div>
     </div>
     </div>
+    {% block  additional_content %}
+    <div id="blog" class="section bg-light-blue">
+        <div class="container">
+            <div class="section-header">Блог</div>
+            <div class="row col-lg-6 mb-5">
+                <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках. </p>
+            </div>
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-sm-6 col-lg-4">
+                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                        <div class="card-body">
+                            <div class="category">История плавания</div>
+                            <div class="title">{{blog.title}}</div>
+                            <div class="date">{{blog.first_published_at}}N</div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <div id="programs" class="section bg-dark-blue">
+        <div class="container">
+            <div class="section-header">Программы обучения</div>
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня подготовки.</p>
+                </div>
+            </div>
+            <div class="row">
+                {% for program in programs %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card mb-4">
+                        <div class="w-100">
+                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
+                                <div class="ui-rect-content d-flex flex-column justify-content-between">
+                                    {% if program.subscription %}
+                                    <div class="top-badges">
+                                        <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                                    </div>
+                                    {% endif %}
+                         {% if program.places_limited %}
+                                    <div class="bottom-badges">
+                                        <span class="card-badge card-badge-red">Количество мест ограничено</span>
+                                    </div>
+                                 {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <div class="card-text">{{program.preview | richtext}}</div>
+
+                            <div class="card-price">{{program.cost}} ₽</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
