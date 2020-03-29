@@ -1,9 +1,10 @@
 from django.contrib.auth import views as auth_view
 from django.contrib.auth.decorators import login_required
-from django.urls import path
+from django.urls import path, reverse_lazy
+from django_registration.backends.one_step.views import RegistrationView
 
 from . import views
-from .forms import LoginForm
+from .forms import LoginForm, RegistrationCustomForm
 
 urlpatterns = [
     path(
@@ -17,6 +18,9 @@ urlpatterns = [
         'logout',
         auth_view.LogoutView.as_view(next_page="login"),
         name='logout'),
+    path('registration', RegistrationView.as_view(success_url=reverse_lazy("base"), form_class=RegistrationCustomForm,
+                                                  template_name='registration.html'),
+         name='register'),
     path('employee/<int:user_id>', views.employee_info, name='employee_info'),
     path('employee/all', views.employee_list, name='employee_list'),
     path('faq-all', views.faq_list, name='faq_list'),

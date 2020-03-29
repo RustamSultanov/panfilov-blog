@@ -1,11 +1,12 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-from wagtail.documents.models import Document, AbstractDocument
-from phonenumber_field.modelfields import PhoneNumberField
-from django.conf import settings
-from wagtail.core.fields import RichTextField
-from wagtail.documents.models import get_document_model
 import wagtail.users.models
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.contrib.postgres.fields import DateTimeRangeField
+from django.contrib.postgres.indexes import GistIndex
+from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+from wagtail.core.fields import RichTextField
+from wagtail.documents.models import Document, AbstractDocument
 
 from mickroservices.models import DocumentSushi
 
@@ -15,6 +16,36 @@ STATUS_CHOICE = (
     (ST_IN_PROGRESS, "Обрабатывается"),
     (ST_NOT_SOLVED, "Не решен"),
 )
+CL_ONE, CL_ONE_AND_ONE = range(2)
+CLASSES_CHOICE = (
+    (CL_ONE, "Индивидуальная тренировка"),
+    (CL_ONE_AND_ONE, "Индивидуальная тренировка 1+1"),
+)
+
+
+class Classes(models.Model):
+    duration = DateTimeRangeField(db_index=True, unique=True, verbose_name='Время занятия')
+    type_classes = models.SmallIntegerField(choices=CLASSES_CHOICE, default=CL_ONE, verbose_name='Тип занятия')
+    is_busy = models.BooleanField(default=False, verbose_name='Занято')
+    is_attended = models.BooleanField(default=False, verbose_name='Посещено')
+    is_paid = models.BooleanField(default=False, verbose_name='Оплачено')
+    date_paid = models.DateField(null=True, blank=True, verbose_name='Дата оплаты')
+    check_link = models.URLField(null=True, max_length=200, blank=True, verbose_name='Ссылка на чек')
+    cost = models.IntegerField(default=2500, verbose_name='Стоимость')
+    user = models.ForeignKey(on_delete=models.CASCADE, to=settings.AUTH_USER_MODEL, related_name='classes',
+                             limit_choices_to={'is_staff': False}, null=True, blank=True,
+                             verbose_name='Посетитель занятия')
+    date_create = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.duration}"
+
+    class Meta:
+        verbose_name = "Занятие"
+        verbose_name_plural = 'Занятия'
+        indexes = [
+            GistIndex(fields=['duration'])
+        ]
 
 
 class Department(models.Model):
@@ -48,7 +79,7 @@ class UserProfile(models.Model):
                              null=True, blank=True, limit_choices_to={'is_head': True})
     department = models.ForeignKey(on_delete=models.SET_NULL, to=Department, related_name='member',
                                    null=True, blank=True)
-    scan = models.FileField(upload_to='images',blank=True)
+    scan = models.FileField(upload_to='images', blank=True)
     middle_name = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):

@@ -1,34 +1,37 @@
-from .models import Messeges, Feedback, Requests, Task, UserProfile, Shop
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
-from django.db import models
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
-# from django_registration.forms import RegistrationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
+
+from .models import Messeges, Feedback, Requests, Task, UserProfile, Shop
 
 User = get_user_model()
 
 
-# class RegistrationCustomForm(RegistrationForm):
-#     class Meta(RegistrationForm.Meta):
-#         model = User
-#         fields = [
-#             User.USERNAME_FIELD,
-#             'first_name',
+class RegistrationCustomForm(UserCreationForm):
+    phone_number = PhoneNumberField()
 
-#         ]
-#         widgets = {
-#             User.USERNAME_FIELD : PhoneNumberInternationalFallbackWidget(attrs={'id':"email", 'class':"validate"}),
-#         }
-#     def __init__(self, *args, **kwargs):
-#         super(RegistrationCustomForm, self).__init__(*args, **kwargs)
-#         # email_field = User.get_email_field_name()
-#         # self.fields[email_field].required = False
+    class Meta(UserCreationForm.Meta):
+        fields = [
+            "username",
+            'first_name',
+            'last_name',
+            'password1',
+            'password2'
+        ]
+        widgets = {
+            "username": forms.EmailInput(),
+        }
 
-#     def save(self,commit=False):
-#         user = super(R
-# password_check = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Повторите пароль', 'name' : 'password_check'}))
+    def save(self, commit=False):
+        user = super(RegistrationCustomForm, self).save(commit=False)
+        user.email = user.username
+        user.save()
+        user_prof = UserProfile(user=user, phone_number=self.cleaned_data["phone_number"])
+        user_prof.save()
+        return user
+
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(
