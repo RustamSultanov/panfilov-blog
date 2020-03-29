@@ -204,6 +204,10 @@ def head_check(user):
     return user.user_profile.is_head
 
 
+def admin_check(user):
+    return user.is_superuser
+
+
 def base(request):
     employees_list = UserProfile.objects.prefetch_related(
         "user", "wagtail_profile", "department"
@@ -215,6 +219,40 @@ def base(request):
     else:
         news = news_all[len(news_all) - 3:]
     return render(request, "index.html", {"employee_list": employees_list, "news": news})
+
+
+@login_required
+def user_lk(request):
+    classes_list = Classes.objects.filter(user=request.user)
+    return render(
+        request,
+        "account.html",
+        {"classes_list": classes_list,
+         "breadcrumb": [{"title": "Личный кабинет"}],
+
+         },
+    )
+
+
+@login_required
+@user_passes_test(admin_check)
+def admin_lk(request):
+    return render(
+        request,
+        "attendance.html",
+        {
+            "breadcrumb": [{"title": "Личный кабинет"}],
+
+        },
+    )
+
+
+@login_required
+def lk(request):
+    if request.user.is_superuser:
+        return HttpResponseRedirect(reverse_lazy("admin_lk"))
+    else:
+        return HttpResponseRedirect(reverse_lazy("user_lk"))
 
 
 @login_required
