@@ -28,6 +28,7 @@ class Classes(models.Model):
     type_classes = models.SmallIntegerField(choices=CLASSES_CHOICE, default=CL_ONE, verbose_name='Тип занятия')
     is_busy = models.BooleanField(default=False, verbose_name='Занято')
     is_attended = models.BooleanField(default=False, verbose_name='Посещено')
+    is_not_attended = models.BooleanField(default=False, verbose_name='Пропущено')
     is_paid = models.BooleanField(default=False, verbose_name='Оплачено')
     date_paid = models.DateField(null=True, blank=True, verbose_name='Дата оплаты')
     check_link = models.URLField(null=True, max_length=200, blank=True, verbose_name='Ссылка на чек')

@@ -24,6 +24,9 @@ urlpatterns = [
     path('programs/',
          views.NewsView.as_view(),
          name='news'),
+    path('blogs/',
+         views.BlogsView.as_view(),
+         name='blogs'),
     path('news/new/',
          login_required(views.NewsCreateView.as_view()),
          name='news_new'),
@@ -49,5 +52,5 @@ urlpatterns = [
          name='tech_cards'),
     path('regulations/',
          login_required(views.RegulationsListView.as_view()),
-         name='regulations'),    
+         name='regulations'),
 ]

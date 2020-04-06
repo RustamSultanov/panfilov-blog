@@ -71,8 +71,8 @@
   padding-top: 80px; }
 
 .hero-slider .swiper-slide {
-  padding-top: 250px;
-  padding-bottom: 115px;
+  padding-top: 130px;
+  padding-bottom: 130px;
   background-color: #fff;
   background-position: center;
   background-size: cover; }
@@ -123,7 +123,7 @@
     color: #212121; }
 
 .section {
-  padding-top: 152px;
+  padding-top: 72px;
   padding-bottom: 90px; }
   .section p {
     margin-bottom: 27px; }

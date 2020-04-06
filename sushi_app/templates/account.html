@@ -35,7 +35,7 @@
                                                                                      class="font-weight-bold text-primary">Скачать
                                 чек</a> {% endif %}</div>
                         {% else %}
-                            <div class="card-text small mt-2">Оплатить до {{ class.duration }}</div>
+                            <div class="card-text small mt-2">Оплатить до {{ class.duration.upper|date:"DATE_FORMAT" }}</div>
                         {% endif %}
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="card-price mt-0">{{ class.cost }} ₽</div>
@@ -54,11 +54,12 @@
     <div class="h3 mt-4">Расписание</div>
     <div class="row">
      {% for class in classes_list %}
+         {% if class.is_attended or class.is_not_attended %}
         <div class="col-sm-6 col-lg-4">
             <div class="card mb-4">
                 <div class="card-body">
                     <a href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
-                    <div class="card-text small mt-2">ФОК с бассейном «Солнечный», {{ class.duration }}15 февраля 8:30 — 9:15</div>
+                    <div class="card-text small mt-2">ФОК с бассейном «Солнечный», {{ class.duration.upper|date:"DATE_FORMAT" }} {{ class.duration.lower|date:"TIME_FORMAT" }} — {{ class.duration.upper|date:"TIME_FORMAT" }}</div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="media align-items-center">
                             <img src="{% static 'img/trener.png' %}" alt="" class="ui-w-30">
@@ -66,13 +67,14 @@
                         </div>
                         {% if class.is_attended %}
                         <span class="card-badge bg-success text-white">Занятие посещено</span>
-                        {% else %}
+                        {% elif class.is_not_attended %}
                             <span class="card-badge card-badge-red">Занятие пропущено</span>
                         {% endif %}
                     </div>
                 </div>
             </div>
         </div>
+         {% endif %}
         {% endfor %}
 
     </div>

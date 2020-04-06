@@ -1,3 +1,4 @@
+from django.urls import reverse
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
@@ -34,6 +35,8 @@ class Blog(Page):
     def get_context(self, request, **kwargs):
         context = super(Blog, self).get_context(request)
         context['breadcrumb'] = [
+            {'title': 'Блог',
+             'url': reverse('mickroservices:blogs')},
             {'title': self.title}
         ]
         return context

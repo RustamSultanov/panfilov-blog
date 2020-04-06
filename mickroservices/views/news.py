@@ -5,9 +5,22 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 
-from mickroservices.models import NewsPage
+from mickroservices.models import NewsPage, Blog
 from mickroservices.forms import NewsForm
 from wagtail.core.models import Page
+
+
+class BlogsView(ListView):
+    template_name = 'blogs.html'
+    model = Blog
+    paginate_by = 9
+    context_object_name = 'news'
+    ordering = 'first_published_at'
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogsView, self).get_context_data(**kwargs)
+        context['breadcrumb'] = [{'title': 'Блог'}]
+        return context
 
 
 class NewsView(ListView):
@@ -19,7 +32,7 @@ class NewsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(NewsView, self).get_context_data(**kwargs)
-        context['breadcrumb'] = [{'title': 'Програмы'}]
+        context['breadcrumb'] = [{'title': 'Программы'}]
         return context
 
 
@@ -37,6 +50,7 @@ class NewsCreateView(CreateView):
             {'title': context['title']}
         ]
         return context
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.slug = slugify(self.object.title, allow_unicode=True)
@@ -71,6 +85,7 @@ class NewsEditView(UpdateView):
             {'title': context['title']}
         ]
         return context
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.slug = slugify(self.object.title, allow_unicode=True)

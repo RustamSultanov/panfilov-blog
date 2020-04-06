@@ -1,0 +1,435 @@
+{% extends 'layout.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block title %}Школа Панфилова - Блог{% endblock %}
+
+{% block page_title %}
+    <div id="programs" class="section ">
+    <div class="container">
+    <h1>Блог
+    </h1>
+{% endblock %}
+
+{% block  breadcrumb %}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+{% block content %}
+{#    <div class="article-content">#}
+{#        <p>#}
+{#            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non consequat ipsum, vel consequat magna. Class#}
+{#            aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nisl nunc,#}
+{#            dignissim quis leo nec, elementum luctus lectus. Curabitur pharetra lobortis turpis non ultricies. Sed lorem#}
+{#            velit, vulputate sed eleifend quis, consectetur eget eros. Suspendisse mauris tellus, luctus eget sapien#}
+{#            eget, ultricies venenatis augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames#}
+{#            ac turpis egestas.#}
+{#        </p>#}
+{#    </div>#}
+    <div class="row">
+        {% for new in news reversed %}
+            {% include "partials/item_blogs.html"  with post=new %}
+        {% empty %}
+            Новых постов нет
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+    {% if is_paginated %}
+        {% include 'partials/pagination.html' with posts=page_obj %}
+    {% endif %}
+<div id="programs" class="section bg-dark-blue">
+        <div class="container">
+            <div class="section-header">Программы обучения</div>
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня подготовки.</p>
+                </div>
+            </div>
+            <div class="row">
+                {% for program in programs %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card mb-4">
+                        <div class="w-100">
+                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
+                                <div class="ui-rect-content d-flex flex-column justify-content-between">
+                                    {% if program.subscription %}
+                                    <div class="top-badges">
+                                        <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                                    </div>
+                                    {% endif %}
+                         {% if program.places_limited %}
+                                    <div class="bottom-badges">
+                                        <span class="card-badge card-badge-red">Количество мест ограничено</span>
+                                    </div>
+                                 {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <div class="card-text">{{program.preview | richtext}}</div>
+
+                            <div class="card-price">{{program.cost}} ₽</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="book" class="section">
+        <div class="container">
+            <div class="section-header">Онлайн запись</div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Для записи на тренировку необходимо выбрать тип занятия, месяц и доступную дату и время занятия в форме, размещенной ниже.</p>
+                </div>
+            </div>
+            <form>
+                <label class="form-label">Тип занятия:</label>
+                <div class="mt-2 mb-4 radio-button-wrapper">
+                    <input type="radio" class="hidden" id="type_1" name="type">
+                    <label for="type_1" class="radio-button mr-2 mb-2">Индивидуальная тренировка</label>
+                    <input type="radio" class="hidden" id="type_2" name="type">
+                    <label for="type_2" class="radio-button">Индивидуальная тренировка 1+1</label>
+                </div>
+                <div id="calendar">
+                    <div class="month-grid">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <label class="form-label">Дата занятия:</label>
+                            <div id="month">
+                                <div class="month active">Февраль 2020</div>
+                                <div class="month ml-2">Март 2020</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="days-grid">
+                            <div class="days-row">
+                                <div class="day-name">Пн</div>
+                                <div class="day-name">Вт</div>
+                                <div class="day-name">Ср</div>
+                                <div class="day-name">Чт</div>
+                                <div class="day-name">Пт</div>
+                                <div class="day-name">Сб</div>
+                                <div class="day-name">Вс</div>
+                            </div>
+                            <div class="days-row">
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">27<span class="day-month">.01</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">28<span class="day-month">.01</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">29<span class="day-month">.01</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">30<span class="day-month">.01</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">31<span class="day-month">.01</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day disabled">
+                                        <div class="day-content">
+                                            <div class="day-status">Занято</div>
+                                            <div class="day-date">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="days-row">
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">3</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">4</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">5</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">6</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">7</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">9</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="days-row">
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">10</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">11</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">12</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">13</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day active">
+                                        <div class="day-content">
+                                            <div class="day-status">Ваш выбор</div>
+                                            <div class="day-date">14</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">15</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">16</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="days-row">
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">17</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">18</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">19</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">20</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">21</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">22</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">23</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="days-row">
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">24</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">25</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">26</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">27</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">28</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">29</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="day-col">
+                                    <div class="day">
+                                        <div class="day-content">
+                                            <div class="day-status">Свободно</div>
+                                            <div class="day-date">1<span class="day-month">.02</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="time-grid">
+                        <label class="form-label">Время занятия:</label>
+                        <hr>
+                        <div class="time-wrapper">
+                            <div class="time">7:00 — 7:45</div>
+                            <div class="time disabled">Занято</div>
+                            <div class="time active">8:30 — 9:15<div class="cancel"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 10.87L10.87 12L8 9.13L5.13 12L4 10.87L6.87 8L4 5.13L5.13 4L8 6.87L10.87 4L12 5.13L9.13 8L12 10.87ZM8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0Z" fill="white" fill-opacity="0.8"/>
+                            </svg>
+                            </div></div>
+                            <div class="time">9:15 — 10:00</div>
+                            <div class="time">10:00 — 10:45</div>
+                            <div class="time">10:45 — 11:30</div>
+                            <div class="time">11:30 — 12:15</div>
+                            <div class="time">12:15 — 13:00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-result">
+                    <button class="btn btn-primary btn-round">записаться на тренировку</button>
+                    <div class="result-text">Вы выбрали: <span id="date">14 февраля</span>, <span id="time">8:30 — 9:15</span>   Стоимость: <span id="price">1&nbsp;500&nbsp;₽</span> (цена без скидки 2&nbsp;500&nbsp;₽).</div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,788 +1,139 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-<html lang="en" class="landing-2 default-style layout-navbar-fixed">
-<head>
-    <title>Школа Панфилова - Посещаемость</title>
+{% block title %}Школа Панфилова - Посещаемость{% endblock %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap&subset=cyrillic" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800" rel="stylesheet">
-
-    <!-- Icon fonts -->
-    <link rel="stylesheet" href="fonts/ionicons.css">
-    <link rel="stylesheet" href="fonts/linearicons.css">
-    <link rel="stylesheet" href="fonts/fontawesome.css">
-
-    <!-- Core stylesheets -->
-    <link rel="stylesheet" href="css/rtl/bootstrap-material.css" class="theme-settings-bootstrap-css">
-    <link rel="stylesheet" href="css/rtl/appwork-material.css" class="theme-settings-appwork-css">
-    <link rel="stylesheet" href="css/rtl/theme-panfilov-material.css" class="theme-settings-theme-css">
-    <link rel="stylesheet" href="css/rtl/colors.css" class="theme-settings-colors-css">
-    <link rel="stylesheet" href="css/rtl/uikit.css">
-
-    <script src="js/material-ripple.js"></script>
-    <script src="js/layout-helpers.js"></script>
-
-    <!-- Core scripts -->
-    <script src="js/pace.js"></script>
-
-    <!-- Page -->
-    <link rel="stylesheet" href="css/app.css">
-
-    <!-- Libs -->
-    <link rel="stylesheet" href="libs/swiper/swiper.css">
-</head>
-
-
-<body>
-    <div class="fixed-top">
-        <nav class="navbar bg-navbar-theme">
-            <a href="#" class="navbar-brand">
-                Панфилов
-                <span class="navbar-brand-text">
-                Школа плавания
-                <br>Александра Панфилова</span>
-            </a>
-            <div class="ml-auto d-flex align-items-center">
-                <a href="javascript:void(0)" class="btn btn-outline-white btn-round btn-sm d-none d-md-inline-block">Онлайн запись</a>
-                <a href="javascript:void(0)" class="ml-4 d-none d-md-inline-block">
-                    <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 12C19 10.9494 18.8189 9.90914 18.4672 8.93853C18.1154 7.96793 17.5998 7.08601 16.9497 6.34315C16.2997 5.60028 15.5281 5.011 14.6788 4.60896C13.8295 4.20693 12.9193 4 12 4C11.0807 4 10.1705 4.20693 9.32122 4.60896C8.47194 5.011 7.70026 5.60028 7.05025 6.34315C6.40024 7.08601 5.88463 7.96793 5.53284 8.93853C5.18106 9.90914 5 10.9494 5 12" stroke="white"/>
-                        <path d="M15 19C15.5253 19 16.0454 18.8965 16.5307 18.6955C17.016 18.4945 17.457 18.1999 17.8284 17.8284C18.1999 17.457 18.4945 17.016 18.6955 16.5307C18.8965 16.0454 19 15.5253 19 15" stroke="white"/>
-                        <rect x="15.5" y="18.5" width="2" height="3" rx="1" transform="rotate(90 15.5 18.5)" stroke="white"/>
-                        <rect x="3.5" y="11.5" width="3" height="4" rx="1.5" stroke="white"/>
-                        <rect x="17.5" y="11.5" width="3" height="4" rx="1.5" stroke="white"/>
-                    </svg>
-                </a>
-                <a href="javascript:void(0)" class="ml-2">
-                    <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <mask id="path-1-inside-1" fill="white">
-                            <path d="M20 19C20 17.9494 19.7931 16.9091 19.391 15.9385C18.989 14.9679 18.3997 14.086 17.6569 13.3431C16.914 12.6003 16.0321 12.011 15.0615 11.609C14.0909 11.2069 13.0506 11 12 11C10.9494 11 9.90914 11.2069 8.93853 11.609C7.96793 12.011 7.08601 12.6003 6.34315 13.3431C5.60028 14.086 5.011 14.9679 4.60896 15.9385C4.20693 16.9091 4 17.9494 4 19L12 19H20Z"/>
-                        </mask>
-                        <path d="M20 19C20 17.9494 19.7931 16.9091 19.391 15.9385C18.989 14.9679 18.3997 14.086 17.6569 13.3431C16.914 12.6003 16.0321 12.011 15.0615 11.609C14.0909 11.2069 13.0506 11 12 11C10.9494 11 9.90914 11.2069 8.93853 11.609C7.96793 12.011 7.08601 12.6003 6.34315 13.3431C5.60028 14.086 5.011 14.9679 4.60896 15.9385C4.20693 16.9091 4 17.9494 4 19L12 19H20Z" stroke="white" stroke-width="2" mask="url(#path-1-inside-1)"/>
-                        <circle cx="12" cy="8" r="3.5" stroke="white"/>
-                    </svg>
-                </a>
-                <a href="javascript:void(0)" class="ml-3 navbar-toggler" data-toggle="collapse" data-target="#main_menu">
-                    <i class="ion ion-md-menu"></i>
-                </a>
-            </div>
-        </nav>
-        <nav class="navbar bg-navbar-secondary collapse" id="main_menu">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link active" href="javascript:void(0)">тренер</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Школа</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Программы</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">персональные Тренировки </a>
-                <a class="nav-item nav-link" href="javascript:void(0)">лицаМ с овз </a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Блог</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Контакты</a>
-            </div>
-        </nav>
-    </div>
+{% block page_title %}
     <div class="section">
-        <div class="container">
-            <h1>Посещаемость</h1>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="javascript:void(0)">Главная</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="javascript:void(0)">Занятия</a>
-                </li>
-                <li class="breadcrumb-item active">Посещаемость</li>
-            </ol>
-            <table class="table-responsive table" style="vertical-align: center;">
-                <tr>
-                    <th>Ученик</th>
-                    <th>Тип занятия</th>
-                    <th>Дата</th>
-                    <th>Время</th>
-                    <th>Оплата</th>
-                    <th>Посещаемость</th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><a href="#" class="btn btn-sm btn-primary btn-round">Был</a>&nbsp;<a href="#" class="btn btn-sm btn-primary btn-round">Не был</a></td>
-                </tr>
+    <div class="container">
+    <h1>Посещаемость</h1>
+{% endblock %}
+{% block  breadcrumb %}
+    {% include 'partials/breadcrumb.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <table class="table-responsive table" style="vertical-align: center;">
+        <tr>
+            <th>Ученик</th>
+            <th>Тип занятия</th>
+            <th>Дата</th>
+            <th>Время</th>
+            <th>Оплата</th>
+            <th>Посещаемость</th>
+        </tr>
+        {% for class in classes_list %}
+            {% if class.user %}
                 <tr>
                     <td>
                         <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
+                            <div class="media-body ml-2">{{ class.user.get_full_name }}</div>
                         </div>
                     </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
+                    <td class="align-middle">{{ class.get_type_classes_display }}</td>
+                    <td class="align-middle">{{ class.duration.upper|date:"DATE_FORMAT" }}</td>
+                    <td class="align-middle">{{ class.duration.lower|date:"TIME_FORMAT" }}
+                        — {{ class.duration.upper|date:"TIME_FORMAT" }}</td>
+                    <td class="align-middle">
+                        {% if class.is_paid %}
+                            <span class="badge badge-outline-success badge-pill">Оплачено</span>
+                        {% else %}
+                            <span class="badge badge-outline-danger badge-pill">Не оплачено</span>
+                        {% endif %}
                     </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
+                    <td class="align-middle">
+                        {% if class.is_attended %}
+                            <span class="badge badge-outline-success badge-pill">Был</span>
+                        {% elif class.is_not_attended %}
+                            <span class="badge badge-outline-danger badge-pill">Не был</span>
+                        {% else %}
+                            <a href="{% url 'attendance_true' class.id %}"
+                               class="btn btn-sm btn-primary btn-round">Был</a>
+                            &nbsp;<a href="{% url 'attendance_false' class.id %}"
+                                     class="btn btn-sm btn-primary btn-round">Не
+                            был</a>
+                        {% endif %}
                     </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><a href="#" class="btn btn-sm btn-primary btn-round">Был</a>&nbsp;<a href="#" class="btn btn-sm btn-primary btn-round">Не был</a></td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><a href="#" class="btn btn-sm btn-primary btn-round">Был</a>&nbsp;<a href="#" class="btn btn-sm btn-primary btn-round">Не был</a></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-danger badge-pill">Не был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Был</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="media align-items-center">
-                            <img src="img/avatars/1-small.png" alt="" class="ui-w-40 rounded-circle">
-                            <div class="media-body ml-2">Иванов Иван</div>
-                        </div>
-                    </td>
-                    <td class="align-middle">Индивидуальная тренировка</td>
-                    <td class="align-middle">23.03</td>
-                    <td class="align-middle">10:30</td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Оплачено</span></td>
-                    <td class="align-middle"><span class="badge badge-outline-success badge-pill">Был</span></td>
-                </tr>
-            </table>
-        </div>
+            {% endif %}
+        {% endfor %}
+    </table>
+    {% if is_paginated %}
+        {% include 'partials/pagination.html' with posts=page_obj %}
+    {% endif %}
+
     </div>
+
     <div id="programs" class="section bg-dark-blue">
         <div class="container">
             <div class="section-header">Программы обучения</div>
             <div class="row mb-5">
                 <div class="col-lg-6">
-                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня подготовки.</p>
+                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня
+                        подготовки.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('img/image_73.png');">
+                {% for program in programs %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mb-4">
+                            <div class="w-100">
+                                <a href="{{ program.url }}" class="card-img-top d-block ui-rect-60 ui-bg-cover"
+                                   style="background-image: url('{{ program.image.file.url }}');">
+                                    <div class="ui-rect-content d-flex flex-column justify-content-between">
+                                        {% if program.subscription %}
+                                            <div class="top-badges">
+                                                <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                                            </div>
+                                        {% endif %}
+                                        {% if program.places_limited %}
+                                            <div class="bottom-badges">
+                                                <span class="card-badge card-badge-red">Количество мест ограничено</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ program.url }}" class="card-title">{{ program.title }}</a>
+                                <div class="card-text">{{ program.preview | richtext }}</div>
+
+                                <div class="card-price">{{ program.cost }} ₽</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% block  additional_content %}
+        <div id="blog" class="section bg-light-blue">
+            <div class="container">
+                <div class="section-header">Блог</div>
+                <div class="row col-lg-6 mb-5">
+                    <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных
+                        процессах обучения и авторских методиках. </p>
+                </div>
+                <div class="row">
+                    {% for blog in blogs %}
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="{{ blog.url }}" class="card mb-4"
+                               style="background-image: url('{% static 'img/blog_default.png' %}')">
+                                <div class="card-body">
+                                    <div class="category">История плавания</div>
+                                    <div class="title">{{ blog.title }}</div>
+                                    <div class="date">{{ blog.first_published_at }}N</div>
+                                </div>
                             </a>
                         </div>
-                        <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="card-price">2 500 ₽</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('img/image_80.png');">
-                                <div class="ui-rect-content d-flex flex-column justify-content-between">
-                                    <div class="top-badges">
-                                        <span class="card-badge card-badge-blue">Абонемент на месяц</span>
-                                    </div>
-                                    <div class="bottom-badges">
-                                        <span class="card-badge card-badge-red">Количество мест ограничено</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="media align-items-center mb-2">
-                                <img src="img/image_78.png" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Тип: <span class="text-primary">Индивидуальная тренировка</span></div>
-                                </div>
-                            </div>
-                            <div class="media align-items-center mb-2">
-                                <img src="img/image_81.png" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Возраст: <span class="text-primary">Любой</span></div>
-                                </div>
-                            </div>
-                            <div class="media align-items-center mb-2">
-                                <img src="img/image_79.png" alt="">
-                                <div class="media-body ml-3">
-                                    <div class="small">Уровень ОФП: <span class="text-primary">Любой</span></div>
-                                </div>
-                            </div>
-                            <div class="card-price">2 500 ₽</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a href="javascript:void(0)" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('img/image_93.png');">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="javascript:void(0)" class="card-title">Индивидуальные тренировки</a>
-                            <div class="card-text">Персональные тренировки с учётом ваших физических возможностей и выбранной программы обучения.</div>
-                            <div class="card-text text-primary">Индивидуальная тренировка  -  6-12 лет  -  Любой уровень ОФП</div>
-                            <div class="card-price">2 500 ₽</div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
-    </div>
-    <div id="blog" class="section bg-light-blue">
-        <div class="container">
-            <div class="section-header">Блог</div>
-            <div class="row col-lg-6 mb-5">
-                <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках. </p>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card mb-4" style="background-image: url('img/blog_default.png')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card ui-bg-cover mb-4" style="background-image: url('img/blog_1.png')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title text-white">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <a href="javascript:void(0)" class="card mb-4" style="background-image: url('img/blog_default.png')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title">20 апреля 2020 года команда Школы Панфилова выйграла 3 медали</div>
-                            <div class="date">23 апреля 2020</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="book" class="section">
-        <div class="container">
-            <div class="section-header">Онлайн запись</div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <p>Для записи на тренировку необходимо выбрать тип занятия, месяц и доступную дату и время занятия в форме, размещенной ниже.</p>
-                </div>
-            </div>
-            <form>
-                <label class="form-label">Тип занятия:</label>
-                <div class="mt-2 mb-4 radio-button-wrapper">
-                    <input type="radio" class="hidden" id="type_1" name="type">
-                    <label for="type_1" class="radio-button mr-2 mb-2">Индивидуальная тренировка</label>
-                    <input type="radio" class="hidden" id="type_2" name="type">
-                    <label for="type_2" class="radio-button">Индивидуальная тренировка 1+1</label>
-                </div>
-                <div id="calendar">
-                    <div class="month-grid">
-                        <div class="d-flex justify-content-between flex-wrap">
-                            <label class="form-label">Дата занятия:</label>
-                            <div id="month">
-                                <div class="month active">Февраль 2020</div>
-                                <div class="month ml-2">Март 2020</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="days-grid">
-                            <div class="days-row">
-                                <div class="day-name">Пн</div>
-                                <div class="day-name">Вт</div>
-                                <div class="day-name">Ср</div>
-                                <div class="day-name">Чт</div>
-                                <div class="day-name">Пт</div>
-                                <div class="day-name">Сб</div>
-                                <div class="day-name">Вс</div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">27<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">28<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">29<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">30<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">31<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">1</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">2</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">3</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">4</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">5</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">6</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">7</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">8</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">9</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">10</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">11</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">13</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day active">
-                                        <div class="day-content">
-                                            <div class="day-status">Ваш выбор</div>
-                                            <div class="day-date">14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">15</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">16</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">17</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">19</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">20</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">21</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">22</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">23</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">24</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">25</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">26</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">27</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">29</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">1<span class="day-month">.02</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="time-grid">
-                        <label class="form-label">Время занятия:</label>
-                        <hr>
-                        <div class="time-wrapper">
-                            <div class="time">7:00 — 7:45</div>
-                            <div class="time disabled">Занято</div>
-                            <div class="time active">8:30 — 9:15<div class="cancel"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 10.87L10.87 12L8 9.13L5.13 12L4 10.87L6.87 8L4 5.13L5.13 4L8 6.87L10.87 4L12 5.13L9.13 8L12 10.87ZM8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0Z" fill="white" fill-opacity="0.8"/>
-                            </svg>
-                            </div></div>
-                            <div class="time">9:15 — 10:00</div>
-                            <div class="time">10:00 — 10:45</div>
-                            <div class="time">10:45 — 11:30</div>
-                            <div class="time">11:30 — 12:15</div>
-                            <div class="time">12:15 — 13:00</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-result">
-                    <button class="btn btn-primary btn-round">записаться на тренировку</button>
-                    <div class="result-text">Вы выбрали: <span id="date">14 февраля</span>, <span id="time">8:30 — 9:15</span>   Стоимость: <span id="price">1&nbsp;500&nbsp;₽</span> (цена без скидки 2&nbsp;500&nbsp;₽).</div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="contacts">
-        <div id="contacts-map">
-            <iframe src="https://yandex.ua/map-widget/v1/?um=constructor%3Aab0218408b18a9f2e05b9a6fe7d4b1fd2dfa141ab7afe1a1e525f38650d91842&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="header">Контакты</div>
-                    <div class="contact-label">Телефон для справок:</div>
-                    <div class="contact-phone">8 901 123-45-67</div>
-                    <div class="contact-phone-info mb-4">Отвечаем в мессенджерах WhatsApp, Telegram, Viber.</div>
-                    <div class="contact-label">Адрес:</div>
-                    <div class="contact-address mb-4">Москва, ул. Теплый Стан, 9</div>
-                    <div class="contact-label">Социальные сети:</div>
-                    <div class="contact-social mb-5">
-                        <a href="javascript:void(0)">YouTube</a>
-                        <a href="javascript:void(0)">Instagram</a>
-                        <a href="javascript:void(0)">Яндекс Дзен</a>
-                        <a href="javascript:void(0)">Вконтакте</a>
-                        <a href="javascript:void(0)">Facebook</a>
-                        <a href="javascript:void(0)">TikTok</a>
-                    </div>
-                    <div class="contact-copyright mb-3">
-                        Официальный сайт Школы плавания Александра Панфилова.
-                        <br>Все права защищены. При использовании материалов сайта ссылка обязательна.
-                        <br>Проект компании Идее Группа. ООО "Идее Группа". ОГРН 1157746876286.
-                    </div>
-                    <div class="contact-copyright">
-                        <a href="javascript:void(0)">Договор оферты</a><br>
-                        <a href="javascript:void(0)">Условия использования персональных данных</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bottom-actions">
-        <a href="javascript:void(0)" class="bottom-actions-item">
-            <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="7.5" stroke="#0051ED"/>
-                <path d="M12 7V13L16 11" stroke="#0051ED"/>
-            </svg>
-        </a>
-        <a href="javascript:void(0)" class="bottom-actions-item">
-            <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.5769 5H5.42308C4.781 5.00165 4.16574 5.23265 3.71172 5.64253C3.2577 6.0524 3.00183 6.60785 3 7.1875V14.6875C3.00183 15.2672 3.2577 15.8226 3.71172 16.2325C4.16574 16.6424 4.781 16.8734 5.42308 16.875H7.15385V20L11.209 16.9477C11.2713 16.9007 11.3499 16.875 11.431 16.875H18.5769C19.219 16.8734 19.8343 16.6424 20.2883 16.2325C20.7423 15.8226 20.9982 15.2672 21 14.6875V7.1875C20.9982 6.60785 20.7423 6.0524 20.2883 5.64253C19.8343 5.23265 19.219 5.00165 18.5769 5V5Z" stroke="#0051ED" stroke-linejoin="round"/>
-            </svg>
-        </a>
-        <a href="javascript:void(0)" class="bottom-actions-item">
-            <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.80859 13.1929H3.67578V17H2.30566V13.1929H0.0146484V12.0137H2.30566V10.3403H0.0146484V9.17236H2.30566V0.648438H7.87598C9.59798 0.648438 10.9419 1.08643 11.9077 1.9624C12.881 2.83089 13.3677 4.01383 13.3677 5.51123C13.3677 7.03857 12.896 8.22526 11.9526 9.07129C11.0093 9.90983 9.66162 10.3328 7.90967 10.3403H3.67578V12.0137H7.80859V13.1929ZM3.67578 9.17236H7.87598C9.17871 9.17236 10.1895 8.85791 10.9082 8.229C11.627 7.59261 11.9863 6.69417 11.9863 5.53369C11.9863 4.41064 11.6344 3.51969 10.9307 2.86084C10.2344 2.20199 9.2723 1.85758 8.04443 1.82764H3.67578V9.17236Z" fill="#0051ED"/>
-            </svg>
-        </a>
-        <a href="javascript:void(0)" class="bottom-actions-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 12C19 10.9494 18.8189 9.90914 18.4672 8.93853C18.1154 7.96793 17.5998 7.08601 16.9497 6.34315C16.2997 5.60028 15.5281 5.011 14.6788 4.60896C13.8295 4.20693 12.9193 4 12 4C11.0807 4 10.1705 4.20693 9.32122 4.60896C8.47194 5.011 7.70026 5.60028 7.05025 6.34315C6.40024 7.08601 5.88463 7.96793 5.53284 8.93853C5.18106 9.90914 5 10.9494 5 12" stroke="#0051ED"/>
-                <path d="M15 19C15.5253 19 16.0454 18.8965 16.5307 18.6955C17.016 18.4945 17.457 18.1999 17.8284 17.8284C18.1999 17.457 18.4945 17.016 18.6955 16.5307C18.8965 16.0454 19 15.5253 19 15" stroke="#0051ED"/>
-                <rect x="15.5" y="18.5" width="2" height="3" rx="1" transform="rotate(90 15.5 18.5)" stroke="#0051ED"/>
-                <rect x="3.5" y="11.5" width="3" height="4" rx="1.5" stroke="#0051ED"/>
-                <rect x="17.5" y="11.5" width="3" height="4" rx="1.5" stroke="#0051ED"/>
-            </svg>
-        </a>
-    </div>
-    <!-- Core scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% endblock %}
 
-
-    <script src="libs/popper/popper.js"></script>
-    <script src="js/layout-helpers.js"></script>
-    <script src="js/bootstrap.js"></script>
-
-    <!-- Libs -->
-    <script src="libs/swiper/swiper.js"></script>
-
-    <!-- Page -->
-    <script src="js/landing.js"></script>
-
-</body>
-</html>
+{% endblock %}

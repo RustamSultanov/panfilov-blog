@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -234,17 +235,40 @@ def user_lk(request):
     )
 
 
+class AdminLk(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    template_name = 'attendance.html'
+    model = Classes
+    paginate_by = 9
+    context_object_name = 'classes_list'
+    ordering = '-date_create'
+
+    def get_context_data(self, **kwargs):
+        context = super(AdminLk, self).get_context_data(**kwargs)
+        context['breadcrumb'] = [{"title": "Личный кабинет"}]
+        return context
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
 @login_required
 @user_passes_test(admin_check)
-def admin_lk(request):
-    return render(
-        request,
-        "attendance.html",
-        {
-            "breadcrumb": [{"title": "Личный кабинет"}],
+def attendance_true(request, classes_id):
+    classes = get_object_or_404(Classes, id=classes_id)
+    classes.is_attended = True
+    classes.is_not_attended = False
+    classes.save()
+    return HttpResponseRedirect(reverse_lazy("admin_lk"))
 
-        },
-    )
+
+@login_required
+@user_passes_test(admin_check)
+def attendance_false(request, classes_id):
+    classes = get_object_or_404(Classes, id=classes_id)
+    classes.is_attended = False
+    classes.is_not_attended = True
+    classes.save()
+    return HttpResponseRedirect(reverse_lazy("admin_lk"))
 
 
 @login_required
