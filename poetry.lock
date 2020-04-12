@@ -205,6 +205,23 @@ testing = ["tox (>=2.3.1)", "markov_draftjs (0.1.1)", "memory-profiler (0.47)", 
 
 [[package]]
 category = "main"
+description = "WSGI HTTP Server for UNIX"
+name = "gunicorn"
+optional = false
+python-versions = ">=3.4"
+version = "20.0.4"
+
+[package.dependencies]
+setuptools = ">=3.0"
+
+[package.extras]
+eventlet = ["eventlet (>=0.9.7)"]
+gevent = ["gevent (>=0.13)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
+category = "main"
 description = "HTML parser based on the WHATWG HTML specification"
 name = "html5lib"
 optional = false
@@ -373,7 +390,7 @@ python-versions = "*"
 version = "1.1"
 
 [metadata]
-content-hash = "212b61602a3443ec6de0d9ec308e9417bd3976c1ec9202cba5c001fa19ad24dd"
+content-hash = "f92d57fd628a3d10f8059408c2353dee7a8d94b4b7982fce9d982f41bad9714f"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -447,6 +464,10 @@ djangorestframework = [
 ]
 draftjs-exporter = [
     {file = "draftjs_exporter-2.1.6.tar.gz", hash = "sha256:503f222c81de9a0619158d8f88b638f9069af8de233dc020faa782c7a3b22100"},
+]
+gunicorn = [
+    {file = "gunicorn-20.0.4-py2.py3-none-any.whl", hash = "sha256:cd4a810dd51bf497552cf3f863b575dabd73d6ad6a91075b65936b151cbf4f9c"},
+    {file = "gunicorn-20.0.4.tar.gz", hash = "sha256:1904bb2b8a43658807108d59c3f3d56c2b6121a701161de0ddf9ad140073c626"},
 ]
 html5lib = [
     {file = "html5lib-1.0.1-py2.py3-none-any.whl", hash = "sha256:20b159aa3badc9d5ee8f5c647e5efd02ed2a66ab8d354930bd9ff139fc1dc0a3"},
