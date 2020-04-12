@@ -5,6 +5,7 @@ from django.contrib.postgres.fields import DateTimeRangeField
 from django.contrib.postgres.indexes import GistIndex
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from recurrence.fields import RecurrenceField
 from wagtail.core.fields import RichTextField
 from wagtail.documents.models import Document, AbstractDocument
 
@@ -37,6 +38,7 @@ class Classes(models.Model):
                              limit_choices_to={'is_staff': False}, null=True, blank=True,
                              verbose_name='Посетитель занятия')
     date_create = models.DateTimeField(auto_now_add=True)
+    recurrences = RecurrenceField(blank=True)
 
     def __str__(self):
         return f"{self.duration}"
