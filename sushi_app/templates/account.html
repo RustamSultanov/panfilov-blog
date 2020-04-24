@@ -29,9 +29,9 @@
             <div class="col-sm-6 col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <a href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
+                        <a target="_blank"  href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
                         {% if class.is_paid %}
-                            <div class="card-text small mt-2">Оплачено {{ class.date_paid|date:"DATE_FORMAT" }} {% if class.check_link %}<a href="{{ class.check_link }}"
+                            <div class="card-text small mt-2">Оплачено {{ class.date_paid|date:"DATE_FORMAT" }} {% if class.check_link %}<a target="_blank"  href="{{ class.check_link }}"
                                                                                      class="font-weight-bold text-primary">Скачать
                                 чек</a> {% endif %}</div>
                         {% else %}
@@ -42,7 +42,7 @@
                             {% if class.is_paid %}
                                 <div class="btn btn-success btn-round btn-sm ">Оплачено</div>
                             {% else %}
-                                <a href="javascript:void(0)" class="btn btn-primary btn-round btn-sm">Оплатить</a>
+                                <a target="_blank"  href="javascript:void(0)" class="btn btn-primary btn-round btn-sm">Оплатить</a>
                             {% endif %}
                         </div>
                     </div>
@@ -58,7 +58,7 @@
         <div class="col-sm-6 col-lg-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <a href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
+                    <a target="_blank"  href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
                     <div class="card-text small mt-2">ФОК с бассейном «Солнечный», {{ class.duration.upper|date:"DATE_FORMAT" }} {{ class.duration.lower|date:"TIME_FORMAT" }} — {{ class.duration.upper|date:"TIME_FORMAT" }}</div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="media align-items-center">
@@ -95,7 +95,7 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4">
                             <div class="w-100">
-                                <a href="{{ program.url }}" class="card-img-top d-block ui-rect-60 ui-bg-cover"
+                                <a target="_blank"  href="{{ program.url }}" class="card-img-top d-block ui-rect-60 ui-bg-cover"
                                    style="background-image: url('{{ program.image.file.url }}');">
                                     <div class="ui-rect-content d-flex flex-column justify-content-between">
                                         {% if program.subscription %}
@@ -112,7 +112,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <a href="{{ program.url }}" class="card-title">{{ program.title }}</a>
+                                <a target="_blank"  href="{{ program.url }}" class="card-title">{{ program.title }}</a>
                                 <div class="card-text">{{ program.preview | richtext }}</div>
 
                                 <div class="card-price">{{ program.cost }} ₽</div>
@@ -134,7 +134,7 @@
                 <div class="row">
                     {% for blog in blogs %}
                         <div class="col-sm-6 col-lg-4">
-                            <a href="{{ blog.url }}" class="card mb-4"
+                            <a target="_blank"  href="{{ blog.url }}" class="card mb-4"
                                style="background-image: url('{% static 'img/blog_default.png' %}')">
                                 <div class="card-body">
                                     <div class="category">История плавания</div>

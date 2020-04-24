@@ -14,9 +14,9 @@
         <div class="container">
             <h1>{{ page.title }}
         {% if user.user_profile.is_manager %}
-            <a href="{% url 'mickroservices:news_edit' page.id %}" class="btn btn-round btn-outline-primary btn-sm">Редактировать
+            <a target="_blank"  href="{% url 'mickroservices:news_edit' page.id %}" class="btn btn-round btn-outline-primary btn-sm">Редактировать
                 новость</a>
-            <a href="/cms/pages/{{ page.id }}/delete/" target="_blank" class="btn btn-round btn-outline-primary btn-sm">Удалить
+            <a target="_blank"  href="/cms/pages/{{ page.id }}/delete/" target="_blank" class="btn btn-round btn-outline-primary btn-sm">Удалить
                 новость</a>
         {% endif %}
     </h1>{% endblock %}
@@ -58,7 +58,7 @@
                 <div class="col-sm-6 col-lg-4">
                     <div class="card mb-4">
                         <div class="w-100">
-                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
+                            <a target="_blank"  href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
                                 <div class="ui-rect-content d-flex flex-column justify-content-between">
                                     {% if program.subscription %}
                                     <div class="top-badges">
@@ -74,7 +74,7 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <a target="_blank"  href="{{program.url}}" class="card-title">{{program.title}}</a>
                             <div class="card-text">{{program.preview | richtext}}</div>
 
                             <div class="card-price">{{program.cost}} ₽</div>
@@ -95,7 +95,7 @@
             <div class="row">
                 {% for blog in blogs %}
                 <div class="col-sm-6 col-lg-4">
-                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                    <a target="_blank"  href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
                         <div class="card-body">
                             <div class="category">История плавания</div>
                             <div class="title">{{blog.title}}</div>

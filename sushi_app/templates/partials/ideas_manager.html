@@ -9,7 +9,7 @@
                                                     <div class="card-header d-flex justify-content-between  align-items-start">
                                                         <div>
                                                             <div class="small">
-                                                                <a href="{% url 'employee_info' idea.sender.id %}" class="text-dark">{{ idea.sender.get_full_name }}</a>
+                                                                <a target="_blank"  href="{% url 'employee_info' idea.sender.id %}" class="text-dark">{{ idea.sender.get_full_name }}</a>
                                                                 <span class="text-muted">{{ idea.date_created }}</span>
                                                             </div>
                                                             <div class="btn-group">
@@ -17,7 +17,7 @@
                                                                 <button class="btn btn-warning btn-xs btn-round" type="submit">Сохранить</button>
                                                             </div>
 {#                                                            <div class="small mt-2">#}
-{#                                                                <a href="#" class="text-primary">Подробнее</a>#}
+{#                                                                <a target="_blank"  href="#" class="text-primary">Подробнее</a>#}
 {#                                                            </div>#}
                                                         </div>
 
@@ -25,7 +25,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div>Описание идеи: {{ idea.body }}</div>
-                                                        {% if idea.file %}<div>Файл: <a href="{{ idea.file.url }}" class="text-primary" download="">{{ idea.file }}</a></div>
+                                                        {% if idea.file %}<div>Файл: <a target="_blank"  href="{{ idea.file.url }}" class="text-primary" download="">{{ idea.file }}</a></div>
                                                             {% else %}{% endif %}
                                                     </div>
                                                 </div>

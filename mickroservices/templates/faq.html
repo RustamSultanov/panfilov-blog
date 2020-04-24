@@ -53,7 +53,7 @@
             <h4>Ответы на часто задаваемые вопросы</h4>
             {% for question in questions_ok %}
                 <div class="bg-white ui-bordered mb-2">
-                    <a href="#company-faq-{{ forloop.counter }}" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse">
+                    <a target="_blank"  href="#company-faq-{{ forloop.counter }}" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse">
                         {{question.body}}
                         <span class="collapse-icon"></span>
                     </a>

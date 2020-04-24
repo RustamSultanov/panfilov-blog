@@ -16,10 +16,10 @@
             {% for notification in notifications %}
                 <div class="card my-4">
                 <div class="card-body">
-                {% if notification.task %}<a class="h5 text-dark" href="{% url 'task' notification.task.id notification.sender.id %}">По задаче</a>
-                {% elif notification.feedback %}<a class="h5 text-dark" href="{% url 'feedback' notification.feedback.id notification.sender.id %}">По отзыву</a>
-                {% elif notification.requests %}<a class="h5 text-dark" href="{% url 'request' notification.requests.id notification.sender.id %} ">По запросу</a>
-                    {% elif notification.question %}<a class="h5 text-dark" href="{% url 'faq_list' %} ">По вопросу</a>
+                {% if notification.task %}<a class="h5 text-dark" target="_blank"  href="{% url 'task' notification.task.id notification.sender.id %}">По задаче</a>
+                {% elif notification.feedback %}<a class="h5 text-dark" target="_blank"  href="{% url 'feedback' notification.feedback.id notification.sender.id %}">По отзыву</a>
+                {% elif notification.requests %}<a class="h5 text-dark" target="_blank"  href="{% url 'request' notification.requests.id notification.sender.id %} ">По запросу</a>
+                    {% elif notification.question %}<a class="h5 text-dark" target="_blank"  href="{% url 'faq_list' %} ">По вопросу</a>
 
 
                 {% endif %}

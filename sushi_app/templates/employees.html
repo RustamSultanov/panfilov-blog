@@ -23,7 +23,7 @@
                         {% else %}
                         {% endif %}
                             <div class="small ml-3">
-                                <a href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>
+                                <a target="_blank"  href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>
                                 <div class="small text-muted">{{ employee.position }}</div>
                             </div>
                         {% if user.user_profile.is_partner %}
@@ -33,8 +33,8 @@
                                 <i class="ion ion-ios-more"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-left">
-                                <a class="dropdown-item" href="{% url 'form_task' employee.id %}">Добавить задачу</a>
-                                <a class="dropdown-item" href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>
+                                <a class="dropdown-item" target="_blank"  href="{% url 'form_task' employee.id %}">Добавить задачу</a>
+                                <a class="dropdown-item" target="_blank"  href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>
                             </div>
                         </div>
                         {% endif %}
@@ -48,7 +48,7 @@
                         {% endif %}
                             <br>{{ employee.user.email }}
                         </div>
-{#                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+{#                        <a target="_blank"  href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
                     </div>
                 </div>
             </div>

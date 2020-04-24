@@ -9,7 +9,7 @@
                 <strong class="project-attachment-filename">{{document.title}}</strong>
                 <div class="text-muted small"  >{{document.file_size|filesizeformat}}</div>
                 <div>
-                    <a href="{{ document.url }}" download="">Загрузить</a>
+                    <a target="_blank"  href="{{ document.url }}" download="">Загрузить</a>
                 </div>
             </div>
             {% if user.user_profile.is_partner %}
@@ -19,8 +19,8 @@
                     <i class="ion ion-ios-more"></i>
                 </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="/cms/documents/edit/{{ document.id }}/" target="_blank">Редактировать</a>
-                                <a class="dropdown-item" href="/cms/documents/delete/{{ document.id }}/" target="_blank">Удалить</a>
+                                <a class="dropdown-item" target="_blank"  href="/cms/documents/edit/{{ document.id }}/" target="_blank">Редактировать</a>
+                                <a class="dropdown-item" target="_blank"  href="/cms/documents/delete/{{ document.id }}/" target="_blank">Удалить</a>
                     </div>
             </div>
             {% endif %}

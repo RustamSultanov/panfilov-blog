@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+{% block css %}<link rel="stylesheet" target="_blank"  href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
 
 {% block title %}Личный кабинет{% endblock %}
 {% block page_title %}
     <h2 class="text-light font-weight-normal mt-4 mb-1">Личный кабинет
-    <a href="{% url 'form_request' %}" class="btn btn-round btn-outline-primary btn-sm">Поставить задачу менеджеру</a>
+    <a target="_blank"  href="{% url 'form_request' %}" class="btn btn-round btn-outline-primary btn-sm">Поставить задачу менеджеру</a>
     </h2>
 
 {% endblock %}
@@ -26,8 +26,8 @@
                                     {% endif %}
                                 <div class="small ml-3">
                                     <div class="text-muted">Ваш менеджер</div>
-                                    <a href="{% url 'employee_info' manager.user.id %}" class="text-primary">{{ manager.user.get_full_name }}</a>
-{#                                    <a href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
+                                    <a target="_blank"  href="{% url 'employee_info' manager.user.id %}" class="text-primary">{{ manager.user.get_full_name }}</a>
+{#                                    <a target="_blank"  href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
                                 </div>
                             </div>
                         </div>
@@ -46,20 +46,20 @@
                             <div class="nav-tabs-top mb-4">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active show" data-toggle="tab" href="#shops">Магазины</a>
+                                        <a class="nav-link active show" data-toggle="tab" target="_blank"  href="#shops">Магазины</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#requests">Поручил задачи<span class="badge badge-pill badge-primary indicator">{{ requests_not_solved }}</span></a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#requests">Поручил задачи<span class="badge badge-pill badge-primary indicator">{{ requests_not_solved }}</span></a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tasks">Делаю задачи<span class="badge badge-pill badge-primary indicator">{{ task_not_solved }}</span></a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#tasks">Делаю задачи<span class="badge badge-pill badge-primary indicator">{{ task_not_solved }}</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#reviews">Отзывы<span class="badge badge-pill badge-primary indicator">{{ feedback_not_solved }}</span></a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#reviews">Отзывы<span class="badge badge-pill badge-primary indicator">{{ feedback_not_solved }}</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#files">Файлы</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content no-shadow">
@@ -78,9 +78,9 @@
                                                                 <i class="ion ion-ios-more"></i>
                                                             </button>
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="{% url 'shop' shop.id %}">Просмотр</a>
-{#                                                                <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
-{#                                                                <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+                                                                <a class="dropdown-item" target="_blank"  href="{% url 'shop' shop.id %}">Просмотр</a>
+{#                                                                <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Edit</a>#}
+{#                                                                <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Remove</a>#}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -89,16 +89,16 @@
                                                         {% for doc in shop.docs.all %}
                                                         <div class="mb-1 d-inline-block mr-3">
                                                             <span class="small text-muted">{{ doc.title }}</span>
-                                                            <a href="{{ doc.url }}" class="text-primary"><span class="ion-ios-search"></span></a>
-                                                            <a href="{{ doc.url }}" class="text-primary"><span class="ion-md-cloud-download"></span></a>
+                                                            <a target="_blank"  href="{{ doc.url }}" class="text-primary"><span class="ion-ios-search"></span></a>
+                                                            <a target="_blank"  href="{{ doc.url }}" class="text-primary"><span class="ion-md-cloud-download"></span></a>
                                                         </div>
                                                        {% endfor %}
                                                         <div class="font-weight-semibold">Последние проверки</div>
                                                         {% for check in shop.checks.all %}
                                                         <div class="mb-1 d-inline-block mr-3">
                                                             <span class="small text-muted">{{ check.title }}</span>
-                                                            <a href="{{ check.url }}" class="text-primary"><span class="ion-ios-search"></span></a>
-                                                            <a href="{{ check.url }}" class="text-primary" download=""><span class="ion-md-cloud-download"></span></a>
+                                                            <a target="_blank"  href="{{ check.url }}" class="text-primary"><span class="ion-ios-search"></span></a>
+                                                            <a target="_blank"  href="{{ check.url }}" class="text-primary" download=""><span class="ion-md-cloud-download"></span></a>
                                                         </div>
                                                        {% endfor %}
 
@@ -112,10 +112,10 @@
                                     <div class="tab-pane fade" id="requests">
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Фильтровать:</span>
-                                            <a href="{%url 'load_filtered_request' %}" class="text-muted active" onclick="load_request($(this))">Все</a>
-                                            <a href="{%url 'load_filtered_request' %}?filter_request=0" class="text-muted" onclick="load_request($(this))">Решен</a>
-                                            <a href="{%url 'load_filtered_request' %}?filter_request=1" class="text-muted" onclick="load_request($(this))">Обрабатывается</a>
-                                            <a href="{%url 'load_filtered_request' %}?filter_request=2" class="text-muted" onclick="load_request($(this))">Отклонен</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_request' %}" class="text-muted active" onclick="load_request($(this))">Все</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_request' %}?filter_request=0" class="text-muted" onclick="load_request($(this))">Решен</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_request' %}?filter_request=1" class="text-muted" onclick="load_request($(this))">Обрабатывается</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_request' %}?filter_request=2" class="text-muted" onclick="load_request($(this))">Отклонен</a>
                                         </div>
                                           <div id="request_manager" class="my-4 row">
                                             {% include 'partials/request_manager.html'%}
@@ -124,10 +124,10 @@
                                     <div class="tab-pane fade" id="tasks">
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Фильтровать:</span>
-                                            <a href="{%url 'load_filtered_tasks' %}" class="text-muted active" onclick="load_tasks($(this))">Все</a>
-                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=0" class="text-muted" onclick="load_tasks($(this))">Решен</a>
-                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=1" class="text-muted" onclick="load_tasks($(this))">Обрабатывается</a>
-                                            <a href="{%url 'load_filtered_tasks' %}?filter_task=2" class="text-muted" onclick="load_tasks($(this))">Отклонен</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_tasks' %}" class="text-muted active" onclick="load_tasks($(this))">Все</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_tasks' %}?filter_task=0" class="text-muted" onclick="load_tasks($(this))">Решен</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_tasks' %}?filter_task=1" class="text-muted" onclick="load_tasks($(this))">Обрабатывается</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_tasks' %}?filter_task=2" class="text-muted" onclick="load_tasks($(this))">Отклонен</a>
                                         </div>
                                         <div id="tasks_manager" class="my-4 row">
                                             {% include 'partials/tasks_manager.html'%}
@@ -136,9 +136,9 @@
                                     <div class="tab-pane fade" id="reviews">
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Фильтровать:</span>
-                                            <a href="{%url 'load_filtered_feedback' %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
-                                            <a href="{%url 'load_filtered_feedback' %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
-                                            <a href="{%url 'load_filtered_feedback' %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_feedback' %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_feedback' %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
+                                            <a target="_blank"  href="{%url 'load_filtered_feedback' %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
                                         </div>
                                        <div id="feedback_manager" class="my-4 row">
                                             {% include 'partials/feedback_manager.html'%}
@@ -148,9 +148,9 @@
 
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Сортировать: </span>
-                                            <a href="#" class="text-muted active">По порядку</a>
-                                            <a href="#" class="text-muted">По дате</a>
-                                            <a href="#" class="text-muted">По размеру</a>
+                                            <a target="_blank"  href="#" class="text-muted active">По порядку</a>
+                                            <a target="_blank"  href="#" class="text-muted">По дате</a>
+                                            <a target="_blank"  href="#" class="text-muted">По размеру</a>
                                         </div>
                                         <div class="row"  id="documents_wraper">
                                             {% include 'partials/documents.html' with documents=documents %}

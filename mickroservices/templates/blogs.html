@@ -51,7 +51,7 @@
                 <div class="col-sm-6 col-lg-4">
                     <div class="card mb-4">
                         <div class="w-100">
-                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
+                            <a target="_blank"  href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
                                 <div class="ui-rect-content d-flex flex-column justify-content-between">
                                     {% if program.subscription %}
                                     <div class="top-badges">
@@ -67,7 +67,7 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <a target="_blank"  href="{{program.url}}" class="card-title">{{program.title}}</a>
                             <div class="card-text">{{program.preview | richtext}}</div>
 
                             <div class="card-price">{{program.cost}} ₽</div>

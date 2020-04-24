@@ -84,7 +84,7 @@
                 <div class="col-sm-6 col-lg-4">
                     <div class="card mb-4">
                         <div class="w-100">
-                            <a href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
+                            <a target="_blank"  href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
                                 <div class="ui-rect-content d-flex flex-column justify-content-between">
                                     {% if program.subscription %}
                                     <div class="top-badges">
@@ -100,7 +100,7 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <a href="{{program.url}}" class="card-title">{{program.title}}</a>
+                            <a target="_blank"  href="{{program.url}}" class="card-title">{{program.title}}</a>
                             <div class="card-text">{{program.preview | richtext}}</div>
 
                             <div class="card-price">{{program.cost}} ₽</div>
@@ -120,7 +120,7 @@
                     <p>В стоимость занятия входит посещение бассейна по официальному абонементу, персональная тренировка и последующее онлайн общение с тренером.</p>
                     <div class="price">2 500 ₽</div>
                     <div class="price-description">Указана стоимость одного занятия при оплате абонемента на один месяц (не менее 4х занятий).</div>
-                    <a href="javascript:void(0)" class="btn btn-primary btn-round">ЗАПИСЬ на тренировку</a>
+                    <a target="_blank"  href="javascript:void(0)" class="btn btn-primary btn-round">ЗАПИСЬ на тренировку</a>
                 </div>
             </div>
         </div>
@@ -135,7 +135,7 @@
             <div class="row">
                 {% for blog in blogs %}
                 <div class="col-sm-6 col-lg-4">
-                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                    <a target="_blank"  href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
                         <div class="card-body">
                             <div class="category">История плавания</div>
                             <div class="title">{{blog.title}}</div>
@@ -508,22 +508,22 @@
 {#            <div class="row">#}
 {#                <div class="col-md-4 mb-5">#}
 {#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
-{#                    <a href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
+{#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
 {#                </div>#}
 {#                <div class="col-md-4 mb-5">#}
 {#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
-{#                    <a href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
+{#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
 {#                </div>#}
 {#                {% for new in news reversed %}#}
 {#                <div class="col-md-4 mb-5">#}
 {#                {% image new.image fill-283x188 class="card-img-top" %}#}
 {#                     <h4 class="card-title mb-1">{{new.title}}</h4>#}
 {#                    <div class="small text-muted mb-4">{{new.first_published_at}}</div>#}
-{#                    <a href="{{new.url}}" class="text-dark">{{ new.announcement }}</a>#}
+{#                    <a target="_blank"  href="{{new.url}}" class="text-dark">{{ new.announcement }}</a>#}
 {#                </div>#}
 {#                {% endfor %}#}
 {#            </div>#}
-{#            <a href="{% url 'mickroservices:news' %}" class="text-dark small">ВСЕ НОВОСТИ</a>#}
+{#            <a target="_blank"  href="{% url 'mickroservices:news' %}" class="text-dark small">ВСЕ НОВОСТИ</a>#}
 {#        </div>#}
 {#{% endblock %}#}
 
@@ -543,7 +543,7 @@
 {#                                <div class="col-md-6 d-flex flex-column">#}
 {#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены основные маркетинговые материалы и документы, необходимые для работы точек продаж.</div>#}
 {#                                    <div>#}
-{#                                        <a href="{% url 'mickroservices:marketing' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+{#                                        <a target="_blank"  href="{% url 'mickroservices:marketing' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
 {#                                    </div>#}
 {#                                </div>#}
 {#                                <div class="col-md-6">#}
@@ -567,7 +567,7 @@
 {#                                <div class="col-12 d-flex flex-column">#}
 {#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены все технологические карты для ваших ресторанов.</div>#}
 {#                                    <div>#}
-{#                                        <a href="{% url 'mickroservices:tech_cards' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+{#                                        <a target="_blank"  href="{% url 'mickroservices:tech_cards' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
 {#                                    </div>#}
 {#                                </div>#}
 {#                            </div>#}
@@ -586,12 +586,12 @@
 {#                                    <div class="flex-grow-1 mb-4">#}
 {#                                        <div class="small text-muted mb-2">В разделе размещены все основные регламенты.</div>#}
 {#                                        <div class="small text-muted">#}
-{#                                            <a href="#" class="text-primary">Открытие точки</a>(PDF)#}
-{#                                            <a href="#" class="text-primary">Закупочный регламент</a>(PDF)#}
+{#                                            <a target="_blank"  href="#" class="text-primary">Открытие точки</a>(PDF)#}
+{#                                            <a target="_blank"  href="#" class="text-primary">Закупочный регламент</a>(PDF)#}
 {#                                        </div>#}
 {#                                    </div>#}
 {#                                    <div>#}
-{#                                        <a href="{% url 'mickroservices:regulations' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+{#                                        <a target="_blank"  href="{% url 'mickroservices:regulations' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
 {#                                    </div>#}
 {#                                </div>#}
 {#                            </div>#}
@@ -618,7 +618,7 @@
 {#                        {% else %}#}
 {#                        {% endif %}#}
 {#                            <div class="small ml-3">#}
-{#                                <a href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>#}
+{#                                <a target="_blank"  href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>#}
 {#                                <div class="small text-muted">{{ employee.position }}</div>#}
 {#                            </div>#}
 {#                        <div class="btn-group">#}
@@ -626,8 +626,8 @@
 {#                                <i class="ion ion-ios-more"></i>#}
 {#                            </button>#}
 {#                            <div class="dropdown-menu dropdown-menu-left">#}
-{#                                <a class="dropdown-item" href="{% url 'form_task' employee.id %}">Добавить задачу</a>#}
-{#                                <a class="dropdown-item" href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>#}
+{#                                <a class="dropdown-item" target="_blank"  href="{% url 'form_task' employee.id %}">Добавить задачу</a>#}
+{#                                <a class="dropdown-item" target="_blank"  href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>#}
 {#                            </div>#}
 {#                        </div>#}
 {#                        </div>#}
@@ -636,7 +636,7 @@
 {#                            <br>Whatsapp {{ employee.whatsapp }}#}
 {#                            <br>{{ employee.user.email }}#}
 {#                        </div>#}
-{#                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+{#                        <a target="_blank"  href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
 {#                    </div>#}
 {#                </div>#}
 {#            </div>#}

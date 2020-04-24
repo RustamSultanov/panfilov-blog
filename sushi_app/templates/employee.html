@@ -14,15 +14,15 @@
                                  {% else %}
                             <div class="text-muted mb-2">{{ employee.user_profile.position }}</div>
                           {% endif %}
-                            <a href="mailto:{{ employee.email }}" class="btn btn-default btn-sm">
+                            <a target="_blank"  href="mailto:{{ employee.email }}" class="btn btn-default btn-sm">
                                 <i class="fas fa-envelope"></i>&nbsp;Написать письмо
                             </a>
  {% if user.user_profile.is_partner %}
-     <a href="{% url 'form_request' %}" class="btn btn-round btn-outline-primary btn-sm">Поставить задачу менеджеру</a>
+     <a target="_blank"  href="{% url 'form_request' %}" class="btn btn-round btn-outline-primary btn-sm">Поставить задачу менеджеру</a>
                         {% else %}
-                       <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'form_task' employee.user_profile.id %}">Добавить задачу</a>
-                        <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'edit_partner' employee.id %}">Редактировать франчайзи</a>
-                        <a class="btn btn-round btn-outline-primary btn-sm" href="{% url 'form_review' %}">Добавить отзыв</a>
+                       <a class="btn btn-round btn-outline-primary btn-sm" target="_blank"  href="{% url 'form_task' employee.user_profile.id %}">Добавить задачу</a>
+                        <a class="btn btn-round btn-outline-primary btn-sm" target="_blank"  href="{% url 'edit_partner' employee.id %}">Редактировать франчайзи</a>
+                        <a class="btn btn-round btn-outline-primary btn-sm" target="_blank"  href="{% url 'form_review' %}">Добавить отзыв</a>
                         {% endif %}
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                                 <div class="card hoverable h-100">
                                                     <div class="card-header d-flex justify-content-between  align-items-start">
                                                         <div>
-                                                            <div class="h5 mb-0 font-weight-semibold"><a href="{% url 'shop' shop.id %}" class="text-primary">{{ shop.address }}</a></div>
+                                                            <div class="h5 mb-0 font-weight-semibold"><a target="_blank"  href="{% url 'shop' shop.id %}" class="text-primary">{{ shop.address }}</a></div>
                                                         </div>
 
 
@@ -42,9 +42,9 @@
                                                                 <i class="ion ion-ios-more"></i>
                                                             </button>
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="{% url 'shop' shop.id %}">Просмотр</a>
-{#                                                                <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
-{#                                                                <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+                                                                <a class="dropdown-item" target="_blank"  href="{% url 'shop' shop.id %}">Просмотр</a>
+{#                                                                <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Edit</a>#}
+{#                                                                <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Remove</a>#}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -67,14 +67,14 @@
                                 <tr>
                                     <td>Twitter:</td>
                                     <td>{% if employee.user_profile.twitter %}
-                                        <a href="{{ employee.user_profile.twitter }}">{{ employee.user_profile.twitter }}</a>
+                                        <a target="_blank"  href="{{ employee.user_profile.twitter }}">{{ employee.user_profile.twitter }}</a>
                                          {% else %}{% endif %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Facebook:</td>
                                     <td>
-                                       {% if employee.user_profile.facebook %} <a href="{{ employee.user_profile.facebook }}">{{ employee.user_profile.facebook }}</a>
+                                       {% if employee.user_profile.facebook %} <a target="_blank"  href="{{ employee.user_profile.facebook }}">{{ employee.user_profile.facebook }}</a>
                                          {% else %}{% endif %}
                                     </td>
                                 </tr>
@@ -82,7 +82,7 @@
                                     <td>Instagram:</td>
                                     <td>
                                         {% if employee.user_profile.instagram %}
-                                        <a href="{{ employee.user_profile.instagram }}">{{ employee.user_profile.instagram }}</a>
+                                        <a target="_blank"  href="{{ employee.user_profile.instagram }}">{{ employee.user_profile.instagram }}</a>
                                          {% else %}{% endif %}
                                     </td>
                                 </tr>

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+{% block css %}<link rel="stylesheet" target="_blank"  href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
 
 {% block title %}Задача #{{ task.id }}{% endblock %}
 {% block page_title %}
@@ -35,8 +35,8 @@
                                         <button class="btn btn-warning btn-xs btn-round" type="submit">Сохранить</button>
 {#                                        <button class="btn btn-warning btn-xs btn-round dropdown-toggle" type="button" data-toggle="dropdown">Не решена</button>#}
 {#                                        <div class="dropdown-menu">#}
-{#                                            <a class="dropdown-item" href="javascript:void(0)">Решена</a>#}
-{#                                            <a class="dropdown-item" href="javascript:void(0)">Провалена</a>#}
+{#                                            <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Решена</a>#}
+{#                                            <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Провалена</a>#}
 {#                                        </div>#}
                                     </form>
                                     </div>
@@ -50,10 +50,10 @@
                             <div class="nav-tabs-top mb-4">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active show" data-toggle="tab" href="#coments">Комментарии</a>
+                                        <a class="nav-link active show" data-toggle="tab" target="_blank"  href="#coments">Комментарии</a>
                                     </li>
 {#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>#}
+{#                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#files">Файлы</a>#}
 {#                                    </li>#}
                                 </ul>
                             </div>
@@ -78,7 +78,7 @@
                 <strong class="project-attachment-filename">{{messege.file}}</strong>
                 <div class="text-muted small"  >{{messege.file.size|filesizeformat}}</div>
                 <div>
-                    <a href="{{ messege.file.url }}" download="">Загрузить</a>
+                    <a target="_blank"  href="{{ messege.file.url }}" download="">Загрузить</a>
                 </div>
 
                                        {% endif %}
@@ -92,7 +92,7 @@
                 <strong class="project-attachment-filename">{{messege.file}}</strong>
                 <div class="text-muted small"  >{{messege.file.size|filesizeformat}}</div>
                 <div>
-                    <a href="{{ messege.file.url }}" download="">Загрузить</a>
+                    <a target="_blank"  href="{{ messege.file.url }}" download="">Загрузить</a>
                 </div>
 
                                        {% endif %}
@@ -128,9 +128,9 @@
 {#                                    </div>#}
 {#                                    <div class="my-4 small text-right">#}
 {#                                        <span class="text-muted">Сортировать: </span>#}
-{#                                        <a href="#" class="text-muted active">По порядку</a>#}
-{#                                        <a href="#" class="text-muted">По дате</a>#}
-{#                                        <a href="#" class="text-muted">По размеру</a>#}
+{#                                        <a target="_blank"  href="#" class="text-muted active">По порядку</a>#}
+{#                                        <a target="_blank"  href="#" class="text-muted">По дате</a>#}
+{#                                        <a target="_blank"  href="#" class="text-muted">По размеру</a>#}
 {#                                    </div>#}
 {#                                    <div class="row">#}
 {#                                        <div class="col-md-6 col-lg-4 p-1">#}
@@ -140,8 +140,8 @@
 {#                                                    <strong class="project-attachment-filename">image_1.jpg</strong>#}
 {#                                                    <div class="text-muted small">527KB</div>#}
 {#                                                    <div>#}
-{#                                                        <a href="javascript:void(0)">Просмотреть</a> &nbsp;#}
-{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                        <a target="_blank"  href="javascript:void(0)">Просмотреть</a> &nbsp;#}
+{#                                                        <a target="_blank"  href="javascript:void(0)">Загрузить</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                                <div class="btn-group project-actions align-self-start">#}
@@ -149,9 +149,9 @@
 {#                                                        <i class="ion ion-ios-more"></i>#}
 {#                                                    </button>#}
 {#                                                    <div class="dropdown-menu dropdown-menu-right">#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Remove</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                            </div>#}
@@ -166,8 +166,8 @@
 {#                                                    <strong class="project-attachment-filename">assignment_letter.pdf</strong>#}
 {#                                                    <div class="text-muted small">156KB</div>#}
 {#                                                    <div>#}
-{#                                                        <a href="javascript:void(0)">Просмотреть</a> &nbsp;#}
-{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                        <a target="_blank"  href="javascript:void(0)">Просмотреть</a> &nbsp;#}
+{#                                                        <a target="_blank"  href="javascript:void(0)">Загрузить</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                                <div class="btn-group project-actions align-self-start">#}
@@ -175,9 +175,9 @@
 {#                                                        <i class="ion ion-ios-more"></i>#}
 {#                                                    </button>#}
 {#                                                    <div class="dropdown-menu dropdown-menu-right">#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Remove</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                            </div>#}
@@ -191,7 +191,7 @@
 {#                                                    <strong class="project-attachment-filename">app_update.zip</strong>#}
 {#                                                    <div class="text-muted small">1.35MB</div>#}
 {#                                                    <div>#}
-{#                                                        <a href="javascript:void(0)">Загрузить</a>#}
+{#                                                        <a target="_blank"  href="javascript:void(0)">Загрузить</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                                <div class="btn-group project-actions align-self-start">#}
@@ -199,9 +199,9 @@
 {#                                                        <i class="ion ion-ios-more"></i>#}
 {#                                                    </button>#}
 {#                                                    <div class="dropdown-menu dropdown-menu-right">#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">View</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>#}
-{#                                                        <a class="dropdown-item" href="javascript:void(0)">Remove</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">View</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Edit</a>#}
+{#                                                        <a class="dropdown-item" target="_blank"  href="javascript:void(0)">Remove</a>#}
 {#                                                    </div>#}
 {#                                                </div>#}
 {#                                            </div>#}

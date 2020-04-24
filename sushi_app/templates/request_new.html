@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+{% block css %}<link rel="stylesheet" target="_blank"  href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
 
 {% block title %}Личный кабинет{% endblock %}
 {% block page_title %}
@@ -24,7 +24,7 @@
                                     {% endif %}
                                 <div class="small ml-3">
                                     <div class="text-primary">{{ manager.user.get_full_name }}</div>
-{#                                    <a href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
+{#                                    <a target="_blank"  href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
                                 </div>
                             </div>
                         </div>

@@ -6,12 +6,12 @@
                 {% csrf_token %}
                                     <div class="media-body line-height-condenced ml-3">
                                         <div class="text-dark"> Оповещение от {{message.sender.get_full_name}} по
-                {% if message.task %}<a href="{% url 'task' message.task.id message.sender.id %}">задаче</a>
-                {% elif message.feedback %}<a href="{% url 'feedback' message.feedback.id message.sender.id %}">отзыву</a>
-                {% elif message.requests %}<a href="{% url 'request' message.requests.id message.sender.id %}">запросу</a>
+                {% if message.task %}<a target="_blank"  href="{% url 'task' message.task.id message.sender.id %}">задаче</a>
+                {% elif message.feedback %}<a target="_blank"  href="{% url 'feedback' message.feedback.id message.sender.id %}">отзыву</a>
+                {% elif message.requests %}<a target="_blank"  href="{% url 'request' message.requests.id message.sender.id %}">запросу</a>
                     {% elif message.question %}
-                        {% if user.user_profile.is_manager %}<a href="{% url 'faq_list' %}">
-                        {% elif user.user_profile.is_partner %}<a href="{% url 'mickroservices:faq' %}">
+                        {% if user.user_profile.is_manager %}<a target="_blank"  href="{% url 'faq_list' %}">
+                        {% elif user.user_profile.is_partner %}<a target="_blank"  href="{% url 'mickroservices:faq' %}">
                         {% endif %}
                         вопросу</a>
                 {% endif %}:</div>
@@ -28,10 +28,10 @@
 {#                {% csrf_token %}#}
 {#                <button data-id="{{message.pk}}" type="button" class="close" data-dismiss="alert" onclick="close_message($(this))">×</button>#}
 {#                Оповещение от {{message.sender.get_full_name}} по#}
-{#                {% if message.task %}<a href="{% url 'task' message.task.id message.sender.id %}">задаче</a>#}
-{#                {% elif message.feedback %}<a href="{% url 'feedback' message.feedback.id message.sender.id %}">отзыву</a>#}
-{#                {% elif message.requests %}<a href="{% url 'request' message.requests.id message.sender.id %}">запросу</a>#}
-{#                    {% elif message.question %}<a href="{% url 'faq_list' %} ">вопросу</a>#}
+{#                {% if message.task %}<a target="_blank"  href="{% url 'task' message.task.id message.sender.id %}">задаче</a>#}
+{#                {% elif message.feedback %}<a target="_blank"  href="{% url 'feedback' message.feedback.id message.sender.id %}">отзыву</a>#}
+{#                {% elif message.requests %}<a target="_blank"  href="{% url 'request' message.requests.id message.sender.id %}">запросу</a>#}
+{#                    {% elif message.question %}<a target="_blank"  href="{% url 'faq_list' %} ">вопросу</a>#}
 {#                {% endif %}: {{message.body}}#}
 {#            </div>#}
         {% endfor %}

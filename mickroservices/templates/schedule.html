@@ -24,15 +24,15 @@
             <tbody>
                 {% for schedule in schedule_list %}
                     <tr>
-                        <td><a href="{% url 'mickroservices:schedule_view' pk=schedule.pk %}" style="color:#000;">{{schedule.date_schedule|date}}</a></td>
-                        <td><a href="{{schedule.url_lesson}}" class="text-primary"  target="_blank">{{schedule.url_lesson}}</a></td>
+                        <td><a target="_blank"  href="{% url 'mickroservices:schedule_view' pk=schedule.pk %}" style="color:#000;">{{schedule.date_schedule|date}}</a></td>
+                        <td><a target="_blank"  href="{{schedule.url_lesson}}" class="text-primary"  target="_blank">{{schedule.url_lesson}}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     <div class="form-group">
-        <a  href="{% url 'mickroservices:schedule_new' %}" class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0" style="color:#FFF;">Добавить</a>
+        <a  target="_blank"  href="{% url 'mickroservices:schedule_new' %}" class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0" style="color:#FFF;">Добавить</a>
     </div>
     {% if is_paginated %}
         {% include 'partials/pagination.html' with posts=page_obj %}

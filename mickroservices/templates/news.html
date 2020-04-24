@@ -9,7 +9,7 @@
     <div class="container">
     <h1>Програмы
         {% if user.user_profile.is_manager %}
-            <a href="{% url 'mickroservices:news_new' %}" class="btn btn-round btn-outline-primary btn-sm">Добавить
+            <a target="_blank"  href="{% url 'mickroservices:news_new' %}" class="btn btn-round btn-outline-primary btn-sm">Добавить
                 новость</a>
 
         {% endif %}
@@ -53,7 +53,7 @@
             <div class="row">
                 {% for blog in blogs %}
                 <div class="col-sm-6 col-lg-4">
-                    <a href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                    <a target="_blank"  href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
                         <div class="card-body">
                             <div class="category">История плавания</div>
                             <div class="title">{{blog.title}}</div>

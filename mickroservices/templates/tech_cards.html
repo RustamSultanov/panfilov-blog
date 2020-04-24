@@ -18,7 +18,7 @@
                     <div class="nav">
                         {% for item in subjects %}
                             <li class="nav-item">
-                                <a data-id={{ item.pk }} class="nav-mm nav-link {% if subjects.0.pk == item.pk %}text-dark{% endif %} pl-0" href="javascript:void(0)" onclick="load_tech_cards_docs($(this))">{{item.name}}</a>
+                                <a data-id={{ item.pk }} class="nav-mm nav-link {% if subjects.0.pk == item.pk %}text-dark{% endif %} pl-0" target="_blank"  href="javascript:void(0)" onclick="load_tech_cards_docs($(this))">{{item.name}}</a>
                             </li>
                         {% endfor %}
                     </div>
@@ -57,9 +57,9 @@
                     <div class="my-5">
                         <div class="my-4 small text-right">
                             <span class="text-muted">Сортировать: </span>
-                            <a href="?ordering=title" class="text-muted active">По порядку</a>
-                            <a href="?ordering=-created_at" class="text-muted">По дате</a>
-                            <a href="?ordering=file_size" class="text-muted">По размеру</a>
+                            <a target="_blank"  href="?ordering=title" class="text-muted active">По порядку</a>
+                            <a target="_blank"  href="?ordering=-created_at" class="text-muted">По дате</a>
+                            <a target="_blank"  href="?ordering=file_size" class="text-muted">По размеру</a>
                         </div>
                         <div class="row" id="documents_wraper">
                             {% include 'partials/documents.html' with documents=documents %}

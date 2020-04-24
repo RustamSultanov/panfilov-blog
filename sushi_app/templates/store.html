@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block css %}<link rel="stylesheet" href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
+{% block css %}<link rel="stylesheet" target="_blank"  href="{% static "libs/dropzone/dropzone.css" %}">{% endblock %}
 
 {% block title %}Личный кабинет{% endblock %}
 {% block page_title %}
@@ -24,7 +24,7 @@
                                     {% endif %}
                                 <div class="small ml-3">
                                     <div class="text-primary">{{ shop.partner }}</div>
-{#                                    <a href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
+{#                                    <a target="_blank"  href="#" class="btn btn-xs btn-round btn-outline-dark">Написать в чат</a>#}
                                 </div>
                             </div>
                         </dd>
@@ -53,19 +53,19 @@
                             <div class="nav-tabs-top mb-4">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active show" data-toggle="tab" href="#employees">Ответственные лица</a>
+                                        <a class="nav-link active show" data-toggle="tab" target="_blank"  href="#employees">Ответственные лица</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#documents">Документы</a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#documents">Документы</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#invoices">Счета</a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#invoices">Счета</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#reviews">Отзывы</a>
+                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#reviews">Отзывы</a>
                                     </li>
 {#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link" data-toggle="tab" href="#files">Файлы</a>#}
+{#                                        <a class="nav-link" data-toggle="tab" target="_blank"  href="#files">Файлы</a>#}
 {#                                    </li>#}
                                 </ul>
                                 <div class="tab-content no-shadow">
@@ -74,7 +74,7 @@
 
                                            {% for partner in shop.responsibles.all %}
                                             <div class="col-md-6 col-lg-4 mb-4">
-                                                <div href="{% url 'employee_info' partner.id %}" class="card hoverable">
+                                                <div target="_blank"  href="{% url 'employee_info' partner.id %}" class="card hoverable">
                                                     <div class="card-body">
                                                         <div class="media align-items-center mb-3">
                                                           {% if partner.wagtail_profile.avatar %}
@@ -82,16 +82,16 @@
                                                             {% else %}
                                                             {% endif %}
                                                             <div class="small ml-3">
-                                                                <a href="{% url 'employee_info' partner.user.id %}" class="text-primary">{{ partner.user.first_name }} {{ partner.user.last_name }}</a>
+                                                                <a target="_blank"  href="{% url 'employee_info' partner.user.id %}" class="text-primary">{{ partner.user.first_name }} {{ partner.user.last_name }}</a>
                                                                 <div class="small text-muted">{{ partner.position }}</div>
                                                                 <div class="btn-group">
                                                                     <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">
                                                                         <i class="ion ion-ios-more"></i>
                                                                     </button>
 {#                                                                    <div class="dropdown-menu dropdown-menu-left">#}
-{#                                                                        <a class="dropdown-item" href="{% url 'form_task' partner.id %}">Добавить задачу</a>#}
-{#                                                                        <a class="dropdown-item" href="{% url 'edit_partner' partner.user.id %}">Редактировать франчайзи</a>#}
-{#                                                                        <a class="dropdown-item" href="{% url 'form_review' %}">Добавить отзыв</a>#}
+{#                                                                        <a class="dropdown-item" target="_blank"  href="{% url 'form_task' partner.id %}">Добавить задачу</a>#}
+{#                                                                        <a class="dropdown-item" target="_blank"  href="{% url 'edit_partner' partner.user.id %}">Редактировать франчайзи</a>#}
+{#                                                                        <a class="dropdown-item" target="_blank"  href="{% url 'form_review' %}">Добавить отзыв</a>#}
 {#                                                                    </div>#}
                                                                 </div>
                                                             </div>
@@ -101,7 +101,7 @@
                                                             <br>Whatsapp {{ partner.whatsapp }}
                                                             <br>{{ partner.user.email }}
                                                         </div>
-{#                                                        <a href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+{#                                                        <a target="_blank"  href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,9 +126,9 @@
                                         </div>
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Сортировать: </span>
-                                            <a href="#" class="text-muted active">По порядку</a>
-                                            <a href="#" class="text-muted">По дате</a>
-                                            <a href="#" class="text-muted">По размеру</a>
+                                            <a target="_blank"  href="#" class="text-muted active">По порядку</a>
+                                            <a target="_blank"  href="#" class="text-muted">По дате</a>
+                                            <a target="_blank"  href="#" class="text-muted">По размеру</a>
                                         </div>
                                         <div class="row" id="documents_wraper">               
                                             {% include 'partials/documents.html' with documents=documents %}
@@ -155,9 +155,9 @@
                                         </div>
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Сортировать: </span>
-                                            <a href="#" class="text-muted active">По порядку</a>
-                                            <a href="#" class="text-muted">По дате</a>
-                                            <a href="#" class="text-muted">По размеру</a>
+                                            <a target="_blank"  href="#" class="text-muted active">По порядку</a>
+                                            <a target="_blank"  href="#" class="text-muted">По дате</a>
+                                            <a target="_blank"  href="#" class="text-muted">По размеру</a>
                                         </div>
                                         <div class="row" id="invoices_wraper"> 
                                             {% include 'partials/documents.html' with documents=invoices %}
@@ -169,9 +169,9 @@
                                     <div class="tab-pane fade" id="reviews">
                                         <div class="my-4 small text-right">
                                             <span class="text-muted">Фильтровать:</span>
-                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
-                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
-                                            <a href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
+                                            <a target="_blank"  href="{% url 'load_filtered_shop_feedback' shop.id %}" class="text-muted active" onclick="load_feedback($(this))">Все</a>
+                                            <a target="_blank"  href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=0" class="text-muted" onclick="load_feedback($(this))">Отработан</a>
+                                            <a target="_blank"  href="{% url 'load_filtered_shop_feedback' shop.id %}?filter_feedback=1" class="text-muted" onclick="load_feedback($(this))">Не отработан</a>
                                         </div>
                                        <div id="feedback_manager" class="my-4 row">
                                             {% include 'partials/feedback_manager.html'%}

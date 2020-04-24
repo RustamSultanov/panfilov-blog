@@ -18,7 +18,7 @@
     <div class="nav">
         {% for item in subjects %}
             <li class="nav-item">
-                <a data-id={{ item.pk }} class="nav-mm nav-link {% if subjects.0.pk == item.pk %}text-dark{% endif %} pl-0" href="javascript:void(0)" onclick="load_tech_cards_docs($(this))">{{item.name}}</a>
+                <a data-id={{ item.pk }} class="nav-mm nav-link {% if subjects.0.pk == item.pk %}text-dark{% endif %} pl-0" target="_blank"  href="javascript:void(0)" onclick="load_tech_cards_docs($(this))">{{item.name}}</a>
             </li>
         {% endfor %}
     </div>
@@ -53,9 +53,9 @@
     <div class="my-5">
         <div class="my-4 small text-right">
             <span class="text-muted">Сортировать: </span>
-            <a href="?ordering=title" class="text-muted active">По порядку</a>
-            <a href="?ordering=-created_at" class="text-muted">По дате</a>
-            <a href="?ordering=file_size" class="text-muted">По размеру</a>
+            <a target="_blank"  href="?ordering=title" class="text-muted active">По порядку</a>
+            <a target="_blank"  href="?ordering=-created_at" class="text-muted">По дате</a>
+            <a target="_blank"  href="?ordering=file_size" class="text-muted">По размеру</a>
         </div>
         <div class="row" id="documents_wraper">
             {% include 'partials/documents.html' with documents=documents %}
@@ -74,7 +74,7 @@
                         <div class="card-body">
                             <h4 class="card-title mb-3">{{course.title}}</h4>
                             <p class="card-text">{{course.description|truncatechars:25}}</p>
-                            <a href="{% url 'mickroservices:lesson' course.id %}" class="btn btn-sm btn-primary btn-round">Перейти</a>
+                            <a target="_blank"  href="{% url 'mickroservices:lesson' course.id %}" class="btn btn-sm btn-primary btn-round">Перейти</a>
                         </div>
                     </div>
                 </div>
@@ -85,17 +85,17 @@
                 <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
                         <li class="page-item disabled">
-                            <a class="page-link" href="javascript:void(0)">«</a>
+                            <a class="page-link" target="_blank"  href="javascript:void(0)">«</a>
                         </li>
                     {% endif %}
                     {% for num_page in page_obj.paginator.num_pages %}
                         <li class="page-item {% if page_obj.number == num_page %}active{%endif%}">
-                            <a class="page-link" href="javascript:void(0)">{{num_page}}</a>
+                            <a class="page-link" target="_blank"  href="javascript:void(0)">{{num_page}}</a>
                         </li>
                     {% endfor %}
                         {% if page_obj.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">»</a>
+                            <a class="page-link" target="_blank"  href="javascript:void(0)">»</a>
                         </li>
                     {% endif %}
                 </ul>

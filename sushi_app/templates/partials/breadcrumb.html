@@ -1,14 +1,14 @@
 {% if breadcrumb %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-                <a href="{% url 'base' %}">Главная</a>
+                <a target="_blank"  href="{% url 'base' %}">Главная</a>
         </li>
         {% for item in breadcrumb %}
             <li class="breadcrumb-item {% if forloop.last %}active{% endif %}">
                 {% if forloop.last %}
                     {{item.title}}
                 {% else %}
-                    <a href="{{item.url}}">{{item.title}}</a>
+                    <a target="_blank"  href="{{item.url}}">{{item.title}}</a>
                 {% endif %}
             </li>
         {% endfor %}

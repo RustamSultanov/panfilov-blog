@@ -16,16 +16,16 @@
             <h4>Часто задаваемые вопросы</h4>
             {% for question in faq_all %}
                 <div class="bg-white ui-bordered mb-2">
-                    <a href="#company-faq-{{ forloop.counter }}" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse">
+                    <a target="_blank"  href="#company-faq-{{ forloop.counter }}" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse">
                         {{question.date_created}} {{question.theme}}. Задал {{question.name}}
                         <span class="collapse-icon"></span>
                     </a>
                     <div id="company-faq-{{ forloop.counter }}" class="collapse text-muted">
                         {% if question.answer %}
-                            <div class="px-4 pb-3">{{question.body}} <a href="{% url 'faq_answer' question.id %}" class="btn btn-round btn-outline-primary btn-sm">Изменить ответ</a></div>
+                            <div class="px-4 pb-3">{{question.body}} <a target="_blank"  href="{% url 'faq_answer' question.id %}" class="btn btn-round btn-outline-primary btn-sm">Изменить ответ</a></div>
                              <div class="px-4 pb-3">Ответ: {{question.answer}}</div>
                         {% else %}
-                        <div class="px-4 pb-3">{{question.body}} <a href="{% url 'faq_answer' question.id %}" class="btn btn-round btn-outline-primary btn-sm">Добавить ответ</a></div>
+                        <div class="px-4 pb-3">{{question.body}} <a target="_blank"  href="{% url 'faq_answer' question.id %}" class="btn btn-round btn-outline-primary btn-sm">Добавить ответ</a></div>
 
                         {% endif %}
                     </div>

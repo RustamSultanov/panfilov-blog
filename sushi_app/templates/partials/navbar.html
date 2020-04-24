@@ -3,7 +3,7 @@
 <nav class="layout-navbar navbar navbar-expand-xl align-items-xl-center bg-navbar-theme container-p-x" id="layout-navbar">
 
     <!-- Brand demo (see assets/css/demo/demo.css) -->
-    <a href="{% url 'base' %}" class="navbar-brand app-brand py-0 mr-xl-4">
+    <a target="_blank"  href="{% url 'base' %}" class="navbar-brand app-brand py-0 mr-xl-4">
       <span class="app-brand-logo demo">
         <img src="{% static "img/logo.png" %}" alt="">
       </span>
@@ -15,7 +15,7 @@
     <div class="order-xl-last navbar-nav">
 <div class="d-inline-flex flex-row align-items-center">
                     <div class="demo-navbar-notifications nav-item dropdown mr-2">
-                        <a class="nav-link dropdown-toggle hide-arrow" href="#" id="notifications_dropdown_link">
+                        <a class="nav-link dropdown-toggle hide-arrow" target="_blank"  href="#" id="notifications_dropdown_link">
                             <i class="ion ion-md-notifications-outline navbar-icon align-middle"></i>
                             <span class="badge badge-primary badge-dot indicator"></span>
                         </a>
@@ -31,11 +31,11 @@
 
                             </div>
 
-                            <a href="{% url 'notification' %}" class="d-block text-center text-light small p-2 my-1">Показать все оповещения</a>
+                            <a target="_blank"  href="{% url 'notification' %}" class="d-block text-center text-light small p-2 my-1">Показать все оповещения</a>
                         </div>
                     </div>
                     <div class="demo-navbar-user nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" target="_blank"  href="#" data-toggle="dropdown">
                     <span class="d-inline-flex align-items-center align-middle">
                       <img src="{{ user.wagtail_userprofile.avatar.url }}" alt class="d-block ui-w-30 rounded-circle">
                       <div class="ml-3 text-right d-none d-md-block">
@@ -45,14 +45,14 @@
                     </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                {% if user.user_profile.is_manager %} <a href="{% url 'manager_lk' %}" class="dropdown-item">Личный кабинет</a>
-                {% elif user.user_profile.is_partner %}<a href="{% url 'partner_lk' %}" class="dropdown-item">Личный кабинет</a>
+                {% if user.user_profile.is_manager %} <a target="_blank"  href="{% url 'manager_lk' %}" class="dropdown-item">Личный кабинет</a>
+                {% elif user.user_profile.is_partner %}<a target="_blank"  href="{% url 'partner_lk' %}" class="dropdown-item">Личный кабинет</a>
                 {% else %}
                 {% endif %}
-                <a href="{% url 'notification' %}" class="dropdown-item">Оповещения</a>
-                <a href="{% url 'edit_employee' user.id %}" class="dropdown-item">Настройки</a>
+                <a target="_blank"  href="{% url 'notification' %}" class="dropdown-item">Оповещения</a>
+                <a target="_blank"  href="{% url 'edit_employee' user.id %}" class="dropdown-item">Настройки</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'logout' %}" class="dropdown-item">
+                <a target="_blank"  href="{% url 'logout' %}" class="dropdown-item">
                     <i class="ion ion-ios-log-out text-danger"></i> &nbsp; Выйти</a>
             </div>
         </div>
@@ -68,8 +68,8 @@
 {#        {% if user.user_profile.is_head %}#}
 
             <div class="nav-item">
-               <a href="{% url 'employee_list' %}" class="nav-link nav-link__icon">
-{#                {% elif user.user_profile.is_partner %}<a href="{% url 'partner_lk' %}" class="nav-link nav-link__icon">#}
+               <a target="_blank"  href="{% url 'employee_list' %}" class="nav-link nav-link__icon">
+{#                {% elif user.user_profile.is_partner %}<a target="_blank"  href="{% url 'partner_lk' %}" class="nav-link nav-link__icon">#}
 {#                {% else %}#}
 {#                {% endif %}#}
                     <i class="icon-user"></i>
@@ -79,31 +79,31 @@
 {#        {% else %}#}
 {#                {% endif %}#}
             <div class="nav-item">
-                <a href="{% url 'mickroservices:regulations' %}" class="nav-link nav-link__icon">
+                <a target="_blank"  href="{% url 'mickroservices:regulations' %}" class="nav-link nav-link__icon">
                     <i class="icon-folder"></i>
                     <span>Регламенты</span>
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{% url 'mickroservices:news' %}" class="nav-link nav-link__icon">
+                <a target="_blank"  href="{% url 'mickroservices:news' %}" class="nav-link nav-link__icon">
                     <i class="icon-send"></i>
                     <span>Новости</span>
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{% url 'mickroservices:marketing' %}" class="nav-link nav-link__icon">
+                <a target="_blank"  href="{% url 'mickroservices:marketing' %}" class="nav-link nav-link__icon">
                     <i class="icon-star"></i>
                     <span>Маркетинг</span>
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{% url 'mickroservices:lessons' %}" class="nav-link nav-link__icon">
+                <a target="_blank"  href="{% url 'mickroservices:lessons' %}" class="nav-link nav-link__icon">
                     <i class="icon-help-question"></i>
                     <span>Обучение</span>
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{% url 'mickroservices:tech_cards' %}" class="nav-link nav-link__icon">
+                <a target="_blank"  href="{% url 'mickroservices:tech_cards' %}" class="nav-link nav-link__icon">
                     <i class="icon-settings"></i>
                     <span>Техкарты</span>
                 </a>
@@ -111,12 +111,12 @@
         </div>
 
         <div class="navbar-nav align-items-center ml-auto">
-            {% if user.user_profile.is_manager %} <a href="{% url 'faq_list' %}"> <div class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0">Ответить на вопросы</div></a>
-                {% elif user.user_profile.is_partner %}<a href="{% url 'mickroservices:faq' %}"> <div class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0">FAQ</div></a>
+            {% if user.user_profile.is_manager %} <a target="_blank"  href="{% url 'faq_list' %}"> <div class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0">Ответить на вопросы</div></a>
+                {% elif user.user_profile.is_partner %}<a target="_blank"  href="{% url 'mickroservices:faq' %}"> <div class="btn btn-primary btn-round mr-xl-2 mb-2 mb-xl-0">FAQ</div></a>
                 {% else %}
                 {% endif %}
 {% if user.user_profile.is_manager %}
-                {% elif user.user_profile.is_partner %}<a href="{% url 'mickroservices:idea' %}"> <div class="btn btn-primary btn-round mr-xl-2">Предложить идею</div></a>
+                {% elif user.user_profile.is_partner %}<a target="_blank"  href="{% url 'mickroservices:idea' %}"> <div class="btn btn-primary btn-round mr-xl-2">Предложить идею</div></a>
                 {% else %}
                 {% endif %}
 
