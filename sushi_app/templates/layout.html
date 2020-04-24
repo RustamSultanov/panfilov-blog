@@ -4,16 +4,16 @@
 {% block layout %}
 <div class="fixed-top">
         <nav class="navbar bg-navbar-theme">
-            <a target="_blank"  href="/" class="navbar-brand">
+            <a  href="/" class="navbar-brand">
                 Панфилов
                 <span class="navbar-brand-text">
                 Школа плавания
                 <br>Александра Панфилова</span>
             </a>
             <div class="ml-auto d-flex align-items-center">
-                <a target="_blank"  href="javascript:void(0)" class="btn btn-outline-white btn-round btn-sm d-none d-md-inline-block">Онлайн
+                <a  href="javascript:void(0)" class="btn btn-outline-white btn-round btn-sm d-none d-md-inline-block">Онлайн
                     запись</a>
-{#                <a target="_blank"  href="javascript:void(0)" class="ml-4 d-none d-md-inline-block">#}
+{#                <a  href="javascript:void(0)" class="ml-4 d-none d-md-inline-block">#}
 {#                    <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">#}
 {#                        <path d="M19 12C19 10.9494 18.8189 9.90914 18.4672 8.93853C18.1154 7.96793 17.5998 7.08601 16.9497 6.34315C16.2997 5.60028 15.5281 5.011 14.6788 4.60896C13.8295 4.20693 12.9193 4 12 4C11.0807 4 10.1705 4.20693 9.32122 4.60896C8.47194 5.011 7.70026 5.60028 7.05025 6.34315C6.40024 7.08601 5.88463 7.96793 5.53284 8.93853C5.18106 9.90914 5 10.9494 5 12"#}
 {#                              stroke="white"></path>#}
@@ -25,7 +25,7 @@
 {#                        <rect x="17.5" y="11.5" width="3" height="4" rx="1.5" stroke="white"></rect>#}
 {#                    </svg>#}
 {#                </a>#}
-                <a target="_blank"  href="{% url 'lk' %}" class="ml-2">
+                <a  href="{% url 'lk' %}" class="ml-2">
                     <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="path-1-inside-1" fill="white">
                             <path d="M20 19C20 17.9494 19.7931 16.9091 19.391 15.9385C18.989 14.9679 18.3997 14.086 17.6569 13.3431C16.914 12.6003 16.0321 12.011 15.0615 11.609C14.0909 11.2069 13.0506 11 12 11C10.9494 11 9.90914 11.2069 8.93853 11.609C7.96793 12.011 7.08601 12.6003 6.34315 13.3431C5.60028 14.086 5.011 14.9679 4.60896 15.9385C4.20693 16.9091 4 17.9494 4 19L12 19H20Z"></path>
@@ -35,7 +35,7 @@
                         <circle cx="12" cy="8" r="3.5" stroke="white"></circle>
                     </svg>
                 </a>
-                <a target="_blank"  href="javascript:void(0)" class="ml-3 navbar-toggler" data-toggle="collapse"
+                <a  href="javascript:void(0)" class="ml-3 navbar-toggler" data-toggle="collapse"
                    data-target="#main_menu">
                     <i class="ion ion-md-menu"></i>
                 </a>
@@ -79,7 +79,7 @@
             <div class="row">
                 {% for blog in blogs %}
                 <div class="col-sm-6 col-lg-4">
-                    <a target="_blank"  href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
+                    <a  href="{{blog.url}}" class="card mb-4" style="background-image: url('{% static 'img/blog_default.png' %}')">
                         <div class="card-body">
                             <div class="category">История плавания</div>
                             <div class="title">{{blog.title}}</div>
