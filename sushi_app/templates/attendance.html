@@ -121,7 +121,7 @@
                     {% for blog in blogs %}
                         <div class="col-sm-6 col-lg-4">
                             <a target="_blank"  href="{{ blog.url }}" class="card mb-4"
-                               style="background-image: url('{% static 'img/blog_default.png' %}')">
+                               style="background-image: url('{{blog.image.file.url}}')">
                                 <div class="card-body">
                                     <div class="category">История плавания</div>
                                     <div class="title">{{ blog.title }}</div>

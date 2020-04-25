@@ -2,6 +2,8 @@ from django.urls import reverse
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
+from django.db import models
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class TextTemplate(Page):
@@ -24,9 +26,18 @@ class TextTemplate(Page):
 
 class Blog(Page):
     body = RichTextField(blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Фоновая картинка'
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
+        ImageChooserPanel('image'),
     ]
 
     class Meta:

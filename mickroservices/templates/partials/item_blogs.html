@@ -6,7 +6,7 @@
                     <div class="card mb-4">
 
         <div class="w-100">
-                        <a target="_blank"  href="{{post.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{% static 'img/blog_default.png' %}');">
+                        <a target="_blank"  href="{{post.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{post.image.file.url}}');">
                         <div class="ui-rect-content d-flex flex-column justify-content-between">
                             {% if post.subscription %}
                                     <div class="top-badges">
