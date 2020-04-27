@@ -1,3 +1,5 @@
+from datetime import datetime, date
+
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -6,11 +8,12 @@ from django.views.decorators.vary import vary_on_headers
 from django.urls import reverse, reverse_lazy
 from django.forms.models import model_to_dict
 from django.contrib.auth import get_user_model
+from ls.joyous.models import getAllUpcomingEvents, getAllEventsByWeek, getAllEventsByDay
 from wagtail.admin.utils import user_passes_test
 from wagtail.users.forms import AvatarPreferencesForm
 import wagtail.users.models
 from django.http import (
-    HttpResponseBadRequest, JsonResponse, HttpResponseRedirect)
+    HttpResponseBadRequest, JsonResponse, HttpResponseRedirect, HttpResponse)
 from django.views.generic import ListView
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.encoding import force_text
@@ -281,15 +284,8 @@ def lk(request):
 
 @login_required
 def employee_list(request):
-    employees_list = UserProfile.objects.prefetch_related(
-        "user", "wagtail_profile",
-    ).filter(
-        head=request.user.user_profile) \
-        if request.user.user_profile.is_head \
-        else UserProfile.objects.prefetch_related(
-        "user", "wagtail_profile", "department"
-    ).filter(is_manager=True)
-    return render(request, "employees.html", {"employee_list": employees_list, "breadcrumb": [{"title": "Сотрудники"}]})
+    e = [i.days_events for i in getAllEventsByDay(request,date(2020,5,4),date(2020,5,4))]
+    return HttpResponse(f"{e}")
 
 
 @login_required

@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+    'ls.joyous',
+
     'modelcluster',
     'taggit',
 
@@ -210,3 +212,9 @@ DEFAULT_PROTOCOL = env('DEFAULT_PROTOCOL')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+ACCOUNT_ACTIVATION_DAYS = 7
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

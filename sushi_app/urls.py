@@ -1,12 +1,23 @@
 from django.contrib.auth import views as auth_view
 from django.contrib.auth.decorators import login_required
-from django.urls import path, reverse_lazy
-from django_registration.backends.one_step.views import RegistrationView
+from django.urls import path, reverse_lazy, include
+from django_registration.backends.activation.views import RegistrationView
 
 from . import views
 from .forms import LoginForm, RegistrationCustomForm
 
 urlpatterns = [
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('password-reset/', auth_view.PasswordResetView.as_view(template_name='password_reset_form.html'),
+         name='password_reset'),
+    path('password-reset/done/', auth_view.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
+         name='password_reset_done'),
+    path('password-reset/reset/<uidb64>/<token>/',
+         auth_view.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password-reset/complete/',
+         auth_view.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
+         name='password_reset_complete'),
     path(
         '', views.base, name='base'),
     path(
