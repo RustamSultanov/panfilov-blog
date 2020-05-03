@@ -58,17 +58,7 @@ class NewsPage(Page):
         ev = getAllEventsByDay(request, date_select, date_select)
         from sushi_app.forms import EventForm
         form = EventForm(request.POST or None, lst_events=ev[0].days_events)
-        if form.is_valid():
-            if not request.user.is_authenticated:
-                return HttpResponseRedirect(reverse_lazy("login"))
-            rev = RecurringEventPage.objects.get(id=int(form.data['events']))
-            dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
-            from sushi_app.models import Classes
-            cl_ev = Classes(type_classes=self.type_classes,user=request.user, is_busy=True, duration=DateTimeTZRange(
-                lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
-                upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
-            cl_ev.save()
-            return HttpResponseRedirect(reverse_lazy("ya_kassa"))
+
         context['calendar'] = [dates[i:i + 7] for i in range(0, len(dates), 7)]
         context['today'] = today
         context['form'] = form
@@ -78,3 +68,23 @@ class NewsPage(Page):
             {'title': self.title}
         ]
         return context
+
+    def serve(self, request):
+        today = timezone.localdate()
+        date_select = date(today.year, today.month, today.day)
+        ev = getAllEventsByDay(request, date_select, date_select)
+        from sushi_app.forms import EventForm
+        form = EventForm(request.POST or None, lst_events=ev[0].days_events)
+        if form.is_valid():
+            if not request.user.is_authenticated:
+                return HttpResponseRedirect(reverse_lazy("login"))
+            rev = RecurringEventPage.objects.get(id=int(form.data['events']))
+            dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
+            from sushi_app.models import Classes
+            cl_ev = Classes(type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
+                lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
+                upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
+            cl_ev.save()
+            return HttpResponseRedirect(reverse_lazy("ya_kassa"))
+        return super().serve(request)
+
