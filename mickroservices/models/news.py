@@ -81,7 +81,7 @@ class NewsPage(Page):
             rev = RecurringEventPage.objects.get(id=int(form.data['events']))
             dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
             from sushi_app.models import Classes
-            cl_ev = Classes(type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
+            cl_ev = Classes(date_lessons=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour),type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
                 lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
                 upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
             cl_ev.save()

@@ -239,9 +239,10 @@ def base(request):
             return HttpResponseRedirect(reverse_lazy("login"))
         rev = RecurringEventPage.objects.get(id=int(form.data['events']))
         dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
-        cl_ev = Classes(user=request.user, is_busy=True, duration=DateTimeTZRange(
-            lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
-            upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
+        cl_ev = Classes(date_lessons=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour),
+                        user=request.user, is_busy=True, duration=DateTimeTZRange(
+                lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
+                upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
         cl_ev.save()
         return HttpResponseRedirect(reverse_lazy("ya_kassa"))
     return render(request, "index.html", {"employee_list": employees_list, "news": news,
@@ -326,11 +327,11 @@ def get_filtered_events(request):
 
         for r in ev[0].days_events:
             dt = datetime(int(request.GET['filter_year']), int(request.GET['filter_month']),
-                           int(request.GET['filter_date'])) + timedelta(
+                          int(request.GET['filter_date'])) + timedelta(
                 minutes=r.page.time_from.minute,
                 hours=r.page.time_from.hour)
             cl_lst = Classes.objects.filter(recurrences_event=r.page, is_busy=True,
-                                   date_lessons=dt)
+                                            date_lessons=dt)
             if len(cl_lst) == 0:
                 rec_pages.append(r)
         form = EventForm(request.POST or None, lst_events=rec_pages)
