@@ -322,9 +322,6 @@ def get_filtered_events(request):
         date_select = date(int(request.GET['filter_year']), int(request.GET['filter_month']),
                            int(request.GET['filter_date']))
         ev = getAllEventsByDay(request, date_select, date_select)
-        a = date_select + timedelta(
-                                                            minutes=ev[0].days_events[0].page.time_from.minute,
-                                                            hours=ev[0].days_events[0].page.time_from.hour)
         rec_pages = [r for r in ev[0].days_events if
                      len(Classes.objects.filter(recurrences_event=r.page, is_busy=True,
                                                 date_lessons=date_select + timedelta(
