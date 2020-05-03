@@ -1,20 +1,23 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block slider %}
-    {% include 'partials/slider.html'%}
+    {% include 'partials/slider.html' %}
 {% endblock %}
 
 {% block content %}
 
-        <div id="school" class="section bg-light-blue">
+    <div id="school" class="section bg-light-blue">
         <div class="container">
             <div class="section-header">Школа</div>
             <div class="row">
                 <div class="col-lg-6">
-                    <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках.</p>
-                    <p>Это интенсивные оффлайн тренировки и онлайн обучение в простой и понятной форме, доступной для ученика любого уровня подготовки.</p>
+                    <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных
+                        процессах обучения и авторских методиках.</p>
+                    <p>Это интенсивные оффлайн тренировки и онлайн обучение в простой и понятной форме, доступной для
+                        ученика любого уровня подготовки.</p>
                 </div>
             </div>
             <div class="my-5"></div>
@@ -22,17 +25,23 @@
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_70.png" %}" alt="">
                     <div class="card-title">Авторская методика</div>
-                    <div class="card-text">Авторская методика в основе которой детальное изучение физических особенностей организма, поэтапное обучение плаванию и контроль навыков.</div>
+                    <div class="card-text">Авторская методика в основе которой детальное изучение физических
+                        особенностей организма, поэтапное обучение плаванию и контроль навыков.
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_71.png" %}" alt="">
                     <div class="card-title">Нацеленность на результат</div>
-                    <div class="card-text">Авторская методика в основе которой детальное изучение физических особенностей организма, поэтапное обучение плаванию и контроль навыков.</div>
+                    <div class="card-text">Авторская методика в основе которой детальное изучение физических
+                        особенностей организма, поэтапное обучение плаванию и контроль навыков.
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_72.png" %}" alt="">
                     <div class="card-title">Равные возможности</div>
-                    <div class="card-text">Авторская методика в основе которой детальное изучение физических особенностей организма, поэтапное обучение плаванию и контроль навыков.</div>
+                    <div class="card-text">Авторская методика в основе которой детальное изучение физических
+                        особенностей организма, поэтапное обучение плаванию и контроль навыков.
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,7 +52,8 @@
             <div class="row">
                 <div class="col-lg-6 order-12 order-lg-0">
                     <p>Высшее образование, тренерский опыт, десятки соревнований и изучение методик плавания. </p>
-                    <p>Это всё стало основой моей авторской методики дифференцированного подхода, в основе которой три направления, которые мы развиваем на тренировках.</p>
+                    <p>Это всё стало основой моей авторской методики дифференцированного подхода, в основе которой три
+                        направления, которые мы развиваем на тренировках.</p>
                 </div>
                 <div class="col-lg-6 order-0 order-lg-12">
                     <div class="trener-image-wrap">
@@ -56,17 +66,23 @@
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_88.png" %}" alt="">
                     <div class="card-title">Высшее образование</div>
-                    <div class="card-text">Институт физической культуры и спорта Московского городского педагогического университета (МГПУ).</div>
+                    <div class="card-text">Институт физической культуры и спорта Московского городского педагогического
+                        университета (МГПУ).
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_88.png" %}" alt="">
                     <div class="card-title">Специализация</div>
-                    <div class="card-text">Основная специализация “Плавание”, получена на кафедре Теории и методики плавания.</div>
+                    <div class="card-text">Основная специализация “Плавание”, получена на кафедре Теории и методики
+                        плавания.
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-5">
                     <img src="{% static "img/image_88.png" %}" alt="">
                     <div class="card-title">Опыт</div>
-                    <div class="card-text">Более 100 учеников разного возраста, физической формы и уровня подготовки прошли обучение по авторской методике.</div>
+                    <div class="card-text">Более 100 учеников разного возраста, физической формы и уровня подготовки
+                        прошли обучение по авторской методике.
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,37 +92,40 @@
             <div class="section-header">Программы обучения</div>
             <div class="row mb-5">
                 <div class="col-lg-6">
-                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня подготовки.</p>
+                    <p>Школа Александра Панфилова предлагает несколько программ обучения для учеников любого уровня
+                        подготовки.</p>
                 </div>
             </div>
             <div class="row">
                 {% for program in programs %}
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="w-100">
-                            <a target="_blank"  href="{{program.url}}" class="card-img-top d-block ui-rect-60 ui-bg-cover" style="background-image: url('{{program.image.file.url}}');">
-                                <div class="ui-rect-content d-flex flex-column justify-content-between">
-                                    {% if program.subscription %}
-                                    <div class="top-badges">
-                                        <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card mb-4">
+                            <div class="w-100">
+                                <a target="_blank" href="{{ program.url }}"
+                                   class="card-img-top d-block ui-rect-60 ui-bg-cover"
+                                   style="background-image: url('{{ program.image.file.url }}');">
+                                    <div class="ui-rect-content d-flex flex-column justify-content-between">
+                                        {% if program.subscription %}
+                                            <div class="top-badges">
+                                                <span class="card-badge card-badge-blue">Абонемент на месяц</span>
+                                            </div>
+                                        {% endif %}
+                                        {% if program.places_limited %}
+                                            <div class="bottom-badges">
+                                                <span class="card-badge card-badge-red">Количество мест ограничено</span>
+                                            </div>
+                                        {% endif %}
                                     </div>
-                                    {% endif %}
-                         {% if program.places_limited %}
-                                    <div class="bottom-badges">
-                                        <span class="card-badge card-badge-red">Количество мест ограничено</span>
-                                    </div>
-                                 {% endif %}
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a target="_blank"  href="{{program.url}}" class="card-title">{{program.title}}</a>
-                            <div class="card-text">{{program.preview | richtext}}</div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <a target="_blank" href="{{ program.url }}" class="card-title">{{ program.title }}</a>
+                                <div class="card-text">{{ program.preview | richtext }}</div>
 
-                            <div class="card-price">{{program.cost}} ₽</div>
+                                <div class="card-price">{{ program.cost }} ₽</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
@@ -116,62 +135,70 @@
             <div class="row">
                 <div class="col-xl-7">
                     <div class="section-header">Персональные тренировки</div>
-                    <p>Персональная или индивидуальная тренировка это занятие продолжительностью 45 минут, которое проходит в формате 1 на 1 (вы и тренер).</p>
-                    <p>В стоимость занятия входит посещение бассейна по официальному абонементу, персональная тренировка и последующее онлайн общение с тренером.</p>
+                    <p>Персональная или индивидуальная тренировка это занятие продолжительностью 45 минут, которое
+                        проходит в формате 1 на 1 (вы и тренер).</p>
+                    <p>В стоимость занятия входит посещение бассейна по официальному абонементу, персональная тренировка
+                        и последующее онлайн общение с тренером.</p>
                     <div class="price">2 500 ₽</div>
-                    <div class="price-description">Указана стоимость одного занятия при оплате абонемента на один месяц (не менее 4х занятий).</div>
-                    <a target="_blank"  href="javascript:void(0)" class="btn btn-primary btn-round">ЗАПИСЬ на тренировку</a>
+                    <div class="price-description">Указана стоимость одного занятия при оплате абонемента на один месяц
+                        (не менее 4х занятий).
+                    </div>
+                    <a target="_blank" href="javascript:void(0)" class="btn btn-primary btn-round">ЗАПИСЬ на
+                        тренировку</a>
                 </div>
             </div>
         </div>
     </div>
-{% block  additional_content %}
-    <div id="blog" class="section bg-light-blue">
-        <div class="container">
-            <div class="section-header">Блог</div>
-            <div class="row col-lg-6 mb-5">
-                <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных процессах обучения и авторских методиках. </p>
-            </div>
-            <div class="row">
-                {% for blog in blogs %}
-                <div class="col-sm-6 col-lg-4">
-                    <a target="_blank"  href="{{blog.url}}" class="card mb-4" style="background-image: url('{{blog.image.file.url}}')">
-                        <div class="card-body">
-                            <div class="category">История плавания</div>
-                            <div class="title">{{blog.title}}</div>
-                            <div class="date">{{blog.first_published_at}}N</div>
+    {% block  additional_content %}
+        <div id="blog" class="section bg-light-blue">
+            <div class="container">
+                <div class="section-header">Блог</div>
+                <div class="row col-lg-6 mb-5">
+                    <p>Школа Александра Панфилова - это современная школа плавания, основанная на инновационных
+                        процессах обучения и авторских методиках. </p>
+                </div>
+                <div class="row">
+                    {% for blog in blogs %}
+                        <div class="col-sm-6 col-lg-4">
+                            <a target="_blank" href="{{ blog.url }}" class="card mb-4"
+                               style="background-image: url('{{ blog.image.file.url }}')">
+                                <div class="card-body">
+                                    <div class="category">История плавания</div>
+                                    <div class="title">{{ blog.title }}</div>
+                                    <div class="date">{{ blog.first_published_at }}N</div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                {% endfor %}
+                    {% endfor %}
 
+                </div>
             </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}
     <div id="book" class="section">
         <div class="container">
             <div class="section-header">Онлайн запись</div>
             <div class="row">
                 <div class="col-lg-6">
-                    <p>Для записи на тренировку необходимо выбрать тип занятия, месяц и доступную дату и время занятия в форме, размещенной ниже.</p>
+                    <p>Для записи на тренировку необходимо выбрать тип занятия, месяц и доступную дату и время занятия в
+                        форме, размещенной ниже.</p>
                 </div>
             </div>
-            <form>
+            <form method="post">
                 <label class="form-label">Тип занятия:</label>
                 <div class="mt-2 mb-4 radio-button-wrapper">
                     <input type="radio" class="hidden" id="type_1" name="type">
                     <label for="type_1" class="radio-button mr-2 mb-2">Индивидуальная тренировка</label>
-                    <input type="radio" class="hidden" id="type_2" name="type">
-                    <label for="type_2" class="radio-button">Индивидуальная тренировка 1+1</label>
+{#                    <input type="radio" class="hidden" id="type_2" name="type">#}
+{#                    <label for="type_2" class="radio-button">Индивидуальная тренировка 1+1</label>#}
                 </div>
                 <div id="calendar">
                     <div class="month-grid">
                         <div class="d-flex justify-content-between flex-wrap">
                             <label class="form-label">Дата занятия:</label>
                             <div id="month">
-                                <div class="month active">Февраль 2020</div>
-                                <div class="month ml-2">Март 2020</div>
+                                <div class="month active">{{ today|date:"F Y" }}</div>
+{#                                <div class="month ml-2">Март 2020</div>#}
                             </div>
                         </div>
                         <hr>
@@ -185,462 +212,214 @@
                                 <div class="day-name">Сб</div>
                                 <div class="day-name">Вс</div>
                             </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">27<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
+                            {% for week in calendar %}
+                                <div class="days-row">
+                                    {% for date in week %}
+                                            <div class="day-col">
+                                               <a class="day {% if today.month != date.1 %}disabled{% elif date.2 < today.day %}disabled{% elif date.2 == today.day %}active{% endif %}" {% if today.month != date.1 %}{% elif date.2 < today.day %}{% else %}href="{% url 'load_filtered_events' %}?filter_date={{ date.2 }}&filter_month={{ date.1 }}&filter_year={{ date.0 }}"
+                                           onclick="load_events($(this))"{% endif %}>
+                                                <input type="hidden" name="date" value="{{ date.2 }}.{% if date.1 < 10 %}0{{ date.1 }}{% else %}{{ date.1 }}{% endif %}.{{ date.0 }}" />
+
+                                                    <div class="day-content">
+{#                                                                                                            <div class="day-status">Недоступно</div>#}
+                                                        <div class="day-date">{{ date.2 }}
+                                                            {% if today.month != date.1 %}<span
+                                                                    class="day-month">.{% if date.1 < 10 %}
+                                                                0{{ date.1 }}{% else %}
+                                                                {{ date.1 }}{% endif %}</span>{% else %}{% endif %}
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+
+                                    {% endfor %}
                                 </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">28<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">29<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">30<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">31<span class="day-month">.01</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day disabled">
-                                        <div class="day-content">
-                                            <div class="day-status">Занято</div>
-                                            <div class="day-date">1</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">2</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">3</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">4</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">5</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">6</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">7</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">8</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">9</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">10</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">11</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">13</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day active">
-                                        <div class="day-content">
-                                            <div class="day-status">Ваш выбор</div>
-                                            <div class="day-date">14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">15</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">16</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">17</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">19</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">20</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">21</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">22</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">23</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="days-row">
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">24</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">25</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">26</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">27</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">29</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="day-col">
-                                    <div class="day">
-                                        <div class="day-content">
-                                            <div class="day-status">Свободно</div>
-                                            <div class="day-date">1<span class="day-month">.02</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                         <hr>
                     </div>
                     <div class="time-grid">
                         <label class="form-label">Время занятия:</label>
                         <hr>
-                        <div class="time-wrapper">
-                            <div class="time">7:00 — 7:45</div>
-                            <div class="time disabled">Занято</div>
-                            <div class="time active">8:30 — 9:15<div class="cancel"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 10.87L10.87 12L8 9.13L5.13 12L4 10.87L6.87 8L4 5.13L5.13 4L8 6.87L10.87 4L12 5.13L9.13 8L12 10.87ZM8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0Z" fill="white" fill-opacity="0.8"></path>
-                            </svg>
-                            </div></div>
-                            <div class="time">9:15 — 10:00</div>
-                            <div class="time">10:00 — 10:45</div>
-                            <div class="time">10:45 — 11:30</div>
-                            <div class="time">11:30 — 12:15</div>
-                            <div class="time">12:15 — 13:00</div>
+                        <div id="events_date" class="time-wrapper">
+
+                            {% include 'partials/events.html' %}
+                            {% for message in form.errors.values %}
+                                    {{ message }}
+                                  {% endfor %}
+
+                            {#                            <div class="time">7:00 — 7:45</div>#}
+                            {#                            <div class="time disabled">Занято</div>#}
+                            {#                            <div class="time active">8:30 — 9:15#}
+                            {#                                <div class="cancel">#}
+                            {#                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"#}
+                            {#                                         xmlns="http://www.w3.org/2000/svg">#}
+                            {#                                        <path fill-rule="evenodd" clip-rule="evenodd"#}
+                            {#                                              d="M12 10.87L10.87 12L8 9.13L5.13 12L4 10.87L6.87 8L4 5.13L5.13 4L8 6.87L10.87 4L12 5.13L9.13 8L12 10.87ZM8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0Z"#}
+                            {#                                              fill="white" fill-opacity="0.8"></path>#}
+                            {#                                    </svg>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="time">9:15 — 10:00</div>#}
+                            {#                            <div class="time">10:00 — 10:45</div>#}
+                            {#                            <div class="time">10:45 — 11:30</div>#}
+                            {#                            <div class="time">11:30 — 12:15</div>#}
+                            {#                            <div class="time">12:15 — 13:00</div>#}
                         </div>
                     </div>
                 </div>
                 <div class="book-result">
-                    <button class="btn btn-primary btn-round">записаться на тренировку</button>
-                    <div class="result-text">Вы выбрали: <span id="date">14 февраля</span>, <span id="time">8:30 — 9:15</span>   Стоимость: <span id="price">1&nbsp;500&nbsp;₽</span> (цена без скидки 2&nbsp;500&nbsp;₽).</div>
+                    <button onclick="del_hd($(this))" class="btn btn-primary btn-round" type="submit">записаться на тренировку</button>
+                    <div class="result-text">Стоимость: <span id="price">1&nbsp;500&nbsp;₽</span> (цена без
+                        скидки 2&nbsp;500&nbsp;₽).
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-{#        <div class="my-5">#}
-{#            <h2 class="text-light font-weight-normal mb-5">Новости</h2>#}
-{#            <div class="row">#}
-{#                <div class="col-md-4 mb-5">#}
-{#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
-{#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
-{#                </div>#}
-{#                <div class="col-md-4 mb-5">#}
-{#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
-{#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
-{#                </div>#}
-{#                {% for new in news reversed %}#}
-{#                <div class="col-md-4 mb-5">#}
-{#                {% image new.image fill-283x188 class="card-img-top" %}#}
-{#                     <h4 class="card-title mb-1">{{new.title}}</h4>#}
-{#                    <div class="small text-muted mb-4">{{new.first_published_at}}</div>#}
-{#                    <a target="_blank"  href="{{new.url}}" class="text-dark">{{ new.announcement }}</a>#}
-{#                </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#            <a target="_blank"  href="{% url 'mickroservices:news' %}" class="text-dark small">ВСЕ НОВОСТИ</a>#}
-{#        </div>#}
-{#{% endblock %}#}
+    {#        <div class="my-5">#}
+    {#            <h2 class="text-light font-weight-normal mb-5">Новости</h2>#}
+    {#            <div class="row">#}
+    {#                <div class="col-md-4 mb-5">#}
+    {#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
+    {#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
+    {#                </div>#}
+    {#                <div class="col-md-4 mb-5">#}
+    {#                    <div class="small text-muted mb-4">31 Мая 2019</div>#}
+    {#                    <a target="_blank"  href="#" class="text-dark">Доступны новинки  меню для всех регионов франшизы</a>#}
+    {#                </div>#}
+    {#                {% for new in news reversed %}#}
+    {#                <div class="col-md-4 mb-5">#}
+    {#                {% image new.image fill-283x188 class="card-img-top" %}#}
+    {#                     <h4 class="card-title mb-1">{{new.title}}</h4>#}
+    {#                    <div class="small text-muted mb-4">{{new.first_published_at}}</div>#}
+    {#                    <a target="_blank"  href="{{new.url}}" class="text-dark">{{ new.announcement }}</a>#}
+    {#                </div>#}
+    {#                {% endfor %}#}
+    {#            </div>#}
+    {#            <a target="_blank"  href="{% url 'mickroservices:news' %}" class="text-dark small">ВСЕ НОВОСТИ</a>#}
+    {#        </div>#}
+    {#{% endblock %}#}
 
-{#{% block  additional_content %}#}
-{#    <div class="bg-light">#}
-{#        <div class="container my-5">#}
-{#            <h2 class="text-light font-weight-normal mb-5">Документы для работы</h2>#}
-{#            <div class="row">#}
-{#                <div class="col-lg-8 mb-4">#}
-{#                    <div class="card h-100 hoverable">#}
-{#                        <div class="card-body h-100 d-flex flex-column">#}
-{#                            <div class="d-flex justify-content-between align-items-center">#}
-{#                                <h3>Маркетинг</h3>#}
-{#                                <i class="icon-star icon-xl"></i>#}
-{#                            </div>#}
-{#                            <div class="row flex-grow-1">#}
-{#                                <div class="col-md-6 d-flex flex-column">#}
-{#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены основные маркетинговые материалы и документы, необходимые для работы точек продаж.</div>#}
-{#                                    <div>#}
-{#                                        <a target="_blank"  href="{% url 'mickroservices:marketing' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="col-md-6">#}
-{#                                    <div class="ui-bg-circle-180 d-none d-md-flex align-items-center text-center mt--3" style="background-image: url('{% static '{% static 'img/bg- %}'image-circle-1.png' %}')">#}
-{#                                        <div class="text-white h4 m-0 text-center w-100 px-2">Новое меню#}
-{#                                            для магазинов</div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-lg-4 mb-4">#}
-{#                    <div class="card h-100 hoverable">#}
-{#                        <div class="card-body h-100 d-flex flex-column">#}
-{#                            <div class="d-flex justify-content-between align-items-center">#}
-{#                                <h3>Техкарты</h3>#}
-{#                                <i class="icon-settings icon-xl"></i>#}
-{#                            </div>#}
-{#                            <div class="row flex-grow-1">#}
-{#                                <div class="col-12 d-flex flex-column">#}
-{#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены все технологические карты для ваших ресторанов.</div>#}
-{#                                    <div>#}
-{#                                        <a target="_blank"  href="{% url 'mickroservices:tech_cards' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-lg-8 mb-4">#}
-{#                    <div class="card h-100 hoverable">#}
-{#                        <div class="card-body h-100 d-flex flex-column">#}
-{#                            <div class="d-flex justify-content-between align-items-center">#}
-{#                                <h3>Регламенты</h3>#}
-{#                                <i class="icon-folder icon-xl"></i>#}
-{#                            </div>#}
-{#                            <div class="row flex-grow-1">#}
-{#                                <div class="col-12 d-flex flex-column">#}
-{#                                    <div class="flex-grow-1 mb-4">#}
-{#                                        <div class="small text-muted mb-2">В разделе размещены все основные регламенты.</div>#}
-{#                                        <div class="small text-muted">#}
-{#                                            <a target="_blank"  href="#" class="text-primary">Открытие точки</a>(PDF)#}
-{#                                            <a target="_blank"  href="#" class="text-primary">Закупочный регламент</a>(PDF)#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                    <div>#}
-{#                                        <a target="_blank"  href="{% url 'mickroservices:regulations' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#    <div class="container my-5">#}
-{#        <h2 class="text-light font-weight-normal mb-5">Сотрудники</h2>#}
-{#        <div class="row">#}
-{#            {% for employee in employee_list %}#}
-{#            <div class="col-md-6 col-lg-4 mb-4">#}
-{#                <div class="card hoverable">#}
-{#                    <div class="card-body">#}
-{#                      {% if employee.department %}  <h4>{{ employee.department }}</h4>#}
-{#                        {% else %}#}
-{#                        {% endif %}#}
-{#                        <div class="media align-items-center mb-3">#}
-{#                            {% if employee.wagtail_profile.avatar %}#}
-{#                          <img src="{% static "{{ employee.wagtail_profile.avatar. %}"url }}" alt="" class="ui-w-60 rounded-circle">#}
-{#                        {% else %}#}
-{#                        {% endif %}#}
-{#                            <div class="small ml-3">#}
-{#                                <a target="_blank"  href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>#}
-{#                                <div class="small text-muted">{{ employee.position }}</div>#}
-{#                            </div>#}
-{#                        <div class="btn-group">#}
-{#                            <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">#}
-{#                                <i class="ion ion-ios-more"></i>#}
-{#                            </button>#}
-{#                            <div class="dropdown-menu dropdown-menu-left">#}
-{#                                <a class="dropdown-item" target="_blank"  href="{% url 'form_task' employee.id %}">Добавить задачу</a>#}
-{#                                <a class="dropdown-item" target="_blank"  href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        </div>#}
-{#                        <div class="small text-muted mb-3">#}
-{#                            {{ employee.phone_number }}#}
-{#                            <br>Whatsapp {{ employee.whatsapp }}#}
-{#                            <br>{{ employee.user.email }}#}
-{#                        </div>#}
-{#                        <a target="_blank"  href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
+    {#{% block  additional_content %}#}
+    {#    <div class="bg-light">#}
+    {#        <div class="container my-5">#}
+    {#            <h2 class="text-light font-weight-normal mb-5">Документы для работы</h2>#}
+    {#            <div class="row">#}
+    {#                <div class="col-lg-8 mb-4">#}
+    {#                    <div class="card h-100 hoverable">#}
+    {#                        <div class="card-body h-100 d-flex flex-column">#}
+    {#                            <div class="d-flex justify-content-between align-items-center">#}
+    {#                                <h3>Маркетинг</h3>#}
+    {#                                <i class="icon-star icon-xl"></i>#}
+    {#                            </div>#}
+    {#                            <div class="row flex-grow-1">#}
+    {#                                <div class="col-md-6 d-flex flex-column">#}
+    {#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены основные маркетинговые материалы и документы, необходимые для работы точек продаж.</div>#}
+    {#                                    <div>#}
+    {#                                        <a target="_blank"  href="{% url 'mickroservices:marketing' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                                <div class="col-md-6">#}
+    {#                                    <div class="ui-bg-circle-180 d-none d-md-flex align-items-center text-center mt--3" style="background-image: url('{% static '{% static 'img/bg- %}'image-circle-1.png' %}')">#}
+    {#                                        <div class="text-white h4 m-0 text-center w-100 px-2">Новое меню#}
+    {#                                            для магазинов</div>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-4 mb-4">#}
+    {#                    <div class="card h-100 hoverable">#}
+    {#                        <div class="card-body h-100 d-flex flex-column">#}
+    {#                            <div class="d-flex justify-content-between align-items-center">#}
+    {#                                <h3>Техкарты</h3>#}
+    {#                                <i class="icon-settings icon-xl"></i>#}
+    {#                            </div>#}
+    {#                            <div class="row flex-grow-1">#}
+    {#                                <div class="col-12 d-flex flex-column">#}
+    {#                                    <div class="small text-muted flex-grow-1 mb-4">В разделе представлены все технологические карты для ваших ресторанов.</div>#}
+    {#                                    <div>#}
+    {#                                        <a target="_blank"  href="{% url 'mickroservices:tech_cards' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-8 mb-4">#}
+    {#                    <div class="card h-100 hoverable">#}
+    {#                        <div class="card-body h-100 d-flex flex-column">#}
+    {#                            <div class="d-flex justify-content-between align-items-center">#}
+    {#                                <h3>Регламенты</h3>#}
+    {#                                <i class="icon-folder icon-xl"></i>#}
+    {#                            </div>#}
+    {#                            <div class="row flex-grow-1">#}
+    {#                                <div class="col-12 d-flex flex-column">#}
+    {#                                    <div class="flex-grow-1 mb-4">#}
+    {#                                        <div class="small text-muted mb-2">В разделе размещены все основные регламенты.</div>#}
+    {#                                        <div class="small text-muted">#}
+    {#                                            <a target="_blank"  href="#" class="text-primary">Открытие точки</a>(PDF)#}
+    {#                                            <a target="_blank"  href="#" class="text-primary">Закупочный регламент</a>(PDF)#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                    <div>#}
+    {#                                        <a target="_blank"  href="{% url 'mickroservices:regulations' %}" class="btn btn-outline-dark btn-round">Подробнее</a>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {#    <div class="container my-5">#}
+    {#        <h2 class="text-light font-weight-normal mb-5">Сотрудники</h2>#}
+    {#        <div class="row">#}
+    {#            {% for employee in employee_list %}#}
+    {#            <div class="col-md-6 col-lg-4 mb-4">#}
+    {#                <div class="card hoverable">#}
+    {#                    <div class="card-body">#}
+    {#                      {% if employee.department %}  <h4>{{ employee.department }}</h4>#}
+    {#                        {% else %}#}
+    {#                        {% endif %}#}
+    {#                        <div class="media align-items-center mb-3">#}
+    {#                            {% if employee.wagtail_profile.avatar %}#}
+    {#                          <img src="{% static "{{ employee.wagtail_profile.avatar. %}"url }}" alt="" class="ui-w-60 rounded-circle">#}
+    {#                        {% else %}#}
+    {#                        {% endif %}#}
+    {#                            <div class="small ml-3">#}
+    {#                                <a target="_blank"  href="{% url 'employee_info' employee.user.id %}" class="text-primary">{{ employee.user.get_full_name }}</a>#}
+    {#                                <div class="small text-muted">{{ employee.position }}</div>#}
+    {#                            </div>#}
+    {#                        <div class="btn-group">#}
+    {#                            <button type="button" class="btn btn-sm btn-default icon-btn borderless btn-round md-btn-flat dropdown-toggle hide-arrow" data-toggle="dropdown">#}
+    {#                                <i class="ion ion-ios-more"></i>#}
+    {#                            </button>#}
+    {#                            <div class="dropdown-menu dropdown-menu-left">#}
+    {#                                <a class="dropdown-item" target="_blank"  href="{% url 'form_task' employee.id %}">Добавить задачу</a>#}
+    {#                                <a class="dropdown-item" target="_blank"  href="{% url 'edit_employee' employee.user.id %}">Редактировать сотрудника</a>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        </div>#}
+    {#                        <div class="small text-muted mb-3">#}
+    {#                            {{ employee.phone_number }}#}
+    {#                            <br>Whatsapp {{ employee.whatsapp }}#}
+    {#                            <br>{{ employee.user.email }}#}
+    {#                        </div>#}
+    {#                        <a target="_blank"  href="#" class="btn btn-round btn-outline-dark">Написать в чат</a>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            {% endfor %}#}
+    {#        </div>#}
+    {#    </div>#}
+{% endblock %}
+{% block extrascripts %}
+    <script src="{% static "js/dashboard.js" %}"></script>
 {% endblock %}

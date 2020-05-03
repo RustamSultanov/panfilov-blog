@@ -103,9 +103,13 @@ function load_ideas(element){
 
 function load_events(element){
     event.preventDefault();
-    element.siblings('a').removeClass('active');
+    $('a.day').removeClass('active');
     element.addClass('active');
     $('#events_date').load(element[0].href)
     $('a')[0].focus()
     return false;
+}
+
+function del_hd(element){
+    $('a.day').not(".active").children("input").remove()
 }

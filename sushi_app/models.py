@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.postgres.fields import DateTimeRangeField
 from django.contrib.postgres.indexes import GistIndex
 from django.db import models
+from ls.joyous.models import RecurringEventPage
 from phonenumber_field.modelfields import PhoneNumberField
 from recurrence.fields import RecurrenceField
 from wagtail.core.fields import RichTextField
@@ -38,7 +39,10 @@ class Classes(models.Model):
                              limit_choices_to={'is_staff': False}, null=True, blank=True,
                              verbose_name='Посетитель занятия')
     date_create = models.DateTimeField(auto_now_add=True)
-    recurrences = RecurrenceField(blank=True)
+    recurrences_event = models.ForeignKey(on_delete=models.CASCADE, to=RecurringEventPage, related_name='classes',
+                                          null=True, blank=True,
+                                          verbose_name='Событие')
+    date_lessons = models.DateTimeField(null=True, blank=True, verbose_name='Дата занятия')
 
     def __str__(self):
         return f"{self.duration}"

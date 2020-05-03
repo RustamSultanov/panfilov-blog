@@ -41,6 +41,28 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(attrs={'class': "form-control"}))
 
 
+class MyChoiceField(forms.ChoiceField):
+    def valid_value(self, value):
+        return True
+
+
+class EventForm(forms.Form):
+    events = MyChoiceField(required=True,
+                           widget=forms.Select(attrs={'class': 'time dropdown-toggle'}))
+    date = forms.DateField(required=True, widget=forms.HiddenInput())
+
+    def __init__(self, *args, lst_events=None):
+        super().__init__(*args)
+        self.lst_events = lst_events
+
+        self.fields['events'].choices = (
+            (ev.page.id,
+             f'{ev.title}'
+             )
+            for ev in self.lst_events
+        )
+
+
 class MessegesForm(forms.ModelForm):
     class Meta:
         model = Messeges

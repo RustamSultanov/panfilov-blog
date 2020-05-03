@@ -1,33 +1,34 @@
-from datetime import datetime, date
+from calendar import Calendar
+from datetime import date, datetime, timedelta
 
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.decorators.vary import vary_on_headers
-from django.urls import reverse, reverse_lazy
-from django.forms.models import model_to_dict
-from django.contrib.auth import get_user_model
-from ls.joyous.models import getAllUpcomingEvents, getAllEventsByWeek, getAllEventsByDay
-from wagtail.admin.utils import user_passes_test
-from wagtail.users.forms import AvatarPreferencesForm
 import wagtail.users.models
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.models import Group
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.forms import modelformset_factory
+from django.forms.models import model_to_dict
 from django.http import (
     HttpResponseBadRequest, JsonResponse, HttpResponseRedirect, HttpResponse)
-from django.views.generic import ListView
-from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse, reverse_lazy
+from django.utils import timezone
 from django.utils.encoding import force_text
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.vary import vary_on_headers
+from django.views.generic import ListView
+from ls.joyous.models import getAllEventsByDay, RecurringEventPage
+from psycopg2._range import DateTimeTZRange
 from wagtail.admin.forms.search import SearchForm
+from wagtail.admin.utils import user_passes_test
 from wagtail.core.models import Collection
 from wagtail.documents.forms import get_document_form
 from wagtail.documents.permissions import permission_policy
-from django.contrib.auth.models import Group
-from django.forms import modelformset_factory
+from wagtail.users.forms import AvatarPreferencesForm
 
 from chat.models import Message as Chat_Message
-from mickroservices.models import DocumentSushi
-from mickroservices.models import NewsPage, QuestionModel, IdeaModel, Blog
 from mickroservices.forms import AnswerForm, IdeaStatusForm
+from mickroservices.models import NewsPage, QuestionModel, IdeaModel
 from .forms import *
 from .models import *
 
@@ -222,7 +223,30 @@ def base(request):
         news = news_all
     else:
         news = news_all[len(news_all) - 3:]
-    return render(request, "index.html", {"employee_list": employees_list, "news": news})
+    today = timezone.localdate()
+    c = Calendar()
+    dates = list(c.itermonthdays3(today.year, today.month))
+    date_select = date(today.year, today.month, today.day)
+    ev = getAllEventsByDay(request, date_select, date_select)
+    rec_pages = [r for r in ev[0].days_events if
+                 len(Classes.objects.filter(recurrences_event=r.page, is_busy=True, duration=DateTimeTZRange(
+                     lower=date_select + timedelta(minutes=r.page.time_from.minute, hours=r.page.time_from.hour - 3),
+                     upper=date_select + timedelta(minutes=r.page.time_to.minute,
+                                                   hours=r.page.time_to.hour - 3)))) == 0]
+    form = EventForm(request.POST or None, lst_events=rec_pages)
+    if form.is_valid():
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect(reverse_lazy("login"))
+        rev = RecurringEventPage.objects.get(id=int(form.data['events']))
+        dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
+        cl_ev = Classes(user=request.user, is_busy=True, duration=DateTimeTZRange(
+            lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
+            upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
+        cl_ev.save()
+        return HttpResponseRedirect(reverse_lazy("ya_kassa"))
+    return render(request, "index.html", {"employee_list": employees_list, "news": news,
+                                          'calendar': [dates[i:i + 7] for i in range(0, len(dates), 7)],
+                                          'today': today, 'form': form})
 
 
 @login_required
@@ -284,8 +308,30 @@ def lk(request):
 
 @login_required
 def employee_list(request):
-    e = [i.days_events for i in getAllEventsByDay(request,date(2020,5,4),date(2020,5,4))]
+    today = timezone.localdate()
+    e = [i.days_events for i in getAllEventsByDay(request, date(2020, 5, 10), date(2020, 5, 10))]
+    # ew = [i.days_events for i in getAllEventsByWeek(request,today.year,today.month)]
+    c = Calendar()
+    cc = [(year, month, day, day_of_week) for year, month, day, day_of_week in
+          c.itermonthdays4(today.year, today.month)]
     return HttpResponse(f"{e}")
+
+
+def get_filtered_events(request):
+    if "filter_date" in request.GET:
+        date_select = date(int(request.GET['filter_year']), int(request.GET['filter_month']),
+                           int(request.GET['filter_date']))
+        ev = getAllEventsByDay(request, date_select, date_select)
+        a = date_select + timedelta(
+                                                            minutes=ev[0].days_events[0].page.time_from.minute,
+                                                            hours=ev[0].days_events[0].page.time_from.hour)
+        rec_pages = [r for r in ev[0].days_events if
+                     len(Classes.objects.filter(recurrences_event=r.page, is_busy=True,
+                                                date_lessons=date_select + timedelta(
+                                                    minutes=r.page.time_from.minute,
+                                                    hours=r.page.time_from.hour))) == 0]
+        form = EventForm(request.POST or None, lst_events=rec_pages)
+        return form
 
 
 @login_required
@@ -475,6 +521,16 @@ def load_filtered_idea(request):
         request,
         'partials/ideas_manager.html',
         {'idea_list': idea_list, 'formset': formset}
+    )
+
+
+@csrf_exempt
+def load_filtered_events(request):
+    form = get_filtered_events(request)
+    return render(
+        request,
+        'partials/events.html',
+        {'form': form}
     )
 
 
@@ -1054,3 +1110,7 @@ def feedback_view(request, feedback_id, user_id):
             ],
         },
     )
+
+
+def ya_kassa(request):
+    return HttpResponse("Заглушка. Тут будет форма оплаты Я.Кассы")
