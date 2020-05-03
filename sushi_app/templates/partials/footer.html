@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 {% load static %}
 <!-- Layout footer -->
 <div id="contacts">
@@ -25,11 +26,10 @@
                     <div class="contact-copyright mb-3">
                         Официальный сайт Школы плавания Александра Панфилова.
                         <br>Все права защищены. При использовании материалов сайта ссылка обязательна.
-                        <br>Проект компании Идее Группа. ООО "Идее Группа". ОГРН 1157746876286.
+                        <br>Самозанятый Панфилов А. Л.. ИНН 772854105126.
                     </div>
                     <div class="contact-copyright">
-                        <a target="_blank"  href="javascript:void(0)">Договор оферты</a><br>
-                        <a target="_blank"  href="javascript:void(0)">Условия использования персональных данных</a>
+                        <a target="_blank"  href="{% slugurl 'personal-data-usage-terms' %}">Условия использования персональных данных</a>
                     </div>
                 </div>
             </div>

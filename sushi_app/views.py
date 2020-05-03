@@ -322,11 +322,17 @@ def get_filtered_events(request):
         date_select = date(int(request.GET['filter_year']), int(request.GET['filter_month']),
                            int(request.GET['filter_date']))
         ev = getAllEventsByDay(request, date_select, date_select)
-        rec_pages = [r for r in ev[0].days_events if
-                     len(Classes.objects.filter(recurrences_event=r.page, is_busy=True,
-                                                date_lessons=date_select + timedelta(
-                                                    minutes=r.page.time_from.minute,
-                                                    hours=r.page.time_from.hour))) == 0]
+        rec_pages = list()
+
+        for r in ev[0].days_events:
+            dt = datetime(int(request.GET['filter_year']), int(request.GET['filter_month']),
+                           int(request.GET['filter_date'])) + timedelta(
+                minutes=r.page.time_from.minute,
+                hours=r.page.time_from.hour)
+            cl_lst = Classes.objects.filter(recurrences_event=r.page, is_busy=True,
+                                   date_lessons=dt)
+            if len(cl_lst) == 0:
+                rec_pages.append(r)
         form = EventForm(request.POST or None, lst_events=rec_pages)
         return form
 
