@@ -57,7 +57,17 @@ class NewsPage(Page):
         date_select = date(today.year, today.month, today.day)
         ev = getAllEventsByDay(request, date_select, date_select)
         from sushi_app.forms import EventForm
-        form = EventForm(request.POST or None, lst_events=ev[0].days_events)
+        from sushi_app.models import Classes
+        rec_pages = list()
+        for r in ev[0].days_events:
+            dt = datetime(today.year, today.month, today.day) + timedelta(
+                minutes=r.page.time_from.minute,
+                hours=r.page.time_from.hour)
+            cl_lst = Classes.objects.filter(recurrences_event=r.page, is_busy=True,
+                                            date_lessons=dt)
+            if len(cl_lst) == 0:
+                rec_pages.append(r)
+        form = EventForm(request.POST or None, lst_events=rec_pages)
 
         context['calendar'] = [dates[i:i + 7] for i in range(0, len(dates), 7)]
         context['today'] = today
@@ -71,16 +81,24 @@ class NewsPage(Page):
 
     def serve(self, request):
         today = timezone.localdate()
-        date_select = date(today.year, today.month, today.day)
-        ev = getAllEventsByDay(request, date_select, date_select)
+        ev = getAllEventsByDay(request, today, today)
         from sushi_app.forms import EventForm
-        form = EventForm(request.POST or None, lst_events=ev[0].days_events)
+        from sushi_app.models import Classes
+        rec_pages = list()
+        for r in ev[0].days_events:
+            dt = datetime(today.year, today.month, today.day) + timedelta(
+                minutes=r.page.time_from.minute,
+                hours=r.page.time_from.hour)
+            cl_lst = Classes.objects.filter(recurrences_event=r.page, is_busy=True,
+                                            date_lessons=dt)
+            if len(cl_lst) == 0:
+                rec_pages.append(r)
+        form = EventForm(request.POST or None, lst_events=rec_pages)
         if form.is_valid():
             if not request.user.is_authenticated:
                 return HttpResponseRedirect(reverse_lazy("login"))
             rev = RecurringEventPage.objects.get(id=int(form.data['events']))
             dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
-            from sushi_app.models import Classes
             cl_ev = Classes(date_lessons=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour),type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
                 lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
                 upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
