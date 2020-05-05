@@ -71,6 +71,7 @@ urlpatterns = [
     path('load/tasks', views.load_filtered_tasks, name='load_filtered_tasks'),
     path('load/idea', views.load_filtered_idea, name='load_filtered_ideas'),
     path('load/events', views.load_filtered_events, name='load_filtered_events'),
+    path('load/calendar', views.load_filtered_calendar, name='load_filtered_calendar'),
     path('load_paginations_docs', views.load_paginations_docs, name='load_paginations_docs'),
     path('load_docs', views.load_docs, name='load_docs'),
     path('ya_kassa', views.ya_kassa, name='ya_kassa')

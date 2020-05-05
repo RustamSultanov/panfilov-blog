@@ -113,3 +113,12 @@ function load_events(element){
 function del_hd(element){
     $('a.day').not(".active").children("input").remove()
 }
+
+function load_calendar(element){
+    event.preventDefault();
+    $('a.month').removeClass('active');
+    element.addClass('active');
+    $('#panvilov_calendar').load(element[0].href)
+    $('a')[0].focus()
+    return false;
+}

@@ -107,45 +107,16 @@
                         <div class="d-flex justify-content-between flex-wrap">
                             <label class="form-label">Дата занятия:</label>
                             <div id="month">
-                                <div class="month active">{{ today|date:"F Y" }}</div>
-{#                                <div class="month ml-2">Март 2020</div>#}
+                                <a class="month active" href="{% url 'load_filtered_calendar' %}?filter_month={{ today.month }}&filter_year={{ today.year }}"
+                                           onclick="load_calendar($(this))">{{ today|date:"F Y" }}</a>
+                                <a class="month ml-2" href="{% url 'load_filtered_calendar' %}?filter_month={{ next_month.month }}&filter_year={{ next_month.year }}"
+                                           onclick="load_calendar($(this))">{{ next_month|date:"F Y" }}</a>
                             </div>
                         </div>
                         <hr>
-                        <div class="days-grid">
-                            <div class="days-row">
-                                <div class="day-name">Пн</div>
-                                <div class="day-name">Вт</div>
-                                <div class="day-name">Ср</div>
-                                <div class="day-name">Чт</div>
-                                <div class="day-name">Пт</div>
-                                <div class="day-name">Сб</div>
-                                <div class="day-name">Вс</div>
-                            </div>
-                            {% for week in calendar %}
-                                <div class="days-row">
-                                    {% for date in week %}
-                                            <div class="day-col">
-                                               <a class="day {% if today.month != date.1 %}disabled{% elif date.2 < today.day %}disabled{% elif date.2 == today.day %}active{% endif %}" {% if today.month != date.1 %}{% elif date.2 < today.day %}{% else %}href="{% url 'load_filtered_events' %}?filter_date={{ date.2 }}&filter_month={{ date.1 }}&filter_year={{ date.0 }}"
-                                           onclick="load_events($(this))"{% endif %}>
-                                                <input type="hidden" name="date" value="{{ date.2 }}.{% if date.1 < 10 %}0{{ date.1 }}{% else %}{{ date.1 }}{% endif %}.{{ date.0 }}" />
+                        <div id="panvilov_calendar" class="days-grid">
 
-                                                    <div class="day-content">
-{#                                                                                                            <div class="day-status">Недоступно</div>#}
-                                                        <div class="day-date">{{ date.2 }}
-                                                            {% if today.month != date.1 %}<span
-                                                                    class="day-month">.{% if date.1 < 10 %}
-                                                                0{{ date.1 }}{% else %}
-                                                                {{ date.1 }}{% endif %}</span>{% else %}{% endif %}
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-
-                                    {% endfor %}
-                                </div>
-                            {% endfor %}
+                           {% include 'partials/calendar.html' %}
 
                         </div>
                         <hr>

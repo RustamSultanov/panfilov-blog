@@ -1,4 +1,4 @@
-from calendar import Calendar
+from calendar import Calendar, nextmonth
 from datetime import date, datetime, timedelta
 
 import wagtail.users.models
@@ -318,6 +318,17 @@ def employee_list(request):
     return HttpResponse(f"{e}")
 
 
+def get_calendar(request):
+    if "filter_month" in request.GET:
+        today = timezone.localdate()
+        nx_mth = nextmonth(today.year, today.month)
+        date_next = date(nx_mth[0], nx_mth[1], 1)
+        td = today if today.month == int(request.GET['filter_month']) else date_next
+        c = Calendar()
+        dates = list(c.itermonthdays3(int(request.GET['filter_year']), int(request.GET['filter_month'])))
+        return ([dates[i:i + 7] for i in range(0, len(dates), 7)],td)
+
+
 def get_filtered_events(request):
     if "filter_date" in request.GET:
         date_select = date(int(request.GET['filter_year']), int(request.GET['filter_month']),
@@ -525,6 +536,16 @@ def load_filtered_idea(request):
         request,
         'partials/ideas_manager.html',
         {'idea_list': idea_list, 'formset': formset}
+    )
+
+
+@csrf_exempt
+def load_filtered_calendar(request):
+    dates, today = get_calendar(request)
+    return render(
+        request,
+        'partials/calendar.html',
+        {'calendar': dates, 'today':today}
     )
 
 

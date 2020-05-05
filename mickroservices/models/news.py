@@ -1,4 +1,4 @@
-from calendar import Calendar
+from calendar import Calendar, nextmonth
 from datetime import date, timedelta, datetime
 
 from django.db import models
@@ -11,8 +11,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-
-
 
 
 class NewsPage(Page):
@@ -68,9 +66,11 @@ class NewsPage(Page):
             if len(cl_lst) == 0:
                 rec_pages.append(r)
         form = EventForm(request.POST or None, lst_events=rec_pages)
-
+        nx_mth = nextmonth(today.year, today.month)
+        date_next = date(nx_mth[0], nx_mth[1], 1)
         context['calendar'] = [dates[i:i + 7] for i in range(0, len(dates), 7)]
         context['today'] = today
+        context['next_month'] = date_next
         context['form'] = form
         context['breadcrumb'] = [
             {'title': 'Программы',
@@ -99,10 +99,11 @@ class NewsPage(Page):
                 return HttpResponseRedirect(reverse_lazy("login"))
             rev = RecurringEventPage.objects.get(id=int(form.data['events']))
             dt = datetime.strptime(form.data['date'], "%d.%m.%Y")
-            cl_ev = Classes(date_lessons=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour),type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
-                lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
-                upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)), recurrences_event=rev)
+            cl_ev = Classes(date_lessons=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour),
+                            type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
+                    lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
+                    upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)),
+                            recurrences_event=rev)
             cl_ev.save()
             return HttpResponseRedirect(reverse_lazy("ya_kassa"))
         return super().serve(request)
-
