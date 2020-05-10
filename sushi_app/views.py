@@ -1181,6 +1181,9 @@ class YaKassaNotify(APIView):
     def post(self, request):
         p_id = request.data['object']['id']
         classes = get_object_or_404(Classes, pay_id=p_id)
-        classes.is_paid = True
-        classes.save()
+        if request.data['object']['status'] == 'succeeded':
+            classes.is_paid = True
+            classes.save()
+        elif request.data['object']['status'] == 'canceled':
+            classes.delete()
         return Response(status=200)
