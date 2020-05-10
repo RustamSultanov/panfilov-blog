@@ -35,14 +35,14 @@
                                                                                      class="font-weight-bold text-primary">Скачать
                                 чек</a> {% endif %}</div>
                         {% else %}
-                            <div class="card-text small mt-2">Оплатить до {{ class.duration.upper|date:"DATE_FORMAT" }}</div>
+{#                            <div class="card-text small mt-2">Оплатить до {{ class.duration.upper|date:"DATE_FORMAT" }}</div>#}
                         {% endif %}
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="card-price mt-0">{{ class.cost }} ₽</div>
                             {% if class.is_paid %}
                                 <div class="btn btn-success btn-round btn-sm ">Оплачено</div>
                             {% else %}
-                                <a target="_blank"  href="javascript:void(0)" class="btn btn-primary btn-round btn-sm">Оплатить</a>
+                                <div class="btn btn-primary btn-round btn-sm">Платеж в обработке</div>
                             {% endif %}
                         </div>
                     </div>

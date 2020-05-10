@@ -62,6 +62,14 @@ pytz = ">=2014.10,<2020"
 
 [[package]]
 category = "main"
+description = "Distro - an OS platform information API"
+name = "distro"
+optional = false
+python-versions = "*"
+version = "1.5.0"
+
+[[package]]
+category = "main"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 name = "django"
 optional = false
@@ -212,7 +220,10 @@ description = "Web APIs for Django, made easy."
 name = "djangorestframework"
 optional = false
 python-versions = ">=3.5"
-version = "3.10.1"
+version = "3.11.0"
+
+[package.dependencies]
+django = ">=1.11"
 
 [[package]]
 category = "main"
@@ -474,6 +485,14 @@ socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [[package]]
 category = "main"
+description = "UUID object and generation functions (Python 2.3 or higher)"
+name = "uuid"
+optional = false
+python-versions = "*"
+version = "1.30"
+
+[[package]]
+category = "main"
 description = "A Django content management system."
 name = "wagtail"
 optional = false
@@ -516,8 +535,22 @@ optional = false
 python-versions = "*"
 version = "1.1"
 
+[[package]]
+category = "main"
+description = "Yandex Checkout SDK Python Library"
+name = "yandex-checkout"
+optional = false
+python-versions = "*"
+version = "1.5.1"
+
+[package.dependencies]
+distro = "*"
+requests = "*"
+urllib3 = "*"
+uuid = "*"
+
 [metadata]
-content-hash = "5831543a7e5cd79da2fe5f4bf032cb3b05505d00e13d4e79300339c0507bbdc2"
+content-hash = "a34e9d172e2f2979d738bd13d402857701b223dbf46b2de2ebc085aec3c4ad25"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -545,6 +578,10 @@ confusable-homoglyphs = [
 convertdate = [
     {file = "convertdate-2.2.0-py3-none-any.whl", hash = "sha256:fc34133ef6ceb31738cf1169b528ba487d0164d69f4451a7cef206887c45b71d"},
     {file = "convertdate-2.2.0.tar.gz", hash = "sha256:9d2b0cd8d5382d2458d4cfa59665abba398a9e9bfd3a01c6f61b7b47768d28bf"},
+]
+distro = [
+    {file = "distro-1.5.0-py2.py3-none-any.whl", hash = "sha256:df74eed763e18d10d0da624258524ae80486432cd17392d9c3d96f5e83cd2799"},
+    {file = "distro-1.5.0.tar.gz", hash = "sha256:0e58756ae38fbd8fc3020d54badb8eae17c5b9dcbed388b17bb55b8a5928df92"},
 ]
 django = [
     {file = "Django-2.2.3-py3-none-any.whl", hash = "sha256:6e974d4b57e3b29e4882b244d40171d6a75202ab8d2402b8e8adbd182e25cf0c"},
@@ -594,8 +631,8 @@ django-widget-tweaks = [
     {file = "django_widget_tweaks-1.4.5-py2.py3-none-any.whl", hash = "sha256:65c960f3d75008a285e4b10f4d21f9eae4160fd77a0f6097ad545185f8648bd6"},
 ]
 djangorestframework = [
-    {file = "djangorestframework-3.10.1-py3-none-any.whl", hash = "sha256:c3c5edfdbc5dd33f9121bb84305bfd603d2c791f20cff9782772f44a7684a4e4"},
-    {file = "djangorestframework-3.10.1.tar.gz", hash = "sha256:1ca4a5599a5ec31f3d6238a687fcc1dd4c41b1d90edab9ad398fcbf87872b7ba"},
+    {file = "djangorestframework-3.11.0-py3-none-any.whl", hash = "sha256:05809fc66e1c997fd9a32ea5730d9f4ba28b109b9da71fccfa5ff241201fd0a4"},
+    {file = "djangorestframework-3.11.0.tar.gz", hash = "sha256:e782087823c47a26826ee5b6fa0c542968219263fb3976ec3c31edab23a4001f"},
 ]
 docopt = [
     {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
@@ -786,6 +823,9 @@ urllib3 = [
     {file = "urllib3-1.25.3-py2.py3-none-any.whl", hash = "sha256:b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1"},
     {file = "urllib3-1.25.3.tar.gz", hash = "sha256:dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"},
 ]
+uuid = [
+    {file = "uuid-1.30.tar.gz", hash = "sha256:1f87cc004ac5120466f36c5beae48b4c48cc411968eed0eaecd3da82aa96193f"},
+]
 wagtail = [
     {file = "wagtail-2.5.1-py3-none-any.whl", hash = "sha256:aa4371d3e6feba01bbb1c48a6ed2569c4aa6b3f715971827c6ca1a68afda0f60"},
     {file = "wagtail-2.5.1.tar.gz", hash = "sha256:6213d91d0624d62723fdd2c8c88c5b2b96a6e5a301b742b305c40a674286172c"},
@@ -797,4 +837,7 @@ webencodings = [
 willow = [
     {file = "Willow-1.1-py2.py3-none-any.whl", hash = "sha256:76a8874304356b7d86923405f5ca1df125c3540fb55b32747e7a33ba59bc1744"},
     {file = "Willow-1.1.tar.gz", hash = "sha256:818ee11803c90a0a6d49c94b0453d6266be1ef83ae00de72731c45fae4d3e78c"},
+]
+yandex-checkout = [
+    {file = "yandex_checkout-1.5.1.tar.gz", hash = "sha256:9331ed7d62585b337c646c19cf2c6cb2a74602a5739c27c1afdaa84033df609d"},
 ]

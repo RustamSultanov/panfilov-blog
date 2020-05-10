@@ -103,7 +103,7 @@ class NewsPage(Page):
                             type_classes=self.type_classes, user=request.user, is_busy=True, duration=DateTimeTZRange(
                     lower=dt + timedelta(minutes=rev.time_from.minute, hours=rev.time_from.hour - 3),
                     upper=dt + timedelta(minutes=rev.time_to.minute, hours=rev.time_to.hour - 3)),
-                            recurrences_event=rev)
+                            recurrences_event=rev,cost=self.cost)
             cl_ev.save()
-            return HttpResponseRedirect(reverse_lazy("ya_kassa"))
+            return HttpResponseRedirect(reverse_lazy("ya_kassa", args=[cl_ev.id]))
         return super().serve(request)

@@ -1,6 +1,7 @@
 from calendar import Calendar, nextmonth
 from datetime import date, datetime, timedelta
 
+import uuid
 import wagtail.users.models
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
@@ -19,18 +20,28 @@ from django.views.decorators.vary import vary_on_headers
 from django.views.generic import ListView
 from ls.joyous.models import getAllEventsByDay, RecurringEventPage
 from psycopg2._range import DateTimeTZRange
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from wagtail.admin.forms.search import SearchForm
 from wagtail.admin.utils import user_passes_test
 from wagtail.core.models import Collection
 from wagtail.documents.forms import get_document_form
 from wagtail.documents.permissions import permission_policy
 from wagtail.users.forms import AvatarPreferencesForm
+from yandex_checkout import Configuration, Payment
+from yandex_checkout.domain.common.user_agent import Version
 
 from chat.models import Message as Chat_Message
 from mickroservices.forms import AnswerForm, IdeaStatusForm
 from mickroservices.models import NewsPage, QuestionModel, IdeaModel
 from .forms import *
 from .models import *
+import environ
+
+env = environ.Env(DEBUG=(bool, False), )
+# reading .env file
+environ.Env.read_env()
 
 User = get_user_model()
 
@@ -326,7 +337,7 @@ def get_calendar(request):
         td = today if today.month == int(request.GET['filter_month']) else date_next
         c = Calendar()
         dates = list(c.itermonthdays3(int(request.GET['filter_year']), int(request.GET['filter_month'])))
-        return ([dates[i:i + 7] for i in range(0, len(dates), 7)],td)
+        return ([dates[i:i + 7] for i in range(0, len(dates), 7)], td)
 
 
 def get_filtered_events(request):
@@ -545,7 +556,7 @@ def load_filtered_calendar(request):
     return render(
         request,
         'partials/calendar.html',
-        {'calendar': dates, 'today':today}
+        {'calendar': dates, 'today': today}
     )
 
 
@@ -1137,5 +1148,39 @@ def feedback_view(request, feedback_id, user_id):
     )
 
 
-def ya_kassa(request):
-    return HttpResponse("Заглушка. Тут будет форма оплаты Я.Кассы")
+@login_required
+def ya_kassa(request, classes_id):
+    classes = get_object_or_404(Classes, id=classes_id)
+    if classes.user != request.user:
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+    Configuration.configure(env('YA_KASSA_CLIENT_ID'), env('YA_KASSA_SECRET_KEY'))
+    Configuration.configure_user_agent(
+        framework=Version('Django', '2.2.3'),
+        cms=Version('Wagtail', '2.6.2')
+    )
+    payment = Payment.create({
+        "amount": {
+            "value": f"{classes.cost}.00",
+            "currency": "RUB"
+        },
+        "confirmation": {
+            "type": "redirect",
+            "return_url": "https://xn--80aaah3ajhdqggh1e5b.xn--p1ai/user-lk"
+        },
+        "capture": True,
+        "description": f"Заказ №{classes.id}"
+    }, uuid.uuid4())
+    classes.pay_id = payment.id
+    classes.save()
+    return HttpResponseRedirect(payment.confirmation.confirmation_url)
+
+
+class YaKassaNotify(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        p_id = request.data['object']['id']
+        classes = get_object_or_404(Classes, pay_id=p_id)
+        classes.is_paid = True
+        classes.save()
+        return Response(status=200)
