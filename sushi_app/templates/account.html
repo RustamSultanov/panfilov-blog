@@ -31,11 +31,11 @@
                     <div class="card-body">
                         <a target="_blank"  href="javascript:void(0)" class="card-title">{{ class.get_type_classes_display }}</a>
                         {% if class.is_paid %}
-                            <div class="card-text small mt-2">Оплачено {{ class.date_paid|date:"DATE_FORMAT" }} {% if class.check_link %}<a target="_blank"  href="{{ class.check_link }}"
+                            <div class="card-text small mt-2">Оплачена тренировка на {{ class.duration.upper|date:"DATE_FORMAT" }} {{ class.date_paid|date:"DATE_FORMAT" }} {% if class.check_link %}<a target="_blank"  href="{{ class.check_link }}"
                                                                                      class="font-weight-bold text-primary">Скачать
                                 чек</a> {% endif %}</div>
                         {% else %}
-{#                            <div class="card-text small mt-2">Оплатить до {{ class.duration.upper|date:"DATE_FORMAT" }}</div>#}
+                            <div class="card-text small mt-2">Занятие {{ class.duration.upper|date:"DATE_FORMAT" }}</div>
                         {% endif %}
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="card-price mt-0">{{ class.cost }} ₽</div>
