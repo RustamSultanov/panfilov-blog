@@ -75,6 +75,6 @@ urlpatterns = [
     path('load/calendar', views.load_filtered_calendar, name='load_filtered_calendar'),
     path('load_paginations_docs', views.load_paginations_docs, name='load_paginations_docs'),
     path('load_docs', views.load_docs, name='load_docs'),
-    path('ya_kassa', views.ya_kassa, name='ya_kassa'),
+    path('ya_kassa/<int:classes_id>', views.ya_kassa, name='ya_kassa'),
     path('api/ya_kassa_notification', YaKassaNotify.as_view(), name='ya_kassa_notification')
 ]
