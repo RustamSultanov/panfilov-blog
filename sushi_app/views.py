@@ -1184,6 +1184,6 @@ class YaKassaNotify(APIView):
         if request.data['object']['status'] == 'succeeded':
             classes.is_paid = True
             classes.save()
-        elif request.data['object']['status'] == 'canceled':
+        else:
             classes.delete()
         return Response(status=200)
