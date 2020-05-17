@@ -115,7 +115,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_proj.wsgi.application'
 
-WAGTAIL_SITE_NAME = 'Panfilov school'
+WAGTAIL_SITE_NAME = 'Школа плаванья Александра Панфилова'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -223,3 +223,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+META_USE_OG_PROPERTIES = True
+
