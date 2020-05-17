@@ -24,7 +24,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from wagtail.admin.forms.search import SearchForm
-from wagtail.admin.utils import user_passes_test
+from wagtail.admin.auth import user_passes_test
 from wagtail.core.models import Collection
 from wagtail.documents.forms import get_document_form
 from wagtail.documents.permissions import permission_policy

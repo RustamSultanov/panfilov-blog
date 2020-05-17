@@ -23,6 +23,7 @@
     {% endif %}
     <div class="article-content">
         <p>{{ page.body | richtext }} </p>
+    {% include_block page.extra_body %}
     </div>
     </div>
     </div>

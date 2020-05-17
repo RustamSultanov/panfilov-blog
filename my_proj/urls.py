@@ -23,12 +23,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django-admin/', admin.site.urls),
     path('tz_detect/', include('tz_detect.urls')),
     path('', include('sushi_app.urls')),
     path('', include('mickroservices.urls')),
     path('', include('chat.urls')),
-    re_path(r'^cms/', include(wagtailadmin_urls)),
+    re_path(r'^admin/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'^pages/', include(wagtail_urls)),
 ]

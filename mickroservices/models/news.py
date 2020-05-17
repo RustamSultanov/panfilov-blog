@@ -12,8 +12,10 @@ from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from mickroservices.models.text_template import MetadataPageMixin
 
-class NewsPage(Page):
+
+class NewsPage(MetadataPageMixin,Page):
     CL_ONE, CL_ONE_AND_ONE = range(2)
     CLASSES_CHOICE = (
         (CL_ONE, "Индивидуальная тренировка"),

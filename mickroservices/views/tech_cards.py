@@ -4,7 +4,7 @@ from django.views.decorators.vary import vary_on_headers
 from django.utils.encoding import force_text
 
 from wagtail.admin.forms.search import SearchForm
-from wagtail.admin.utils import PermissionPolicyChecker
+from wagtail.admin.auth import PermissionPolicyChecker
 from wagtail.core.models import Collection
 
 from wagtail.documents.forms import get_document_form

@@ -54,6 +54,11 @@ INSTALLED_APPS = [
     'wagtail.contrib.postgres_search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.contrib.settings',
+    "wagtail.contrib.table_block",
+    'wagtail_opengraph_image_generator',
+    "meta",
+    'wagtailmetadata',
 
     'ls.joyous',
 

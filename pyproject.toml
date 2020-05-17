@@ -21,6 +21,9 @@ gunicorn = "^20.0.4"
 "ls.joyous" = "^1.0.1"
 yandex_checkout = "^1.5.1"
 djangorestframework = "^3.11.0"
+wagtail-opengraph-image-generator = "^1.1"
+django-meta = "^1.6.1"
+wagtail-metadata-mixin = "^0.0.7"
 
 [tool.poetry.dev-dependencies]
 
